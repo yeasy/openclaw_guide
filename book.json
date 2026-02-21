@@ -1,0 +1,18 @@
+{
+  "title": "OpenClaw 从入门到精通",
+  "description": "OpenClaw 从入门到精通",
+  "language": "zh-hans",
+  "author": "yeasy@github",
+  "root": ".",
+  "links": {
+    "sidebar": {
+      "OpenClaw 官方文档": "https://docs.openclaw.ai/",
+      "OpenClaw GitHub": "https://github.com/openclaw/openclaw"
+    }
+  },
+  "pluginsConfig": {
+    "theme-default": {
+      "showLevel": true
+    }
+  }
+}
