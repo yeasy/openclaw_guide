@@ -18,3 +18,12 @@
 ### 11.5.3 下一章预告
 
 第十二章进入插件扩展与生产落地：如何把扩展能力纳入策略边界、做成可测试可回放的工程闭环，并形成可上线、可回滚的落地清单。
+
+### 11.5.4 本章参考文献汇总
+
+- 配置 models：https://docs.openclaw.ai/gateway/configuration#models
+- Multi-agent sandbox tools：https://docs.openclaw.ai/tools/multi-agent-sandbox-tools
+- Models 命令：https://docs.openclaw.ai/cli/models
+- Model Failover：https://docs.openclaw.ai/concepts/model-failover
+- Security：https://docs.openclaw.ai/gateway/security
+- Tools：https://docs.openclaw.ai/tools
