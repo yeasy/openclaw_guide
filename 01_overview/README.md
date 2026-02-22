@@ -25,4 +25,4 @@
 - [1.1 大模型演进与 OpenClaw 的诞生](1.1_history.md)
 - [1.2 架构与核心概念](1.2_architecture.md)
 - [1.3 对比其它方案](1.3_comparison.md)
-- [本章小结](summary.md)
+- [1.4 本章小结](summary.md)

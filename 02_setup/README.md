@@ -19,4 +19,4 @@
 - [2.2 安装 OpenClaw](2.2_installation.md)
 - [2.3 初始化向导与首轮配置](2.3_onboarding.md)
 - [2.4 守护进程与可用性验收](2.4_gateway_service.md)
-- [本章小结](summary.md)
+- [2.5 本章小结](summary.md)

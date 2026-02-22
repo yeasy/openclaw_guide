@@ -17,4 +17,4 @@
 - [9.2 WebSocket 握手、鉴权与连接生命周期](9.2_ws_handshake.md)
 - [9.3 事件幂等与一致性保障](9.3_event_idempotency.md)
 - [9.4 设备配对与本地信任链](9.4_pairing_trust.md)
-- [本章小结](summary.md)
+- [9.5 本章小结](summary.md)

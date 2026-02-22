@@ -22,7 +22,7 @@ export ANTHROPIC_API_KEY="..."
 
 2) 配置片段（把它合并进你的 `~/.openclaw/openclaw.json`）：
 
-```json5
+```json
 {
   models: {
     providers: {
