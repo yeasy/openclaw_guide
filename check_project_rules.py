@@ -12,23 +12,37 @@ def check_1_1_bold_spacing(text: str, auto_fix: bool) -> Tuple[str, List[str]]:
     has_outside_warning = False
     has_inside_warning = False
     
+    new_parts = []
+    
     for i in range(len(parts)):
         if i % 2 == 1:
             inner = parts[i][2:-2]
             if inner.startswith(' ') or inner.endswith(' ') or inner.startswith('\t') or inner.endswith('\t') or inner.startswith('\n') or inner.endswith('\n'):
                 has_inside_warning = True
+                if auto_fix:
+                    parts[i] = f"**{inner.strip()}**"
+            new_parts.append(parts[i])
         else:
-            if i + 1 < len(parts) and parts[i]:
-                if parts[i][-1] not in ign:
+            part = parts[i]
+            if i + 1 < len(parts) and part:
+                if part[-1] not in ign:
                     has_outside_warning = True
-            if i - 1 >= 0 and parts[i]:
-                if parts[i][0] not in ign:
+                    if auto_fix:
+                        part = part + ' '
+            if i - 1 >= 0 and part:
+                if part[0] not in ign:
                     has_outside_warning = True
+                    if auto_fix:
+                        part = ' ' + part
+            new_parts.append(part)
 
     if has_inside_warning:
         warnings.append("1.1 Bold text has spaces inside markers.")
     if has_outside_warning:
         warnings.append("1.1 Bold text missing outside spaces.")
+
+    if auto_fix:
+        text = ''.join(new_parts)
 
     return text, warnings
 
