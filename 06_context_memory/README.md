@@ -9,10 +9,3 @@
 - 了解记忆机制：主存（Markdown）与检索后端的配合方式。
 - 掌握长会话治理：压缩与裁剪（Compaction/Pruning）的触发条件与取舍。
 
-章节地图：
-
-- [6.1 会话模型与状态持久化](6.1_sessions.md)
-- [6.2 上下文构建与窗口预算](6.2_context_building.md)
-- [6.3 记忆机制：写入、检索与失效](6.3_memory_mechanism.md)
-- [6.4 压缩与裁剪：折叠与丢弃策略](6.4_compaction_pruning.md)
-- [本章小结](summary.md)

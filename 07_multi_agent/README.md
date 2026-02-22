@@ -8,10 +8,3 @@
 - 绑定与路由负责收敛所有权。
 - 工具策略与沙箱约束负责收敛可执行边界。
 
-章节地图：
-
-- [7.1 渠道实战：接管 Telegram 与 WhatsApp](7.1_telegram_whatsapp.md)
-- [7.2 渠道绑定与多账号隔离](7.2_channel_accounts.md)
-- [7.3 路由基础：从单智能体到多智能体](7.3_routing_basics.md)
-- [7.4 协作模式：子智能体与广播组](7.4_collaboration_patterns.md)
-- [本章小结](summary.md)
