@@ -22,3 +22,17 @@
 ### 3.6.3 下一步规划预告
 
 第四章进入配置体系与模型接入：把“能回答”升级为“可控可替换”，并建立可验证的模型选择与故障转移基线。
+
+### 3.6.4 本章参考文献汇总
+
+- Dashboard 命令：https://docs.openclaw.ai/cli/dashboard
+- Health 命令：https://docs.openclaw.ai/cli/health
+- Web 桌面端：https://docs.openclaw.ai/web/desktop
+- Models 命令：https://docs.openclaw.ai/cli/models
+- Channels 命令：https://docs.openclaw.ai/cli/channels
+- Status 命令：https://docs.openclaw.ai/cli/status
+- Doctor 命令：https://docs.openclaw.ai/cli/doctor
+- 群组说明：https://docs.openclaw.ai/groups
+- 群组消息：https://docs.openclaw.ai/groups/messages
+- pairing 命令：https://docs.openclaw.ai/cli/pairing
+- Gateway 配置：https://docs.openclaw.ai/gateway/configuration
