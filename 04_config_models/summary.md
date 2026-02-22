@@ -26,8 +26,8 @@ export ANTHROPIC_API_KEY="..."
 {
   models: {
     providers: {
-      openai: { apiKey: "ENV:OPENAI_API_KEY" },
-      anthropic: { apiKey: "ENV:ANTHROPIC_API_KEY" },
+      openai: { apiKey: "${OPENAI_API_KEY}" },
+      anthropic: { apiKey: "${ANTHROPIC_API_KEY}" },
     },
   },
 
