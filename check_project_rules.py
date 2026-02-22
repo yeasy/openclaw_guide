@@ -8,7 +8,7 @@ def check_1_1_bold_spacing(text: str, auto_fix: bool) -> Tuple[str, List[str]]:
     warnings = []
     
     parts = re.split(r'(\*\*.*?\*\*)', text)
-    ign = list(' \n\t.,:;!?，。：；！？-[]()（）"\'`<>\*')
+    ign = list(' \n\t.,:;!?，。：；！？-[]()（）"\'`<>*')
     has_outside_warning = False
     has_inside_warning = False
     
@@ -208,6 +208,31 @@ def check_2_5_and_3_2_bridge_text(text: str) -> List[str]:
 
     return warnings
 
+def check_3_3_concise_text(text: str, auto_fix: bool) -> Tuple[str, List[str]]:
+    warnings = []
+    replacements = {
+        "我们推荐": "推荐",
+        "我们建议": "建议",
+        "我们通过": "通过",
+        "你可以": "可",
+        "你需要": "需",
+        "建议你": "建议",
+        "推荐你": "推荐"
+    }
+    
+    lines = text.split('\n')
+    new_lines = []
+    for i, line in enumerate(lines):
+        new_line = line
+        for bad, good in replacements.items():
+            if bad in new_line:
+                warnings.append(f"3.3 Concise text at line {i+1}: '{bad}' should be '{good}'.")
+                if auto_fix:
+                    new_line = new_line.replace(bad, good)
+        new_lines.append(new_line)
+        
+    return '\n'.join(new_lines), warnings
+
 def process_file(file_path: str, auto_fix: bool, verbose: bool) -> bool:
     name = os.path.basename(file_path)
     if not file_path.endswith('.md'):
@@ -238,6 +263,10 @@ def process_file(file_path: str, auto_fix: bool, verbose: bool) -> bool:
     
     # 1.4 Trailing Newline
     text, w = check_1_4_trailing_newline(text, auto_fix)
+    all_warnings.extend(w)
+
+    # 3.3 Concise text
+    text, w = check_3_3_concise_text(text, auto_fix)
     all_warnings.extend(w)
 
     if not is_special:

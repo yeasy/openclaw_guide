@@ -73,7 +73,7 @@ def main() -> None:
     _sub(
         "04_config_models/4.1_config_system.md",
         r"^参考：\[[^]]*/gateway/configuration\]\([^)]*/gateway/configuration\)$",
-        "如果你希望把证据链做得更“二值化”，可以把验收命令固定为一组最小集合：先 `doctor` 确认配置可读、再 `status --deep` 确认加载、最后用 `logs --follow --json` 回放一次具体链路（见第 3 章诊断与附录 D 的命令速查）。",
+        "如希望把证据链做得更“二值化”，可以把验收命令固定为一组最小集合：先 `doctor` 确认配置可读、再 `status --deep` 确认加载、最后用 `logs --follow --json` 回放一次具体链路（见第 3 章诊断与附录 D 的命令速查）。",
         count=1,
         required=False,
     )
@@ -289,7 +289,7 @@ export ANTHROPIC_API_KEY="..."
 {CMD} logs --follow --json
 ```
 
-如果你能复现“主链路失败但没有回退”，不要先加更多规则；优先把错误分为 401/429/超时/5xx 四类，并把“应该采取的动作”写成可检查条款（这会直接影响第 11 章的可靠性与止血策略）。
+若能复现“主链路失败但没有回退”，不要先加更多规则；优先把错误分为 401/429/超时/5xx 四类，并把“应该采取的动作”写成可检查条款（这会直接影响第 11 章的可靠性与止血策略）。
 """
     _write_file("04_config_models/4.4_failover.md", failover.format(CMD=cmd))
 
