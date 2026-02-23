@@ -23,5 +23,5 @@ Thumbs.db
 *.swp
 
 # Others
-.agent/
+.agents/
 __pycache_
