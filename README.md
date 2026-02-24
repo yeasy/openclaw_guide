@@ -4,13 +4,22 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/yeasy/openclaw_guide/pulls)
 [![License](https://img.shields.io/badge/license-CC--BY--4.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-[OpenClaw](https://github.com/openclaw/openclaw) 快速入门和实战指南，涵盖从基础配置到实现原理的完整路径。
+**OpenClaw 是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
+
+<div align="center">
+  <img src="cover.png" alt="OpenClaw Guide Cover" width="400" />
+</div>
 
 ## 本书特色
 
 - **实战导向** ：从零到一搭建最小闭环，提供可直接复用的配置模板
 - **机制剖析** ：深入解析 Gateway、Agent Loop、工具系统、会话与记忆等核心机制
 - **生产就绪** ：聚焦可靠性、安全加固、运行监控与故障排查
+
+## 目标读者与前置要求
+
+- **目标读者**：AI 应用开发者、大模型落地工程师、系统架构师等。
+- **前置基础**：阅读本书需要了解基本的后端开发常识（如 Node.js 或 Python 基础），并对大语言模型 (LLM) 和 AI 智能体有初步概念。
 
 ## 全书结构
 
@@ -26,8 +35,8 @@
 
 ### 在线阅读
 
-- [Gitbook](https://yeasy.gitbook.io/openclaw_guide/)
-- [Github](SUMMARY.md)
+- [Gitbook 在线版本](https://yeasy.gitbook.io/openclaw_guide/)
+- [Github 本地目录](SUMMARY.md)
 
 ### 本地预览
 
