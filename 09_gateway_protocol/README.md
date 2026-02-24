@@ -11,10 +11,4 @@
 - 掌握事件驱动系统的幂等与一致性：为什么“至少一次”是常态。
 - 理解配对作为信任引导（bootstrapping）的意义，以及吊销与轮换的治理方法。
 
-**章节地图**
 
-- [9.1 控制平面职责与边界](9.1_control_plane.md)
-- [9.2 WebSocket 握手、鉴权与连接生命周期](9.2_ws_handshake.md)
-- [9.3 事件幂等与一致性保障](9.3_event_idempotency.md)
-- [9.4 设备配对与本地信任链](9.4_pairing_trust.md)
-- [9.5 本章小结](summary.md)

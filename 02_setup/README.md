@@ -13,10 +13,4 @@
 
 本指南适用于 macOS、Linux 及 Windows（建议使用 WSL2）环境。在生产级部署中，强烈建议采用 Linux 主机搭配 Docker，并辅以反向代理、进程守护程序以及严格的最小权限账号策略。
 
-**章节地图**
 
-- [2.1 系统要求与运行前检查](2.1_requirements.md)
-- [2.2 安装 OpenClaw](2.2_installation.md)
-- [2.3 初始化向导与首轮配置](2.3_onboarding.md)
-- [2.4 守护进程与可用性验收](2.4_gateway_service.md)
-- [2.5 本章小结](summary.md)
