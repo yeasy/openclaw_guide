@@ -16,13 +16,4 @@
 - 已完成第二章的安装与首跑验证。
 - 可打开本机浏览器访问 Dashboard/WebChat（远程环境需端口转发）。
 
-**章节地图**
 
-本指南的知识路线图大纲分支如下：
-
-- [3.1 控制台与 WebChat 快速上手](3.1_control_ui_webchat.md)
-- [3.2 常用诊断命令与日志排障](3.2_diagnostics.md)
-- [3.3 初始指令与智能体角色配置](3.3_agent_persona.md)
-- [3.4 配对、群聊策略与访问边界](3.4_pairing_groups.md)
-- [3.5 飞书专项接入指南：让它能在群里陪你聊天](3.5_lark_integration.md)
-- [3.6 本章小结](summary.md)
