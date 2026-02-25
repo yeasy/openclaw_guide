@@ -13,7 +13,7 @@
   * [2.1 系统要求与运行前检查](02_setup/2.1_requirements.md)
   * [2.2 安装 OpenClaw](02_setup/2.2_installation.md)
   * [2.3 初始化向导与首轮配置](02_setup/2.3_onboarding.md)
-  * [2.4 服务化启动与可用性验收](02_setup/2.4_gateway_service.md)
+  * [2.4 守护进程与可用性验收](02_setup/2.4_gateway_service.md)
   * [2.5 本章小结](02_setup/summary.md)
 * [第三章：快速上手与首轮对话实战](03_minimal_loop/README.md)
   * [3.1 控制台与 WebChat 快速上手](03_minimal_loop/3.1_control_ui_webchat.md)
@@ -91,3 +91,4 @@
   * [附录C：故障排查检查单](13_appendix/13.3_troubleshooting_checklist.md)
   * [附录D：API 与 SDK 参考](13_appendix/13.4_api_reference.md)
   * [附录E：延伸阅读与参考资料](13_appendix/13.5_reading_list.md)
+  * [附录F：命令速查手册](13_appendix/13.6_command_cheatsheet.md)

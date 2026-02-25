@@ -25,3 +25,4 @@ Thumbs.db
 # Others
 .agents/
 __pycache_
+.obsidian/

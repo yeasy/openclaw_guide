@@ -4,7 +4,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/yeasy/openclaw_guide/pulls)
 [![License](https://img.shields.io/badge/license-CC--BY--4.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-**OpenClaw 是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
+**[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
 
 <div align="center">
   <img src="cover.png" alt="OpenClaw Guide Cover" width="400" />
