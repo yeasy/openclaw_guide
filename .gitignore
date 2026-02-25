@@ -23,6 +23,6 @@ Thumbs.db
 *.swp
 
 # Others
-.agents/
+.agent/
 __pycache_
 .obsidian/

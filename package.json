@@ -1,0 +1,27 @@
+{
+    "name": "openclaw-guide",
+    "version": "1.0.0",
+    "description": "OpenClaw 从入门到精通",
+    "scripts": {
+        "init": "honkit init",
+        "build": "honkit build",
+        "serve": "honkit serve",
+        "start": "honkit serve",
+        "clean": "rimraf _book",
+        "pdf": "honkit pdf ./ ./oc_guide.pdf"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yeasy/openclaw_guide.git"
+    },
+    "author": "yeasy",
+    "license": "CC-BY-4.0",
+    "bugs": {
+        "url": "https://github.com/yeasy/openclaw_guide/issues"
+    },
+    "homepage": "https://github.com/yeasy/openclaw_guide#readme",
+    "devDependencies": {
+        "honkit": "^6.1.4",
+        "rimraf": "^6.0.1"
+    }
+}
