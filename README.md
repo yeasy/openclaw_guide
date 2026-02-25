@@ -19,7 +19,7 @@
 ## 目标读者与前置要求
 
 - **目标读者**：AI 应用开发者、大模型落地工程师、系统架构师等。
-- **前置基础**：阅读本书需要了解基本的后端开发常识（如 Node.js 或 Python 基础），并对大语言模型 (LLM) 和 AI 智能体有初步概念。
+- **前置基础**：阅读本书需要了解基本的后端开发常识（如 Node.js 或 Python 基础），并对大语言模型 (LLM) 和 AI 智能体有初步概念。可参考 [《零基础学 AI》](https://github.com/yeasy/ai_beginner_guide) 和 [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) 建立基础。
 
 ## 全书结构
 
@@ -54,6 +54,19 @@ honkit serve
 - **快速上手** ：第 2–3 章 → 即刻可用。
 - **深入原理** ：第 9–12 章 → 理解底层实现。
 - **运维安全** ：第 8、11 章 → 生产环境加固。
+
+## 推荐阅读
+
+本书是 AI 技术丛书的一部分。以下书籍与本书形成互补：
+
+| 书名 | 与本书的关系 |
+|------|------------|
+| [《零基础学 AI》](https://github.com/yeasy/ai_beginner_guide) | AI 零基础入门，适合缺乏 AI 背景的读者 |
+| [《大模型提示词工程指南》](https://github.com/yeasy/prompt_engineering_guide) | 智能体提示词设计的理论基础 |
+| [《大模型上下文工程权威指南》](https://github.com/yeasy/context_engineering_guide) | 智能体的上下文管理与记忆架构设计 |
+| [《Claude 技术指南》](https://github.com/yeasy/claude_guide) | Claude 的 MCP 协议、工具使用与 Agentic Coding |
+| [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) | 智能体的通用架构与多智能体协作模式 |
+| [《大模型安全权威指南》](https://github.com/yeasy/ai_security_guide) | 智能体系统的安全设计与攻防实践 |
 
 ## 贡献与反馈
 
