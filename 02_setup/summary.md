@@ -17,4 +17,4 @@
 
 ### 2.5.3 下一章预告
 
-第三章将深入介绍在 Dashboard 与 WebChat 中配置智能体初始指令与群聊策略等本地基准环境；多渠道接入将在第七章展开。
+[第三章](../03_minimal_loop/README.md)将深入介绍在 Dashboard 与 WebChat 中配置智能体初始指令与群聊策略等本地基准环境；多渠道接入将在[第七章](../07_multi_agent/README.md)展开。
