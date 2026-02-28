@@ -7,7 +7,7 @@
 **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
 
 <div align="center">
-  <img src="cover.png" alt="OpenClaw Guide Cover" width="400" />
+  <img src="cover.jpg" alt="OpenClaw Guide Cover" width="400" />
 </div>
 
 ## 本书特色
