@@ -26,12 +26,3 @@
 ### 6.5.4 下一章预告
 
 [第七章](../07_multi_agent/README.md)进入多智能体与路由：把入口收敛为可控触发面，并用绑定、路由与协作模式把“由谁接管、能做什么、如何回放”做成确定性边界。
-
-### 6.5.5 本章参考文献汇总
-
-- 会话机制：https://docs.openclaw.ai/concepts/sessions
-- 配置参考：https://docs.openclaw.ai/gateway/configuration#session
-- 工具结果裁剪：https://docs.openclaw.ai/gateway/configuration#agentsdefaultscontextpruning
-- Session 裁剪概念：https://docs.openclaw.ai/concepts/session-pruning
-- 记忆机制：https://docs.openclaw.ai/concepts/memory
-- 压缩与记忆刷新：https://docs.openclaw.ai/gateway/configuration#agentsdefaultscompaction

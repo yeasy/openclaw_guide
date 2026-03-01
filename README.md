@@ -4,7 +4,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/yeasy/openclaw_guide/pulls)
 [![License](https://img.shields.io/badge/license-CC--BY--4.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-**[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
+**[OpenClaw](https://github.com/openclaw/openclaw)（[官方网站](https://openclaw.ai/)）是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
 
 <div align="center">
   <img src="cover.jpg" alt="OpenClaw Guide Cover" width="400" />
@@ -12,14 +12,18 @@
 
 ## 本书特色
 
-- **实战导向** ：从零到一搭建最小闭环，提供可直接复用的配置模板
-- **机制剖析** ：深入解析 Gateway、Agent Loop、工具系统、会话与记忆等核心机制
-- **生产就绪** ：聚焦可靠性、安全加固、运行监控与故障排查
+- **实战导向**：从零到一搭建最小闭环，提供可直接复用的配置模板
+- **机制剖析**：深入解析 Gateway、Agent Loop、工具系统、会话与记忆等核心机制
+- **生产就绪**：聚焦可靠性、安全加固、运行监控与故障排查
 
 ## 目标读者与前置要求
 
 - **目标读者**：AI 应用开发者、大模型落地工程师、系统架构师等。
 - **前置基础**：阅读本书需要了解基本的后端开发常识（如 Node.js 或 Python 基础），并对大语言模型 (LLM) 和 AI 智能体有初步概念。可参考 [《零基础学 AI》](https://github.com/yeasy/ai_beginner_guide) 和 [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) 建立基础。
+
+## 版本锚点与迁移声明
+
+由于 OpenClaw 对配置字典有严格的 Schema 校验机制，**本书中出现的所有配置项与代码片段均基于 OpenClaw v2026.x.x 及以上版本验证**。如果您使用的是较老的版本（例如 0.12.x 等），可能会遇到 `schema validation failed` 的问题。附录中提供了旧字段与新字段的迁移映射说明，我们强烈建议您更新到最新版本，或通过 `openclaw doctor` 命令帮助诊断和升级配置。
 
 ## 全书结构
 
@@ -51,9 +55,9 @@ honkit serve
 
 - 建议先通读概念与架构，再动手实践命令与配置。
 - 遇到版本差异时，以 [官方文档](https://docs.openclaw.ai/) 与上游仓库为准。
-- **快速上手** ：第 2–3 章 → 即刻可用。
-- **深入原理** ：第 9–12 章 → 理解底层实现。
-- **运维安全** ：第 8、11 章 → 生产环境加固。
+- **快速上手**：第 2–3 章 → 即刻可用。
+- **深入原理**：第 9–12 章 → 理解底层实现。
+- **运维安全**：第 8、11 章 → 生产环境加固。
 
 ## 推荐阅读
 

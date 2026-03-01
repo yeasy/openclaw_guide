@@ -18,9 +18,3 @@
 ### 9.5.3 下一章预告
 
 [第十章](../10_agent_loop/README.md)进入 Agent Loop 运行内核，拆解排队、提示组装、工具执行与流式输出的实现机制。
-
-### 9.5.4 本章参考文献汇总
-
-- Gateway：https://docs.openclaw.ai/gateway
-- Health 命令：https://docs.openclaw.ai/cli/health
-- Status 命令：https://docs.openclaw.ai/cli/status
