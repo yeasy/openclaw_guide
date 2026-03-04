@@ -26,7 +26,7 @@
 
 [第六章](../06_context_memory/README.md)进入会话、上下文与记忆，目标是把任务连续性做成可控能力：知道系统记住了什么、为什么记住、如何压缩与裁剪。
 
-### 5.5.4 本章参考文献汇总
+### 5.5.5 本章参考文献汇总
 
 - Tools：https://docs.openclaw.ai/tools
 - Config tools：https://docs.openclaw.ai/gateway/configuration#tools

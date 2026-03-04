@@ -68,7 +68,7 @@
 * [第十章 Agent Loop 运行内核剖析](10_agent_loop/README.md)
   * [10.1 π 运行底座：重构智能体的心智模型](10_agent_loop/10.1_pi_framework.md)
   * [10.2 入口、排队与并发控制](10_agent_loop/10.2_entry_queue.md)
-  * [10.3 提示词装配框架机制与结构化注入防护](10_agent_loop/10.3_prompt_assembly.md)
+  * [10.3 提示词装配与结构化注入防护](10_agent_loop/10.3_prompt_assembly.md)
   * [10.4 工具执行挂起（Suspend/Resume）与深层流转](10_agent_loop/10.4_tool_execution.md)
   * [10.5 流式输出、重试与提前终止](10_agent_loop/10.5_streaming_retry.md)
   * [10.6 本章小结](10_agent_loop/summary.md)
