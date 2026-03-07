@@ -1,13 +1,15 @@
+<div align="center">
+
 # 《OpenClaw 从入门到精通》
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/yeasy/openclaw_guide)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/yeasy/openclaw_guide/pulls)
-[![License](https://img.shields.io/badge/license-CC--BY--4.0-blue.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![GitHub stars](https://img.shields.io/github/stars/yeasy/openclaw_guide?style=social)](https://github.com/yeasy/openclaw_guide)
+[![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
 
-**[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
+> **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
 
-<div align="center">
-  <img src="cover.jpg" alt="OpenClaw Guide Cover" width="400" />
+<img src="cover.jpg" alt="OpenClaw Guide Cover" width="300" />
+
 </div>
 
 ## 本书特色
@@ -47,8 +49,8 @@
 依赖 Node.js。
 
 ```bash
-npm install -g honkit
-honkit serve
+npm install        # 安装依赖
+npx honkit serve   # 启动本地服务器后，访问 http://localhost:4000
 ```
 
 ## 阅读建议
