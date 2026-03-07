@@ -35,7 +35,7 @@ export ANTHROPIC_API_KEY="..."
     defaults: {
       model: {
         primary: "openai/gpt-5.2",
-        fallbacks: ["openai/gpt-5-mini", "anthropic/claude-sonnet-4-5"],
+        fallbacks: ["openai/gpt-5-mini", "anthropic/claude-sonnet-4-6"],
       },
     },
   },
