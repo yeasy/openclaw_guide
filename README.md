@@ -71,6 +71,7 @@ honkit serve
 | [《Claude 技术指南》](https://github.com/yeasy/claude_guide) | Claude 的 MCP 协议、工具使用与 Agentic Coding |
 | [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) | 智能体的通用架构与多智能体协作模式 |
 | [《大模型安全权威指南》](https://github.com/yeasy/ai_security_guide) | 智能体系统的安全设计与攻防实践 |
+| [《大模型原理与架构》](https://github.com/yeasy/llm_internals) | 深入理解大语言模型底层逻辑与架构 |
 
 ## 贡献与反馈
 
