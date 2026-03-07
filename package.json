@@ -21,7 +21,7 @@
     },
     "homepage": "https://github.com/yeasy/openclaw_guide#readme",
     "devDependencies": {
-        "honkit": "^6.1.4",
-        "rimraf": "^6.0.1"
+        "honkit": "^6.1.6",
+        "rimraf": "^6.1.3"
     }
 }
