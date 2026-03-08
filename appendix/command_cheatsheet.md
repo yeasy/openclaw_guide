@@ -41,7 +41,7 @@
 | `openclaw security audit --deep` | 深度安全审计 | [8.4](../08_automation_ops/8.4_security_baseline.md) |
 | `openclaw security audit --fix` | 安全审计 + 自动修复 | [8.4](../08_automation_ops/8.4_security_baseline.md) |
 
-> 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `restart` → `doctor --fix`。详见[附录C](13.3_troubleshooting_checklist.md)。
+> 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `restart` → `doctor --fix`。详见[附录C](_troubleshooting_checklist.md)。
 
 ### F.4 模型管理
 
