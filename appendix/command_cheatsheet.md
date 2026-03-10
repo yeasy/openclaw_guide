@@ -37,11 +37,11 @@
 | `openclaw status --deep` | 详细状态（含网关健康探测） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw logs` | 查看最近日志 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw logs --follow --json` | 实时跟踪结构化日志 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
-| `openclaw security audit` | 安全基线审计（谁能对话、在哪执行、能触及什么） | [8.4](../08_automation_ops/8.4_security_baseline.md) |
-| `openclaw security audit --deep` | 深度安全审计 | [8.4](../08_automation_ops/8.4_security_baseline.md) |
-| `openclaw security audit --fix` | 安全审计 + 自动修复 | [8.4](../08_automation_ops/8.4_security_baseline.md) |
+| `openclaw security audit` | 安全基线审计（谁能对话、在哪执行、能触及什么） | [8.5](../08_automation_ops/8.5_security_baseline.md) |
+| `openclaw security audit --deep` | 深度安全审计 | [8.5](../08_automation_ops/8.5_security_baseline.md) |
+| `openclaw security audit --fix` | 安全审计 + 自动修复 | [8.5](../08_automation_ops/8.5_security_baseline.md) |
 
-> 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `restart` → `doctor --fix`。详见[附录C](_troubleshooting_checklist.md)。
+> 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `restart` → `doctor --fix`。详见[附录C](troubleshooting_checklist.md)。
 
 ### F.4 模型管理
 
@@ -93,7 +93,7 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `openclaw gateway` | 启动网关 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
+| `openclaw gateway start` | 启动网关 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
 | `openclaw gateway --port <端口>` | 指定端口启动 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
 | `openclaw gateway --verbose` | 启动并显示详细日志 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
 | `openclaw gateway status` | 查看网关的当前状态 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |

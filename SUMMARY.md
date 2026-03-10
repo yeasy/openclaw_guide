@@ -54,9 +54,10 @@
 * [第八章 自动化与运维安全实践](08_automation_ops/README.md)
   * [8.1 Hooks 生命周期与事件切入点](08_automation_ops/8.1_hooks.md)
   * [8.2 定时作业设计与调度策略](08_automation_ops/8.2_cron_jobs.md)
-  * [8.3 远程访问：SSH、内网穿透与零信任](08_automation_ops/8.3_remote_access.md)
-  * [8.4 安全基线与审计流程](08_automation_ops/8.4_security_baseline.md)
-  * [8.5 本章小结](08_automation_ops/summary.md)
+  * [8.3 Heartbeat 心跳机制：周期性巡检与主动通知](08_automation_ops/8.3_heartbeat.md)
+  * [8.4 远程访问：SSH、内网穿透与零信任](08_automation_ops/8.4_remote_access.md)
+  * [8.5 安全基线与审计流程](08_automation_ops/8.5_security_baseline.md)
+  * [8.6 本章小结](08_automation_ops/summary.md)
 
 ## 第三部分：实现原理与工程落地
 
