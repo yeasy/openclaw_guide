@@ -21,4 +21,8 @@
 
 ### 3.5.3 下一步规划预告
 
-[第四章](../04_config_models/README.md)进入配置体系与模型接入：把“能回答”升级为“可控可替换”，并建立可验证的模型选择与故障转移基线。
+[第四章](../04_config_models/README.md)进入配置体系与模型接入：把”能回答”升级为”可控可替换”，并建立可验证的模型选择与故障转移基线。
+
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。

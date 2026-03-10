@@ -18,3 +18,7 @@
 ### 11.5.3 下一章预告
 
 [第十二章](../12_extension_engineering/README.md)进入插件扩展与生产落地：如何把扩展能力纳入策略边界、做成可测试可回放的工程完整流程，并形成可上线、可回滚的落地清单。
+
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。

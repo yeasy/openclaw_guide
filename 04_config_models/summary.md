@@ -60,4 +60,8 @@ openclaw status --deep
 
 ### 4.5.4 下一章预告
 
-[第五章](../05_tools_skills/README.md)进入工具系统、技能与插件：把“会回答”升级为“会行动”，并把行动能力收敛在最小权限与可审计边界内。
+[第五章](../05_tools_skills/README.md)进入工具系统、技能与插件：把”会回答”升级为”会行动”，并把行动能力收敛在最小权限与可审计边界内。
+
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。

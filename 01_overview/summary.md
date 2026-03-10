@@ -19,3 +19,7 @@
 ### 下一章预告
 
 [第二章](../02_setup/README.md)将进入可复现的工程起点：系统前置检查、安装方式选择、初始化向导与首次运行验收。
+
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。

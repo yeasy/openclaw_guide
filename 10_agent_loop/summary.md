@@ -18,3 +18,7 @@
 ### 10.6.3 下一章预告
 
 在理解了 Agent Loop 内核的事件驱动、状态流转与工具调度机制后，[第十一章](../11_reliability_security/README.md)将聚焦系统的可靠性与安全加固：多密钥治理与认证轮换、模型回退与冷却止血、以及工具策略与沙箱的联动防护，确保即使模型产生越权意图，系统仍能在执行层实施确定性拦截。
+
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。

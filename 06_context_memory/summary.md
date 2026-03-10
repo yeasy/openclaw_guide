@@ -25,4 +25,8 @@
 
 ### 6.5.4 下一章预告
 
-[第七章](../07_multi_agent/README.md)进入多智能体与路由：把入口收敛为可控触发面，并用绑定、路由与协作模式把“由谁接管、能做什么、如何回放”做成确定性边界。
+[第七章](../07_multi_agent/README.md)进入多智能体与路由：把入口收敛为可控触发面，并用绑定、路由与协作模式把”由谁接管、能做什么、如何回放”做成确定性边界。
+
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。

@@ -24,4 +24,8 @@
 
 ### 7.6.4 下一章预告
 
-[第八章](../08_automation_ops/README.md)进入自动化与运维：自检、定时作业、远程访问与安全基线，目标是把系统从“能用”推进到“可长期运行”。
+[第八章](../08_automation_ops/README.md)进入自动化与运维：自检、定时作业、远程访问与安全基线，目标是把系统从”能用”推进到”可长期运行”。
+
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。

@@ -18,3 +18,7 @@
 ### 9.5.3 下一章预告
 
 [第十章](../10_agent_loop/README.md)进入 Agent Loop 运行内核，拆解排队、提示组装、工具执行与流式输出的实现机制。
+
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。
