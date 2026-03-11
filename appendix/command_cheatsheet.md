@@ -194,8 +194,13 @@
 | 路径 | 说明 | 关联章节 |
 |---|---|---|
 | `~/.openclaw/openclaw.json` | 主配置文件 | [4.1](../04_config_models/4.1_config_system.md) |
-| `~/.openclaw/workspace/` | 默认工作区 | [2.3](../02_setup/2.3_onboarding.md) |
-| `~/.openclaw/workspace/AGENTS.md` | 核心提示词 | [3.3](../03_minimal_loop/3.3_agent_persona.md) |
+| `~/.openclaw/workspace/` | 默认工作区（含引导文件） | [2.3.4](../02_setup/2.3_onboarding.md) |
+| `~/.openclaw/workspace/AGENTS.md` | 工作区主页与启动清单 | [2.3.4](../02_setup/2.3_onboarding.md) |
+| `~/.openclaw/workspace/SOUL.md` | 智能体人格定义 | [3.3.4](../03_minimal_loop/3.3_agent_persona.md) |
+| `~/.openclaw/workspace/IDENTITY.md` | 智能体元数据（名称、形象） | [2.3.4](../02_setup/2.3_onboarding.md) |
+| `~/.openclaw/workspace/TOOLS.md` | 环境级工具备忘 | [2.3.4](../02_setup/2.3_onboarding.md) |
+| `~/.openclaw/workspace/HEARTBEAT.md` | 心跳巡检清单 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
+| `~/.openclaw/workspace/BOOTSTRAP.md` | 首次运行入职脚本 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/skills/` | 全局技能目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `~/.openclaw/agents/` | Agent 数据目录 | — |
 | `~/.openclaw/agents/<ID>/USER.md` | 用户偏好文件 | [3.3](../03_minimal_loop/3.3_agent_persona.md) |
