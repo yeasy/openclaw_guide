@@ -18,7 +18,7 @@
 ```bash
 export OPENAI_API_KEY="..."
 export ANTHROPIC_API_KEY="..."
-```text
+```
 
 2) 配置片段（把它合并进你的 `~/.openclaw/openclaw.json`）：
 
@@ -40,7 +40,7 @@ export ANTHROPIC_API_KEY="..."
     },
   },
 }
-```text
+```
 
 3) 验收命令（只看结果，不靠感觉）：
 
