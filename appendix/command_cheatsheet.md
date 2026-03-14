@@ -1,8 +1,8 @@
-## 附录F：命令速查手册
+## 附录E：命令速查手册
 
 本附录汇总 OpenClaw 的终端 CLI 命令与聊天斜杠命令，供日常操作时快速查阅。命令参数可能随版本演进，建议以 `openclaw <命令> --help` 的实际输出为准。
 
-### F.1 基础操作与服务管理
+### E.1 基础操作与服务管理
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
@@ -16,7 +16,7 @@
 | `openclaw update --channel stable` | 切换到稳定版通道并更新 | [2.2](../02_setup/2.2_installation.md) |
 | `openclaw update --channel beta` | 切换到测试版通道并更新 | [2.2](../02_setup/2.2_installation.md) |
 
-### F.2 安装、初始化与配置
+### E.2 安装、初始化与配置
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
@@ -26,7 +26,7 @@
 | `openclaw config` | 查看当前生效配置 | [4.1](../04_config_models/4.1_config_system.md) |
 | `openclaw config edit` | 在编辑器中打开配置文件 | [4.1](../04_config_models/4.1_config_system.md) |
 
-### F.3 诊断与排障
+### E.3 诊断与排障
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
@@ -43,7 +43,7 @@
 
 > 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `restart` → `doctor --fix`。详见[附录C](troubleshooting_checklist.md)。
 
-### F.4 模型管理
+### E.4 模型管理
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
@@ -53,7 +53,7 @@
 | `openclaw models auth login --provider <供应商>` | 以 OAuth 方式登录模型供应商 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth paste-token --provider <供应商>` | 粘贴 API Token 认证 | [4.2](../04_config_models/4.2_provider_access.md) |
 
-### F.5 渠道管理
+### E.5 渠道管理
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
@@ -70,7 +70,7 @@
 
 支持的渠道类型：`whatsapp`、`telegram`、`discord`、`slack`、`googlechat`、`signal`、`imessage`、`msteams`、`mattermost`、`feishu`（需插件）。
 
-### F.6 插件与技能
+### E.6 插件与技能
 
 **插件管理**
 
@@ -89,7 +89,7 @@
 | `openclaw skills list` | 列出已安装的技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `openclaw skills install <技能名>` | 安装技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 
-### F.7 网关管理
+### E.7 网关管理
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
@@ -100,7 +100,7 @@
 | `openclaw gateway restart` | 重启网关 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
 | `openclaw gateway --token <token>` | 带 token 启动 | [9.2](../09_gateway_protocol/9.2_ws_handshake.md) |
 
-### F.8 沙箱与浏览器
+### E.8 沙箱与浏览器
 
 **沙箱管理**
 
@@ -125,7 +125,7 @@
 | `openclaw browser close` | 关闭浏览器 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
 | `openclaw browser console` | 查看浏览器控制台日志 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
 
-### F.9 消息与配对
+### E.9 消息与配对
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
@@ -134,7 +134,7 @@
 | `openclaw agent --message “任务” --thinking high` | 发任务（高思考深度） | [7.4](../07_multi_agent/7.4_routing_basics.md) |
 | `openclaw pairing approve <渠道> <配对码>` | 批准设备配对 | [9.4](../09_gateway_protocol/9.4_pairing_trust.md) |
 
-### F.10 聊天斜杠命令
+### E.10 聊天斜杠命令
 
 以下命令在 OpenClaw 的聊天窗口中使用（WebChat、飞书、Telegram 等通用）。
 
@@ -189,7 +189,7 @@
 | `/version` | 查看版本信息 | — |
 | `/ping` | 测试连接是否正常 | — |
 
-### F.11 关键文件路径速查
+### E.11 关键文件路径速查
 
 | 路径 | 说明 | 关联章节 |
 |---|---|---|
