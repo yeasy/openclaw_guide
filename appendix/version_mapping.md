@@ -14,7 +14,7 @@ OpenClaw采用**日历版本号（CalVer）**命名方案，格式为 `YYYY.M.D`
 
 #### 示例
 
-```
+```text
 2025.11.15  →  2026.1.9  →  2026.2.14  →  2026.3.6
   秋季版本      冬季版本      早春版本      当前版本
   Agent基础    多渠道支持    企业级功能    Claude集成增强
@@ -150,7 +150,7 @@ OpenClaw配置体系按功能模块逐步演进，以下按模块列出主要变
     }
   ]
 }
-```
+```text
 
 **处理废弃字段的通用流程：**
 
@@ -184,7 +184,7 @@ openclaw config migrate \
   --input ~/.openclaw/openclaw.json \
   --dry-run \
   --verbose
-```
+```text
 
 **迁移流程：**
 
@@ -212,7 +212,7 @@ openclaw doctor --config ~/.openclaw/openclaw.json
 
 # 自动修复问题（需谨慎）
 openclaw doctor --auto-fix
-```
+```text
 
 **诊断项目：**
 
@@ -247,7 +247,7 @@ OpenClaw Configuration Doctor
   1. 运行 'openclaw config migrate --auto-fix' 自动修复过时字段
   2. 在 ~/.openclaw/openclaw.json 中补充 channels.slack.token
   3. 运行 'openclaw doctor' 重新诊断
-```
+```text
 
 **Doctor与Migrate的协作：**
 
@@ -268,7 +268,7 @@ vi ~/.openclaw/openclaw.json
 
 # 5. 最后验证配置有效性
 openclaw config validate ~/.openclaw/openclaw.json
-```
+```text
 
 ### 16.1.5 向后兼容性说明
 
@@ -290,7 +290,7 @@ OpenClaw使用滚动支持政策，确保用户有充足的时间升级，同时
   ✓ 2026.2.* 的配置 - 向后兼容（可自动迁移）
   ⚠ 2026.1.* 及更旧的配置 - 需要使用 openclaw config migrate 转换
   ✗ 非常古老的配置 - 可能无法自动转换，需要手动检查
-```
+```text
 
 #### 版本跨度支持
 
@@ -300,7 +300,7 @@ OpenClaw版本        可读配置版本范围           处理方式
 2026.3.6 (当前)     2026.2.* 到最新           原生支持/自动迁移
 2026.2.*            2026.1.* 到 2026.2.*      原生/迁移/部分兼容
 2026.1.*            仅2026.1.* 及更新         原生支持
-```
+```text
 
 #### 处理旧版本配置的步骤
 
@@ -323,7 +323,7 @@ openclaw doctor --detailed
 
 # 5. 最终验证
 openclaw config validate ~/.openclaw/openclaw.json
-```
+```text
 
 ### 16.1.6 配置升级与迁移步骤
 
@@ -384,7 +384,7 @@ echo "  1. 审查迁移的配置: cat $CONFIG_DIR/openclaw.json"
 echo "  2. 在非生产环境测试新配置"
 echo "  3. 如需回滚，使用备份: cp -r $CONFIG_DIR.backup.$TIMESTAMP $CONFIG_DIR"
 echo "========================================="
-```
+```text
 
 #### 分步详解
 
@@ -396,7 +396,7 @@ cp -r ~/.openclaw ~/.openclaw.backup.$(date +%Y%m%d)
 
 # 或仅备份配置文件
 cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.backup
-```
+```text
 
 **步骤2：迁移配置**
 
@@ -406,7 +406,7 @@ openclaw config migrate ~/.openclaw/openclaw.json
 
 # 或查看迁移变更但不应用（dry-run模式）
 openclaw config migrate ~/.openclaw/openclaw.json --dry-run --verbose
-```
+```text
 
 **步骤3：诊断验证**
 
@@ -419,7 +419,7 @@ openclaw doctor --detailed
 
 # 针对特定配置
 openclaw doctor --config ~/.openclaw/openclaw.json
-```
+```text
 
 **步骤4：处理问题**
 
@@ -434,7 +434,7 @@ vim ~/.openclaw/openclaw.json
 
 # 然后重新验证
 openclaw config validate ~/.openclaw/openclaw.json
-```
+```text
 
 #### 非生产环境测试
 
@@ -457,7 +457,7 @@ docker exec openclaw-test openclaw test --config ~/.openclaw/openclaw.json
 
 # 5. 查看日志确认运行状态
 docker logs openclaw-test
-```
+```text
 
 #### 回滚步骤
 
@@ -472,7 +472,7 @@ mv ~/.openclaw.backup.YYYYMMDD ~/.openclaw
 systemctl restart openclaw
 # 或
 docker restart openclaw-container
-```
+```text
 
 #### 常见问题处理
 
@@ -487,7 +487,7 @@ vim ~/.openclaw/openclaw.json
 
 # 再次诊断
 openclaw doctor
-```
+```text
 
 **问题2：特定渠道连接失败**
 
@@ -501,7 +501,7 @@ openclaw doctor
 
 # 修复后重新诊断
 openclaw doctor
-```
+```text
 
 **问题3：Agent配置不完整**
 

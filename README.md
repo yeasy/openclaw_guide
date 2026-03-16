@@ -48,7 +48,7 @@
 ```bash
 npm install        # 安装依赖
 npx honkit serve   # 启动本地服务器后，访问 http://localhost:4000
-```
+```bash
 
 ## 五分钟快速上手
 

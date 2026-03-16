@@ -27,7 +27,7 @@ openclaw logs --limit 200
 # 端口占用
 
 lsof -nP -iTCP -sTCP:LISTEN | head
-```
+```text
 
 关联阅读：
 
@@ -50,7 +50,7 @@ lsof -nP -iTCP -sTCP:LISTEN | head
 ```bash
 openclaw channels status
 openclaw logs --limit 200
-```
+```text
 
 关联阅读：
 
@@ -75,7 +75,7 @@ openclaw logs --limit 200
 # 按 trace_id 回放工具链路
 
 cat runtime.log | jq -c 'select(.type=="log") | .log | select(.trace_id=="t-...") | {ts,event,tool,err_type,cost_ms}'
-```
+```text
 
 关联阅读：
 
@@ -99,7 +99,7 @@ cat runtime.log | jq -c 'select(.type=="log") | .log | select(.trace_id=="t-..."
 # 统计错误分类占比
 
 cat runtime.log | jq -r 'select(.type=="log") | .log | select(.stage=="model_call_end" and .err_type!="") | .err_type' | sort | uniq -c | sort -nr | head
-```
+```text
 
 关联阅读：
 
