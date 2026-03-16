@@ -2,7 +2,7 @@
 
 本节整理了 OpenClaw 相关的进阶阅读材料、理论论文以及周边开源项目，供进一步深入学习。
 
-### .1 官方核心资料
+### G.1 官方核心资料
 
 本指南的内容基准主要参考官方文档与版本发布说明：
 
@@ -25,7 +25,7 @@
   - [v2026.2.19 Release](https://github.com/openclaw/openclaw/releases/tag/v2026.2.19)
   - [v2026.1.29 Release](https://github.com/openclaw/openclaw/releases/tag/v2026.1.29)
 
-### .2 理论与综述论文
+### G.2 理论与综述论文
 
 理解 Agent 系统的核心机制，推荐阅读以下经典研究与综述论文：
 
@@ -36,7 +36,7 @@
 - [Survey on Evaluation of LLM-based Agents (arXiv:2503.16416)](https://arxiv.org/abs/2503.16416)
 - [Feedback Mechanism Survey (IJCAI 2025)](https://www.ijcai.org/proceedings/2025/1175)
 
-### .3 相关图书与入门项目
+### G.3 相关图书与入门项目
 
 关于 AI 基础、提示工程与 Agent 体系建设的其他开源指南与参考项目：
 
