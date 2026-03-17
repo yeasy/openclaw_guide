@@ -21,6 +21,7 @@
     },
     "homepage": "https://github.com/yeasy/openclaw_guide#readme",
     "devDependencies": {
+        "gitbook-plugin-mermaid-gb3": "^2.1.0",
         "honkit": "^6.1.6",
         "rimraf": "^6.1.3"
     },
