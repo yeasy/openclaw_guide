@@ -39,7 +39,7 @@
 ### 在线阅读
 
 - [GitBook 在线版本](https://yeasy.gitbook.io/openclaw_guide/)
-- [GitHub 本地目录](SUMMARY.md)
+- [从第一章开始阅读](01_overview/README.md)
 
 ### 本地预览
 
