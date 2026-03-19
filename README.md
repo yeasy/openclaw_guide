@@ -43,17 +43,10 @@
 
 ### 本地预览
 
-依赖 Node.js。
+使用 [mdPress](https://github.com/yeasy/mdpress) 构建：
 
 ```bash
-npm install        # 安装依赖
-npx honkit serve   # 启动本地服务器后，访问 http://localhost:4000
-```
-
-或使用 [mdpress](https://github.com/yeasy/mdpress) 构建：
-
-```bash
-go install github.com/yeasy/mdpress@latest
+brew tap yeasy/tap && brew install mdpress
 mdpress serve
 ```
 
