@@ -145,6 +145,7 @@
 | `/new` | 开始新会话（清除上下文） | [6.1](../06_context_memory/6.1_sessions.md) |
 | `/new <任务描述>` | 开始新会话并附带任务 | [6.1](../06_context_memory/6.1_sessions.md) |
 | `/compact` | 压缩当前上下文（保留要点，减少 Token） | [6.4](../06_context_memory/6.4_compaction_pruning.md) |
+| `/btw <问题>` | 针对当前上下文的旁路提问，不影响后续会话上下文 | — |
 | `/status` | 查看当前会话状态（Token 用量、模型等） | [6.1](../06_context_memory/6.1_sessions.md) |
 | `/help` 或 `/commands` | 查看所有可用斜杠命令 | — |
 
@@ -173,11 +174,13 @@
 | `/cancel` | 取消当前正在执行的任务 | — |
 | `/undo` | 撤销上一步操作 | — |
 
-**技能与记忆**
+**技能、插件与记忆**
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `/skills` | 查看已加载的技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `/plugins` | 列出当前已加载的插件及其状态 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
+| `/plugin <名称>` | 查看或切换指定插件的启停状态（仅 Owner 可用） | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `/memory` | 查看记忆内容 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
 | `/forget <内容>` | 删除指定记忆 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
 
