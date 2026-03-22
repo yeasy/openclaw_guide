@@ -84,7 +84,7 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log |
 关联阅读：
 
 - [5.2 工具策略：允许、拒绝与分层策略](../05_tools_skills/5.2_tool_policy.md)
-- [10.3 工具执行链路与结果回注](../10_agent_loop/10.4_tool_execution.md)
+- [10.5 工具执行与结果回注](../10_agent_loop/10.5_tool_execution.md)
 
 ### C.4 模型异常检查
 

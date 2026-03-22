@@ -1,4 +1,4 @@
-# 附录：OpenClaw 命名演进史
+## 附录：OpenClaw 命名演进史
 
 OpenClaw 的诞生离不开创始人 Peter Steinberger（同时也是 PSPDFKit 的创始人）的推动。
 

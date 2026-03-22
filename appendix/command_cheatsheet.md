@@ -57,13 +57,13 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `openclaw channels list` | 列出已配置的渠道 | [7.2](../07_multi_agent/7.2_channel_accounts.md) |
+| `openclaw channels list` | 列出已配置的渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels status` | 查看所有渠道状态 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw channels status --probe` | 渠道状态与探针 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw channels add` | 添加新渠道（交互式向导） | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels add --channel telegram --token <TOKEN>` | 非交互式添加 Telegram 渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
-| `openclaw channels add --channel feishu` | 添加飞书渠道 | [7.3](../07_multi_agent/7.3_lark_integration.md) |
-| `openclaw channels remove --channel <名称>` | 移除渠道 | [7.2](../07_multi_agent/7.2_channel_accounts.md) |
+| `openclaw channels add --channel feishu` | 添加飞书渠道 | [7.2](../07_multi_agent/7.2_lark_integration.md) |
+| `openclaw channels remove --channel <名称>` | 移除渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels logs` | 查看渠道日志 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw channels login` | 登录渠道（如 WhatsApp Web） | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels logout` | 登出渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
@@ -130,8 +130,8 @@
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `openclaw message send --to <号码> --message "内容"` | 发送消息 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
-| `openclaw agent --message “任务内容”` | 直接给 Agent 发任务 | [7.4](../07_multi_agent/7.4_routing_basics.md) |
-| `openclaw agent --message “任务” --thinking high` | 发任务（高思考深度） | [7.4](../07_multi_agent/7.4_routing_basics.md) |
+| `openclaw agent --message “任务内容”` | 直接给 Agent 发任务 | [7.3](../07_multi_agent/7.3_routing_basics.md) |
+| `openclaw agent --message “任务” --thinking high` | 发任务（高思考深度） | [7.3](../07_multi_agent/7.3_routing_basics.md) |
 | `openclaw pairing approve <渠道> <配对码>` | 批准设备配对 | [9.4](../09_gateway_protocol/9.4_pairing_trust.md) |
 
 ### E.10 聊天斜杠命令
@@ -163,7 +163,7 @@
 | `/sessions list` | 列出所有会话 | [6.1](../06_context_memory/6.1_sessions.md) |
 | `/sessions history` | 查看会话历史 | [6.1](../06_context_memory/6.1_sessions.md) |
 | `/sessions send <会话ID> <消息>` | 向指定会话发消息 | [6.1](../06_context_memory/6.1_sessions.md) |
-| `/sessions spawn <任务>` | 创建子会话执行任务 | [7.5](../07_multi_agent/7.5_collaboration_patterns.md) |
+| `/sessions spawn <任务>` | 创建子会话执行任务 | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
 
 **工具与执行控制**
 
