@@ -93,12 +93,12 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `openclaw gateway start` | 启动网关 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
-| `openclaw gateway --port <端口>` | 指定端口启动 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
-| `openclaw gateway --verbose` | 启动并显示详细日志 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
-| `openclaw gateway status` | 查看网关的当前状态 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
-| `openclaw gateway restart` | 重启网关 | [9.1](../09_gateway_protocol/9.1_control_plane.md) |
-| `openclaw gateway --token <token>` | 带 token 启动 | [9.2](../09_gateway_protocol/9.2_ws_handshake.md) |
+| `openclaw gateway start` | 启动网关 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
+| `openclaw gateway --port <端口>` | 指定端口启动 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
+| `openclaw gateway --verbose` | 启动并显示详细日志 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
+| `openclaw gateway status` | 查看网关的当前状态 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
+| `openclaw gateway restart` | 重启网关 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
+| `openclaw gateway --token <token>` | 带 token 启动 | [9.2](../09_gateway_protocol/9.2_control_plane.md) |
 
 ### E.8 沙箱与浏览器
 
@@ -132,7 +132,7 @@
 | `openclaw message send --to <号码> --message "内容"` | 发送消息 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw agent --message “任务内容”` | 直接给 Agent 发任务 | [7.3](../07_multi_agent/7.3_routing_basics.md) |
 | `openclaw agent --message “任务” --thinking high` | 发任务（高思考深度） | [7.3](../07_multi_agent/7.3_routing_basics.md) |
-| `openclaw pairing approve <渠道> <配对码>` | 批准设备配对 | [9.4](../09_gateway_protocol/9.4_pairing_trust.md) |
+| `openclaw pairing approve <渠道> <配对码>` | 批准设备配对 | [9.4](../09_gateway_protocol/9.2_control_plane.md) |
 
 ### E.10 聊天斜杠命令
 

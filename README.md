@@ -42,11 +42,10 @@
 
 ### 本地预览
 
-使用 [mdPress](https://github.com/yeasy/mdpress) 构建：
+使用 [honkit](https://github.com/honkit/honkit) 构建：
 
 ```bash
-brew tap yeasy/tap && brew install mdpress
-mdpress serve
+npm run serve
 ```
 
 ## 五分钟快速上手
