@@ -11,25 +11,15 @@
 
 ### 4.5.2 最小闭环（可复制）
 
-下面给出一份“只做本章关键事”的最小配置：接入一个 provider、设定默认主模型、配置一条回退链路，并用命令验收。
+下面给出一份”只做本章关键事”的最小配置：设定默认主模型、配置一条回退链路，并用命令验收。
 
-1) 环境变量（示例）：
-
-```bash
-export OPENAI_API_KEY="..."
-export ANTHROPIC_API_KEY="..."
-```
-
-2) 配置片段（把它合并进你的 `~/.openclaw/openclaw.json`）：
+1) 配置片段（把它合并进你的 `~/.openclaw/openclaw.json`）：
 
 ```javascript
 {
-  models: {
-    providers: {
-      openai: { apiKey: "${OPENAI_API_KEY}" },
-      anthropic: { apiKey: "${ANTHROPIC_API_KEY}" },
-    },
-  },
+  // 如果你已通过 openclaw onboard 完成内置供应商认证，
+  // 以下 models.providers 段可省略——认证信息已在 auth-profiles 中。
+  // 仅当需要覆盖 baseURL、headers 或接入自定义供应商时才需要显式声明。
 
   agents: {
     defaults: {
@@ -42,7 +32,7 @@ export ANTHROPIC_API_KEY="..."
 }
 ```
 
-3) 验收命令（只看结果，不靠感觉）：
+2) 验收命令（只看结果，不靠感觉）：
 
 ```bash
 openclaw doctor

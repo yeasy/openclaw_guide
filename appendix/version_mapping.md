@@ -4,7 +4,7 @@
 
 > **WARNING**: OpenClaw使用日历版本号（CalVer）方案，版本号和配置字段可能随版本更新而变化。本章内容仅作参考，请始终以官方文档和 `openclaw doctor` 诊断工具的输出为准。
 
-### 16.1.1 版本号方案 - CalVer
+### F.1 版本号方案 - CalVer
 
 OpenClaw采用**日历版本号（CalVer）**命名方案，格式为 `YYYY.M.D`：
 
@@ -27,7 +27,7 @@ OpenClaw采用**日历版本号（CalVer）**命名方案，格式为 `YYYY.M.D`
 - **自然排序**：无需特殊比较逻辑，日期自然排序即为版本顺序
 - **快速识别**：用户可根据版本号快速了解功能新旧程度
 
-### 16.1.2 配置结构演进趋势
+### F.2 配置结构演进趋势
 
 OpenClaw配置体系按功能模块逐步演进，以下按模块列出主要变更方向：
 
@@ -87,7 +87,7 @@ OpenClaw配置体系按功能模块逐步演进，以下按模块列出主要变
 | 密钥管理 | `auth.useKeyFile` | `auth.type: 'environment_variable'` 或 `'secret_manager'` | 从文件转向环境变量或密钥管理服务 |
 | 内存压缩 | `memory.compactOnTurns` (简单计数) | `memory.compactionMode` (intelligent/aggressive/balanced) | 从固定阈值改为智能压缩策略 |
 
-### 16.1.3 常见废弃字段与替代方案
+### F.3 常见废弃字段与替代方案
 
 以下列出常见的废弃配置字段及其替代方案。具体的版本信息请参考官方变更日志。
 
@@ -159,7 +159,7 @@ OpenClaw配置体系按功能模块逐步演进，以下按模块列出主要变
 3. 使用 `openclaw config migrate` 自动迁移，或手动更新配置
 4. 运行 `openclaw doctor` 验证新配置的有效性
 
-### 16.1.4 配置迁移工具
+### F.4 配置迁移工具
 
 OpenClaw提供两个关键的配置管理命令：
 
@@ -273,7 +273,7 @@ vi ~/.openclaw/openclaw.json
 openclaw config validate ~/.openclaw/openclaw.json
 ```
 
-### 16.1.5 向后兼容性说明
+### F.5 向后兼容性说明
 
 OpenClaw使用滚动支持政策，确保用户有充足的时间升级，同时保持代码库的可维护性。
 
@@ -329,7 +329,7 @@ openclaw doctor --detailed
 openclaw config validate ~/.openclaw/openclaw.json
 ```
 
-### 16.1.6 配置升级与迁移步骤
+### F.6 配置升级与迁移步骤
 
 OpenClaw配置升级遵循**备份 → 迁移 → 验证 → 部署**的标准流程。
 
@@ -495,7 +495,7 @@ docker restart openclaw-container
 # 查看具体的过时字段
 openclaw doctor --detailed
 
-# 参考16.1.3章节的废弃字段对照表手动修正
+# 参考F.3节的废弃字段对照表手动修正
 vim ~/.openclaw/openclaw.json
 
 # 再次诊断
@@ -526,7 +526,7 @@ openclaw doctor
 # - agents.{agentId}.models (array)
 # - agents.{agentId}.tools (array, 可以为空)
 
-# 参考16.1.2中的Agent配置演进部分
+# 参考F.2中的Agent配置演进部分
 vim ~/.openclaw/openclaw.json
 ```
 
