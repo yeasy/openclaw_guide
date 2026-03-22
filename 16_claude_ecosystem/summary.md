@@ -1,13 +1,13 @@
 ## 16.3 本章小结
 
-本章介绍了 OpenClaw 与 Claude 模型家族、MCP 服务器及第三方工具生态的集成最佳实践。
+本章介绍了 OpenClaw 与 Claude 生态的集成要点，从模型接入、MCP 工具扩展到多智能体协作编排。
 
-### 要点回顾
+### 关键结论
 
-- **多模型策略**：根据任务复杂度选择 Haiku（低成本快速响应）、Sonnet（平衡）或 Opus（高质量推理），配合 Fallback 链提升可用性。
-- **MCP 集成**：通过 stdio、HTTP 或 WebSocket 方式接入文件系统、数据库、Git 和自定义 API，实现 Claude 对企业数据的直接访问。
-- **Agent Team 协作**：多智能体间通过路由规则与角色分工协同完成复杂任务，子智能体专注特定领域以提升整体效率。
-- **安全与合规**：所有 MCP 访问需经过身份验证、权限检查和审计日志，敏感数据需脱敏处理。
+- **模型接入的落点在配置**：Claude 模型通过 `provider/model` 标识符接入，大多数场景下 `openclaw onboard` 完成认证后只需指定 `agents.defaults.model`，无需手动写 `models.providers`。
+- **MCP 是工具扩展的标准路径**：通过 stdio、HTTP 或 WebSocket 方式接入外部 MCP 服务器，与 OpenClaw 内置工具并行存在，由模型推理阶段统一调度。
+- **多智能体协作有两种架构路径**：Node 级路由隔离适合业务域分工，Agent 级委托适合任务分解与专家协作；两者可组合使用。
+- **Agent SDK 与 OpenClaw 互补**：Agent SDK 侧重编排逻辑开发，OpenClaw 侧重运行平台管控（渠道接入、安全审批、会话管理），生产系统中可将 Agent SDK 应用作为 OpenClaw 的 Agent 或 MCP 服务器接入。
 
 ### 下一步
 
