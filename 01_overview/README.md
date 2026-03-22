@@ -8,17 +8,17 @@
 
 ## 本章内容导读
 
-- **[1.1 OpenClaw 是什么](1.1_history.md)**
+- **[1.1 OpenClaw 是什么](1.1_what_is_openclaw.md)**
   用"智能实习生"的比喻说清楚 OpenClaw 是什么、它解决了哪三个让人头疼的问题，以及它最适合什么场景。
 
-- **[1.2 适用场景与竞品对比](1.2_scenarios_comparison.md)**
-  一张表说清楚"适合做什么/不适合做什么"，一张表对比 vs ChatGPT / Cursor / Zapier 的核心差异。
+- **[1.2 竞品对比与选型建议](1.2_scenarios_comparison.md)**
+  一张表对比 OpenClaw vs ChatGPT / Cursor / Zapier / Dify 的核心差异，以及 Token 成本的清醒认识。
 
 - **[1.3 核心概念速览](1.3_concepts.md)**
-  一张图 + 一张表介绍 Gateway、Agent、Tool、Session 四个核心概念。记住这四个名字就够了，后面会详细讲。
+  一张图 + 一张表介绍 Gateway、Node、Agent、Tool、Session 五个核心概念，以及一条消息从进来到出去的极简旅程。
 
 - **[1.4 典型应用场景](1.4_use_cases.md)**
-  结合真实工作流，盘点个人 ChatOps、家庭自动化网关、个人知识系统、安全实验平台四种硬核实战思路。
+  先总览适合与不适合的场景，再用四个真实故事感受个人 ChatOps、家庭自动化、知识系统、安全实验的具体玩法。
 
 - **[1.5 本章小结](summary.md)**
   要点回顾和自检题，确认你已经准备好进入下一章的实战安装。
@@ -28,8 +28,8 @@
 完成本章的阅读后，你将能够：
 1. **说清楚 OpenClaw 是什么**：能向别人解释它解决了什么问题，适合什么场景。
 2. **做出选型判断**：知道在什么情况下该用 OpenClaw，什么时候用 ChatGPT 或 Zapier 更合适。
-3. **认识四个核心概念**：理解 Gateway、Agent、Tool、Session 的含义，为后续章节扫清沟通障碍。
+3. **认识五个核心概念**：理解 Gateway、Node、Agent、Tool、Session 的含义，为后续章节扫清沟通障碍。
 
 ---
 
-准备好的话，让我们正式 **[开始](1.1_history.md)**！
+准备好的话，让我们正式 **[开始](1.1_what_is_openclaw.md)**！
