@@ -24,13 +24,15 @@
   agents: {
     defaults: {
       model: {
-        primary: "openai/gpt-5.4",
-        fallbacks: ["openai/gpt-mini", "anthropic/claude-sonnet-4-6"],
+        primary: "openai-codex/gpt-5.4",
+        fallbacks: ["openai-codex/gpt-5.2", "anthropic/claude-sonnet-4-6"],
       },
     },
   },
 }
 ```
+
+如果你走的是直接 API Key 路径，上述 `openai-codex/*` 也可以整体替换为 `openai/*`。关键是与当前认证方式和本地模型目录保持一致。
 
 2) 验收命令（只看结果，不靠感觉）：
 

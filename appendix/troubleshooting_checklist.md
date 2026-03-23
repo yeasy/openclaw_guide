@@ -16,19 +16,16 @@
 常用命令示例：
 
 ```bash
-
 # 体检与诊断（以实际 CLI 为准）
-
 openclaw doctor
 
 # 查看最近日志
-
 openclaw logs --limit 200
 
 # 端口占用
-
 lsof -nP -iTCP -sTCP:LISTEN | head
 ```
+
 
 关联阅读：
 
@@ -41,7 +38,7 @@ lsof -nP -iTCP -sTCP:LISTEN | head
 
 1. 渠道令牌与权限是否有效。
    - **典型报错**: `[Telegram] Polling error: 401 Unauthorized`
-2. 配对关系是否正确，是否存在未审批的配对请求。
+2. 配对关系是否正确，是否存在未审批的配对请求，或 Control UI 设备身份尚未建立。
    - **典型报错**: `[Gateway] Connection rejected: device 9f8a not paired`
 3. 路由是否命中目标 Agent，会话归属是否稳定。
 4. 渠道状态与日志是否一致。
@@ -93,7 +90,7 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log |
 1. 主模型是否限流、超时或认证失败。
    - **典型报错**: `ProviderError: 429 Too Many Requests (OpenAI)` 或 `401 Invalid API Key`
 2. 是否触发回退链路，回退是否有证据链。
-   - **典型表现**: `[WARN] Model gpt-5 timed out. Falling back to claude-sonnet-4-6`
+   - **典型表现**: `[WARN] Model gpt-5.4 timed out. Falling back to claude-sonnet-4-6`
 3. 冷却或禁用状态是否生效，是否出现重试放大。
 4. 认证档案与密钥是否过期或被吊销。
 
