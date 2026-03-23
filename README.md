@@ -42,12 +42,14 @@
 
 ### 本地预览
 
-使用 [mdPress](https://github.com/yeasy/mdpress) 构建：
+本仓库当前使用 Honkit 构建，本地预览建议直接使用仓库脚本：
 
 ```bash
-brew tap yeasy/tap && brew install mdpress
-mdpress serve
+npm install
+npm run serve
 ```
+
+如果你偏好其他 Markdown 预览器，也可以作为辅助工具使用，但它们并不是本仓库的标准构建链。
 
 ## 五分钟快速上手
 

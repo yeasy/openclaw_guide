@@ -22,7 +22,3 @@
 ### 3.5.3 下一步规划预告
 
 [第四章](../04_config_models/README.md)进入配置体系与模型接入：把“正常运行”升级为“可控可替换”，并建立可验证的模型选择与故障转移基线。后续章节将依次深化：[第五章](../05_tools_skills/README.md)讨论工具策略与权限治理，[第六章](../06_context_memory/README.md)讨论记忆与会话隔离，[第七章](../07_multi_agent/README.md)讨论多渠道入口治理与多智能体协作。
-
----
-
-> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。

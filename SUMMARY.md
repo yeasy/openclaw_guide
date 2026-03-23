@@ -105,7 +105,7 @@
   * [15.1 故障诊断决策树与工具](15_troubleshooting_trees/15.1_diagnostic_decision_trees.md)
   * [15.2 高并发故障诊断决策树与优化指南](15_troubleshooting_trees/15.2_high_concurrency_diagnosis.md)
   * [15.3 本章小结](15_troubleshooting_trees/summary.md)
-* [第十六章 与 Claude 生态的深度集成](16_claude_ecosystem/README.md)
+* [第十六章 与主流 AI 生态集成](16_claude_ecosystem/README.md)
   * [16.1 Claude 模型接入与 MCP 生态集成](16_claude_ecosystem/16.1_claude_integration.md)
   * [16.2 多智能体协作与编排模式](16_claude_ecosystem/16.2_agent_team_integration.md)
   * [16.3 OpenAI 与本地模型集成](16_claude_ecosystem/16.3_other_ecosystems.md)
