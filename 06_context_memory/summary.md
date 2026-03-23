@@ -1,10 +1,10 @@
 ## 6.5 本章小结
 
-第六章将"对话变长就不稳"从模型能力问题转化为工程可控的问题：会话键决定状态归属，上下文构建控制注入顺序与预算分配，长期记忆文件承载稳定事实，裁剪（Pruning）与压缩（Compaction）保证长会话继续推进且便于回放与审计。
+第六章将“对话变长就不稳”从模型能力问题转化为工程可控的问题：会话键决定状态归属，上下文构建控制注入顺序与预算分配，长期记忆文件承载稳定事实，裁剪（Pruning）与压缩（Compaction）保证长会话继续推进且便于回放与审计。
 
 ### 6.5.1 关键结论
 
-- 会话先分桶再调优：作用域、身份链接与重置策略决定"是否串话、是否断档、是否可恢复"。
+- 会话先分桶再调优：作用域、身份链接与重置策略决定“是否串话、是否断档、是否可恢复”。
 - 上下文要分层：身份先于知识，知识先于历史，历史先于工具回执；工具回注应结构化，避免原始输出堆积。
 - 记忆要可维护：仅写稳定事实并附加来源与更新时间；过程噪声进入每日日志或证据文件。
 - 裁剪与压缩要可验证：两者应仅影响模型输入，不应破坏落盘历史；排障应能按 trace 回放链路。
@@ -13,9 +13,9 @@
 
 以下用一条消息的完整生命周期串联本章四节的核心概念：
 
-1. **会话归属（6.1）**：用户 Alice 在 Telegram 发送"帮我查一下 prod-cluster-us 的 Pod 重启次数"。系统根据 `session.scope: "per-sender"` 计算出 `sessionKey = agent:main:telegram:dm:alice_tg`，命中已有会话。
-2. **上下文组装（6.2）**：Gateway 按优先级组装输入——先注入 SOUL.md（身份层），再注入 MEMORY.md 中"生产集群为 prod-cluster-us"的记录（知识层），再拼接最近 3 轮对话历史（历史层），最后为本轮工具调用预留空间。
-3. **记忆命中（6.3）**：组装阶段自动触发 `memory_search`，用混合检索（BM25 + 向量）从记忆文件中召回"prod-cluster-us 使用指定服务账号运维"这条事实，注入上下文。
+1. **会话归属（6.1）**：用户 Alice 在 Telegram 发送“帮我查一下 prod-cluster-us 的 Pod 重启次数”。系统根据 `session.scope: "per-sender"` 计算出 `sessionKey = agent:main:telegram:dm:alice_tg`，命中已有会话。
+2. **上下文组装（6.2）**：Gateway 按优先级组装输入——先注入 SOUL.md（身份层），再注入 MEMORY.md 中“生产集群为 prod-cluster-us”的记录（知识层），再拼接最近 3 轮对话历史（历史层），最后为本轮工具调用预留空间。
+3. **记忆命中（6.3）**：组装阶段自动触发 `memory_search`，用混合检索（BM25 + 向量）从记忆文件中召回“prod-cluster-us 使用指定服务账号运维”这条事实，注入上下文。
 4. **工具调用与回注**：模型决定调用 `kubectl get pods` 工具。工具返回 50K 字符的原始输出，系统将关键摘要（Pod 名 + 重启次数）回注进会话，全量结果落盘为证据文件。
 5. **裁剪触发（6.4）**：经过多轮交互，上下文达到 `softTrimRatio` 阈值。`contextPruning` 将 3 轮前的 kubectl 原始输出截为头尾各 1500 字符；更早的工具结果被 `hardClear` 替换为占位符。磁盘上的 JSONL 历史不受影响。
 6. **压缩触发（6.4）**：会话接近 `softThresholdTokens` 时，预压缩记忆刷新机制先让智能体把关键进展写入 `memory/2026-03-22.md`，随后 Compaction 生成摘要替代早期对话，会话继续推进。
@@ -32,8 +32,9 @@
 
 ### 6.5.4 下一章预告
 
-[第七章](../07_multi_agent/README.md)进入多智能体与路由：把入口收敛为可控触发面，并用绑定、路由与协作模式把"由谁接管、能做什么、如何回放"做成确定性边界。
+[第七章](../07_multi_agent/README.md)进入多智能体与路由：把入口收敛为可控触发面，并用绑定、路由与协作模式把“由谁接管、能做什么、如何回放”做成确定性边界。
 
 ---
 
-> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。
+> [!NOTE]
+> 发现错误或有改进建议？欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)。
