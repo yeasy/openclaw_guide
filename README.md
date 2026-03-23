@@ -1,12 +1,12 @@
 <div align="center">
 
-# 《OpenClaw 入门到精通》
+# 《OpenClaw 从入门到精通》
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub stars](https://img.shields.io/github/stars/yeasy/openclaw_guide?style=social)](https://github.com/yeasy/openclaw_guide)
 [![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
 
-> **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体。** 本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
+> **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体**，由 Peter Steinberger 创建。本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
 
 <img src="cover.jpg" alt="OpenClaw Guide Cover" width="300" />
 
@@ -20,7 +20,7 @@
 
 ## 目标读者与前置要求
 
-- **目标读者**：AI 应用开发者、大模型落地工程师、系统架构师等。
+- **目标读者**：对 AI 智能体感兴趣的个人用户、AI 应用开发者、大模型落地工程师、系统架构师等。
 - **前置基础**：阅读本书需要了解基本的后端开发常识（如 Node.js 或 Python 基础），并对大语言模型 (LLM) 和 AI 智能体有初步概念。可参考 [《零基础学 AI》](https://github.com/yeasy/ai_beginner_guide) 和 [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) 建立基础。
 
 ## 全书结构
@@ -30,7 +30,7 @@
 | 第一部分：基础入门 | 第 1–4 章 | 全景概览、环境搭建、首次会话、配置与模型接入 |
 | 第二部分：进阶使用 | 第 5–8 章 | 工具与技能、上下文记忆、多智能体协作、自动化运维 |
 | 第三部分：实现原理与工程落地 | 第 9–12 章 | Gateway 协议、Agent Loop 内核、可靠性机制、插件扩展 |
-| 第四部分：实战与优化深度指南 | 第 13–16 章 | 实战案例、性能与成本优化、故障排查决策树、Claude 生态集成 |
+| 第四部分：实战与优化深度指南 | 第 13–16 章 | 实战案例、性能与成本优化、故障排查决策树、主流 AI 生态集成 |
 | 附录 | — | 术语表、配置模板与样例、故障排查检查单、API 与 SDK 参考、命令速查手册、版本映射与升级指南、延伸阅读与参考资料 |
 
 ## 阅读方式
@@ -42,10 +42,11 @@
 
 ### 本地预览
 
-使用 [honkit](https://github.com/honkit/honkit) 构建：
+使用 [mdPress](https://github.com/yeasy/mdpress) 构建：
 
 ```bash
-npm run serve
+brew tap yeasy/tap && brew install mdpress
+mdpress serve
 ```
 
 ## 五分钟快速上手
@@ -68,7 +69,7 @@ graph LR
     Q -->|"个人玩家<br/>想快速用起来"| P1["第1章 概览<br/>→ 第2-3章 安装与首次会话<br/>→ 第5章 工具与技能"]
     Q -->|"应用开发者<br/>想深度定制"| P2["第1-4章 基础<br/>→ 第5-7章 工具/记忆/多智能体<br/>→ 第12章 插件扩展"]
     Q -->|"企业运维<br/>想生产部署"| P3["第2-3章 快速上手<br/>→ 第8章 自动化运维<br/>→ 第11章 可靠性与安全<br/>→ 第14-15章 优化与排障"]
-    Q -->|"架构师<br/>想理解原理"| P4["第1章 概览<br/>→ 第9-10章 Gateway与Agent Loop<br/>→ 第12章 扩展工程<br/>→ 第16章 Claude生态"]
+    Q -->|"架构师<br/>想理解原理"| P4["第1章 概览<br/>→ 第9-10章 Gateway与Agent Loop<br/>→ 第12章 扩展工程<br/>→ 第16章 AI生态集成"]
     P1 --> ADV["进阶：按需选读其余章节"]
     P2 --> ADV
     P3 --> ADV
