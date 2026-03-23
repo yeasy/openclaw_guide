@@ -108,7 +108,8 @@
 * [第十六章 与 Claude 生态的深度集成](16_claude_ecosystem/README.md)
   * [16.1 Claude 模型接入与 MCP 生态集成](16_claude_ecosystem/16.1_claude_integration.md)
   * [16.2 多智能体协作与编排模式](16_claude_ecosystem/16.2_agent_team_integration.md)
-  * [16.3 本章小结](16_claude_ecosystem/summary.md)
+  * [16.3 OpenAI 与本地模型集成](16_claude_ecosystem/16.3_other_ecosystems.md)
+  * [16.4 本章小结](16_claude_ecosystem/summary.md)
 
 ## 附录
 
@@ -121,3 +122,4 @@
   * [版本映射与升级指南](appendix/version_mapping.md)
   * [延伸阅读与参考资料](appendix/reading_list.md)
   * [OpenClaw 命名演进史](appendix/naming_history.md)
+  * [附录：环境自检工具](appendix/env_check.md)

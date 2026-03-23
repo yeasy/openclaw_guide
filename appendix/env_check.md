@@ -5,7 +5,7 @@
 ```bash
 #!/bin/bash
 echo "=== OpenClaw 环境自检 ==="
-node --version || echo "警告: 未安装 Node.js，或者版本低于 22"
+node --version || echo "警告: 未安装 Node.js（推荐 Node 24，最低 Node 22.16+）"
 npm --version || echo "提示: 未安装 npm。如果不使用自动化脚本安装，这是必需项"
 docker --version || echo "提示: 未安装 Docker (如使用容器化部署则是必需项)"
 
@@ -22,6 +22,7 @@ fi
 echo "提示: 200 表示鉴权通过；401/403 多为无 Key/无权限但网络可达。"
 echo "自检完成"
 ```
+
 
 **正常环境下的预期输出**：
 
@@ -42,7 +43,7 @@ llm provider: 200
 
 | 输出 | 含义 | 排查方向 |
 |------|------|---------|
-| `警告: 未安装 Node.js` | Node.js 未安装或不在 PATH | 执行 `nvm install 22` 或从官网安装 |
+| `警告: 未安装 Node.js` | Node.js 未安装或不在 PATH | 执行 `nvm install 24`（推荐）或 `nvm install 22` |
 | `install script: 000` | 无法连接 openclaw.ai | 检查网络/代理/DNS 设置 |
 | `llm provider: 401` | API Key 无效或未设置 | 检查 `$OPENAI_API_KEY` 环境变量 |
 | `llm provider: 403` | API Key 无权限 | 确认 API Key 对应账户有可用额度 |

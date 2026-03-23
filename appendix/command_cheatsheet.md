@@ -10,8 +10,8 @@
 | `openclaw --help` | 查看所有可用命令与用法 | — |
 | `openclaw tui` | 打开终端交互对话界面 | [2.3](../02_setup/2.3_onboarding.md) |
 | `openclaw dashboard` | 打开网页控制台（Dashboard） | [3.1](../03_minimal_loop/3.1_control_ui_webchat.md) |
-| `openclaw restart` | 重启服务（改完配置后必须执行） | [4.1](../04_config_models/4.1_config_system.md) |
-| `openclaw stop` | 停止服务 | — |
+| `openclaw gateway restart` | 重启网关服务（改完配置后常用） | [4.1](../04_config_models/4.1_config_system.md) |
+| `openclaw gateway stop` | 停止网关服务 | — |
 | `openclaw update` | 更新到最新版本 | [2.2](../02_setup/2.2_installation.md) |
 | `openclaw update --channel stable` | 切换到稳定版通道并更新 | [2.2](../02_setup/2.2_installation.md) |
 | `openclaw update --channel beta` | 切换到测试版通道并更新 | [2.2](../02_setup/2.2_installation.md) |
@@ -23,15 +23,16 @@
 | `openclaw onboard` | 启动交互式配置向导 | [2.3](../02_setup/2.3_onboarding.md) |
 | `openclaw onboard --install-daemon` | 配置向导 + 安装为系统后台服务 | [2.3](../02_setup/2.3_onboarding.md) |
 | `openclaw configure` | 重新进入配置向导（可随时修改设置） | [2.3](../02_setup/2.3_onboarding.md) |
-| `openclaw config` | 查看当前生效配置 | [4.1](../04_config_models/4.1_config_system.md) |
-| `openclaw config edit` | 在编辑器中打开配置文件 | [4.1](../04_config_models/4.1_config_system.md) |
+| `openclaw config file` | 查看当前配置文件路径 | [4.1](../04_config_models/4.1_config_system.md) |
+| `openclaw config get <路径>` | 读取指定配置项的当前值 | [4.1](../04_config_models/4.1_config_system.md) |
+| `openclaw config set <路径> <值>` | 非交互式更新指定配置项 | [4.1](../04_config_models/4.1_config_system.md) |
 
 ### E.3 诊断与排障
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `openclaw doctor` | 全面健康检查（配置、端口、依赖） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
-| `openclaw doctor --fix` | 健康检查 + 尝试自动修复 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
+| `openclaw doctor --repair` | 健康检查 + 尝试自动修复 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw health --json` | 健康探针（适合自动化） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw status` | 查看运行状态（Gateway 是否在线、端口等） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw status --deep` | 详细状态（含网关健康探测） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
@@ -41,7 +42,7 @@
 | `openclaw security audit --deep` | 深度安全审计 | [8.5](../08_automation_ops/8.5_security_baseline.md) |
 | `openclaw security audit --fix` | 安全审计 + 自动修复 | [8.5](../08_automation_ops/8.5_security_baseline.md) |
 
-> 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `restart` → `doctor --fix`。详见[附录C](troubleshooting_checklist.md)。
+> 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `gateway restart` → `doctor --repair`。详见[附录C](troubleshooting_checklist.md)。
 
 ### E.4 模型管理
 
@@ -50,7 +51,8 @@
 | `openclaw models list` | 列出所有已配置的模型 | [4.3](../04_config_models/4.3_model_selection.md) |
 | `openclaw models set <供应商/模型名>` | 切换默认模型 | [4.3](../04_config_models/4.3_model_selection.md) |
 | `openclaw models status --check` | 模型接口连通性验证 | [4.2](../04_config_models/4.2_provider_access.md) |
-| `openclaw models auth login --provider <供应商>` | 以 OAuth 方式登录模型供应商 | [4.2](../04_config_models/4.2_provider_access.md) |
+| `openclaw models auth add --provider <供应商>` | 交互式添加供应商认证档案 | [4.2](../04_config_models/4.2_provider_access.md) |
+| `openclaw models auth setup-token --provider <供应商>` | 为指定供应商生成 Token 录入流程 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth paste-token --provider <供应商>` | 粘贴 API Token 认证 | [4.2](../04_config_models/4.2_provider_access.md) |
 
 ### E.5 渠道管理
@@ -68,7 +70,7 @@
 | `openclaw channels login` | 登录渠道（如 WhatsApp Web） | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels logout` | 登出渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 
-支持的渠道类型：`whatsapp`、`telegram`、`discord`、`slack`、`googlechat`、`signal`、`imessage`、`msteams`、`mattermost`、`feishu`（需插件）。
+支持的渠道类型：`whatsapp`、`telegram`、`discord`、`slack`、`googlechat`、`signal`、`imessage`、`msteams`、`mattermost`、`feishu`。
 
 ### E.6 插件与技能
 
@@ -129,7 +131,7 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `openclaw message send --to <号码> --message "内容"` | 发送消息 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
+| `openclaw message send --target <号码> --message "内容"` | 向指定目标发送消息 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw agent --message “任务内容”` | 直接给 Agent 发任务 | [7.3](../07_multi_agent/7.3_routing_basics.md) |
 | `openclaw agent --message “任务” --thinking high` | 发任务（高思考深度） | [7.3](../07_multi_agent/7.3_routing_basics.md) |
 | `openclaw pairing approve <渠道> <配对码>` | 批准设备配对 | [9.4](../09_gateway_protocol/9.2_control_plane.md) |
