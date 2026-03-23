@@ -54,6 +54,11 @@
 - [Dify](https://github.com/langgenius/dify)：功能强大的开源 LLM 应用开发与编排平台。
 - [DSPy](https://github.com/stanfordnlp/dspy)：斯坦福大学开源的基于编程而非提示词的模型调用框架。
 
+### [第五章](../05_tools_skills/README.md)参考资料
+
+- 内置工具：https://docs.openclaw.ai/tools
+- 工具配置：https://docs.openclaw.ai/gateway/configuration#tools
+
 ### [第三章](../03_minimal_loop/README.md)参考资料
 
 - Dashboard 命令：https://docs.openclaw.ai/cli/dashboard
