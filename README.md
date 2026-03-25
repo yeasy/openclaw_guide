@@ -1,6 +1,8 @@
+[English](README_en.md)
+
 <div align="center">
 
-# 《OpenClaw 从入门到精通》
+# 《OpenClaw 入门到精通》
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub stars](https://img.shields.io/github/stars/yeasy/openclaw_guide?style=social)](https://github.com/yeasy/openclaw_guide)
