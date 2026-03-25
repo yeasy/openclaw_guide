@@ -16,6 +16,8 @@
 
 ## Highlights
 
+> Note: this English page is currently an overview. The full chapter-by-chapter content is maintained in Chinese; for complete reading, use the Chinese README and table of contents.
+
 - **Hands-on**: Build a minimal working loop from scratch, with ready-to-use configuration templates
 - **Deep Dives**: Detailed analysis of Gateway, Agent Loop, tool system, sessions and memory
 - **Production-Ready**: Focus on reliability, security hardening, monitoring and troubleshooting
@@ -40,7 +42,7 @@
 ### Online
 
 - [GitBook Online](https://yeasy.gitbook.io/openclaw_guide/)
-- [Start from Chapter 1](01_overview/README.md)
+- [Chinese Full Edition](README.md)
 
 ### Local Preview
 
