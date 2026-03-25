@@ -1,5 +1,6 @@
 # HonKit output
 _book/
+_site*
 
 # Node dependencies
 node_modules/

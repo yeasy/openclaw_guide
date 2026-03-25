@@ -46,10 +46,9 @@
 
 ### Local Preview
 
-This repository uses Honkit for building. For local preview:
+This repository uses mdPress for building. For local preview:
 
 ```bash
-npm install
 npm run serve
 ```
 

@@ -44,10 +44,9 @@
 
 ### 本地预览
 
-本仓库当前使用 Honkit 构建，本地预览建议直接使用仓库脚本：
+本仓库当前使用 mdPress 构建，本地预览建议直接使用仓库脚本：
 
 ```bash
-npm install
 npm run serve
 ```
 

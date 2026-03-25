@@ -3,12 +3,12 @@
     "version": "1.0.0",
     "description": "OpenClaw 从入门到精通",
     "scripts": {
-        "init": "honkit init",
-        "build": "honkit build",
-        "serve": "honkit serve",
-        "start": "honkit serve",
-        "clean": "rimraf _book",
-        "pdf": "honkit pdf ./ ./oc_guide.pdf"
+        "init": "mdpress init",
+        "build": "rm -rf _site _site_site && mdpress build --format site --output _site && rm -rf _site && mv _site_site _site",
+        "serve": "mdpress serve",
+        "start": "mdpress serve",
+        "clean": "rimraf _book _site",
+        "pdf": "mdpress build --format pdf"
     },
     "repository": {
         "type": "git",
@@ -22,7 +22,6 @@
     "homepage": "https://github.com/yeasy/openclaw_guide#readme",
     "devDependencies": {
         "gitbook-plugin-mermaid-gb3": "^2.1.0",
-        "honkit": "^6.1.6",
         "rimraf": "^6.1.3"
     },
     "dependencies": {
