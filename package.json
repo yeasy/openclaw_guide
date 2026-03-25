@@ -20,7 +20,6 @@
         "url": "https://github.com/yeasy/openclaw_guide/issues"
     },
     "homepage": "https://github.com/yeasy/openclaw_guide#readme",
-    "devDependencies": {},
     "dependencies": {
         "playwright": "^1.58.2"
     }
