@@ -7,6 +7,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub stars](https://img.shields.io/github/stars/yeasy/openclaw_guide?style=social)](https://github.com/yeasy/openclaw_guide)
 [![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
+[![PDF](https://img.shields.io/badge/PDF-下载-orange)](https://github.com/yeasy/openclaw_guide/releases/latest/download/oc_guide.pdf)
 
 > **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体**，由 Peter Steinberger 创建。本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
 
