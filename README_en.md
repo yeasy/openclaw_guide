@@ -49,7 +49,8 @@
 This repository uses mdPress for building. For local preview:
 
 ```bash
-npm run serve
+brew tap yeasy/tap && brew install mdpress
+mdpress serve
 ```
 
 Other Markdown previewers can be used as auxiliary tools, but they are not the standard build chain for this repository.

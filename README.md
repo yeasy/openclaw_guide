@@ -6,6 +6,7 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub stars](https://img.shields.io/github/stars/yeasy/openclaw_guide?style=social)](https://github.com/yeasy/openclaw_guide)
+[![Release](https://img.shields.io/github/release/yeasy/openclaw_guide.svg)](https://github.com/yeasy/openclaw_guide/releases)
 [![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
 [![PDF](https://img.shields.io/badge/PDF-下载-orange)](https://github.com/yeasy/openclaw_guide/releases/latest/download/oc_guide.pdf)
 
@@ -43,12 +44,17 @@
 - [GitBook 在线版本](https://yeasy.gitbook.io/openclaw_guide/)
 - [从第一章开始阅读](01_overview/README.md)
 
+## 下载离线版本
+
+本书提供 PDF 版本供离线阅读，可前往 [GitHub Releases](https://github.com/yeasy/openclaw_guide/releases/latest) 页面下载最新版本。
+
 ### 本地预览
 
 本仓库当前使用 mdPress 构建，本地预览建议直接使用仓库脚本：
 
 ```bash
-npm run serve
+brew tap yeasy/tap && brew install mdpress
+mdpress serve
 ```
 
 如果你偏好其他 Markdown 预览器，也可以作为辅助工具使用，但它们并不是本仓库的标准构建链。
