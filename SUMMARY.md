@@ -1,6 +1,7 @@
 # 目录
 
 * [前言](README.md)
+* [English Overview](README_en.md)
 
 ## 第一部分：基础入门
 
@@ -22,7 +23,7 @@
   * [3.3 初始指令与智能体角色配置](03_minimal_loop/3.3_agent_persona.md)
   * [3.4 本地访问边界与设备批准](03_minimal_loop/3.4_pairing_groups.md)
   * [3.5 本章小结](03_minimal_loop/summary.md)
-* [第四章 配置体系与模型接入基础](04_config_models/README.md)
+* [第四章 配置体系与模型治理](04_config_models/README.md)
   * [4.1 openclaw.json 结构与配置优先级](04_config_models/4.1_config_system.md)
   * [4.2 模型供应商接入与认证方式](04_config_models/4.2_provider_access.md)
   * [4.3 模型选择与默认策略](04_config_models/4.3_model_selection.md)
@@ -32,7 +33,7 @@
 ## 第二部分：进阶使用
 
 * [第五章 工具系统、技能与插件](05_tools_skills/README.md)
-  * [5.1 内置工具全景与调用范式](05_tools_skills/5.1_tool_inventory.md)
+  * [5.1 工具清单与调用范式](05_tools_skills/5.1_tool_inventory.md)
   * [5.2 工具策略：允许、拒绝与分层策略](05_tools_skills/5.2_tool_policy.md)
   * [5.3 技能机制：借助内置库固化指令](05_tools_skills/5.3_skills_plugins.md)
   * [5.4 浏览器工具与网页自动化](05_tools_skills/5.4_browser_nodes.md)
@@ -45,7 +46,7 @@
   * [6.5 本章小结](06_context_memory/summary.md)
 * [第七章 多渠道分发与多智能体协作](07_multi_agent/README.md)
   * [7.1 渠道接入与入口治理](07_multi_agent/7.1_telegram_whatsapp.md)
-  * [7.2 飞书专项接入指南](07_multi_agent/7.2_lark_integration.md)
+  * [7.2 飞书专项接入指南：让它能在群里陪你聊天](07_multi_agent/7.2_lark_integration.md)
   * [7.3 路由基础：从单智能体到多智能体](07_multi_agent/7.3_routing_basics.md)
   * [7.4 协作模式：子智能体与广播组](07_multi_agent/7.4_collaboration_patterns.md)
   * [7.5 本章小结](07_multi_agent/summary.md)
@@ -60,11 +61,11 @@
 ## 第三部分：实现原理与工程落地
 
 * [第九章 Gateway 控制平面与协议机制](09_gateway_protocol/README.md)
-  * [9.1 架构全景与核心对象](09_gateway_protocol/9.1_architecture_overview.md)
+  * [9.1 架构全景与五平面框架](09_gateway_protocol/9.1_architecture_overview.md)
   * [9.2 控制平面职责与边界](09_gateway_protocol/9.2_control_plane.md)
-  * [9.3 WebSocket 握手、认证与连接生命周期](09_gateway_protocol/9.3_ws_handshake.md)
+  * [9.3 连接生命周期：握手、认证与心跳](09_gateway_protocol/9.3_ws_handshake.md)
   * [9.4 事件幂等与一致性保障](09_gateway_protocol/9.4_event_idempotency.md)
-  * [9.5 设备配对与本地信任链](09_gateway_protocol/9.5_pairing_trust.md)
+  * [9.5 渠道配对与本地信任建立](09_gateway_protocol/9.5_pairing_trust.md)
   * [9.6 本章小结](09_gateway_protocol/summary.md)
 * [第十章 Agent Loop 运行内核剖析](10_agent_loop/README.md)
   * [10.1 请求流转与分层排障](10_agent_loop/10.1_request_lifecycle.md)
@@ -78,12 +79,12 @@
   * [11.1 多密钥治理：keys、keyId 与认证档案](11_reliability_security/11.1_auth_profiles.md)
   * [11.2 冷却与禁用：故障窗口内的止血机制](11_reliability_security/11.2_rotation_cooldown.md)
   * [11.3 模型回退链路与错误分流](11_reliability_security/11.3_fallback_rules.md)
-  * [11.4 防护栏：工具策略、沙箱与审计联动](11_reliability_security/11.4_guardrails.md)
+  * [11.4 防护栏：工具策略、沙箱、审批与审计联动](11_reliability_security/11.4_guardrails.md)
   * [11.5 本章小结](11_reliability_security/summary.md)
 * [第十二章 插件扩展与生产落地](12_extension_engineering/README.md)
   * [12.1 插件开发体系：自定义扩展的工程机制](12_extension_engineering/12.1_plugin_architecture.md)
   * [12.2 自定义工具：把副作用关进可控边界](12_extension_engineering/12.2_custom_tools.md)
-  * [12.3 测试与调试：把扩展做成可回放的工程闭环](12_extension_engineering/12.3_testing_debugging.md)
+  * [12.3 测试与调试：把扩展做成可回放的工程完整流程](12_extension_engineering/12.3_testing_debugging.md)
   * [12.4 生产落地蓝图：扩展可控化](12_extension_engineering/12.4_production_blueprint.md)
   * [12.5 主流框架互操作性指南](12_extension_engineering/12.5_framework_interoperability.md)
   * [12.6 本章小结](12_extension_engineering/summary.md)
@@ -91,9 +92,9 @@
 ## 第四部分：实战与优化深度指南
 
 * [第十三章 实战案例集锦](13_practical_cases/README.md)
-  * [13.1 企业飞书/Slack 群工作助手](13_practical_cases/13.1_lark_slack_workbot.md)
-  * [13.2 客户支持智能体](13_practical_cases/13.2_customer_support_agent.md)
-  * [13.3 垂直行业应用案例深度指南](13_practical_cases/13.3_vertical_industry_cases.md)
+  * [13.1 实战案例：企业飞书群工作助手](13_practical_cases/13.1_lark_slack_workbot.md)
+  * [13.2 实战案例：客户支持智能体](13_practical_cases/13.2_customer_support_agent.md)
+  * [13.3 垂直行业应用：场景对照与关键差异](13_practical_cases/13.3_vertical_industry_cases.md)
   * [13.4 本章小结](13_practical_cases/summary.md)
 * [第十四章 性能与成本优化实战](14_performance_cost/README.md)
   * [14.1 Token 与上下文成本](14_performance_cost/14.1_token_context_cost.md)
@@ -113,13 +114,13 @@
 
 ## 附录
 
-* [附录：参考资料与速查](appendix/README.md)
-  * [术语表](appendix/glossary.md)
-  * [配置模板与样例](appendix/config_templates.md)
-  * [故障排查检查单](appendix/troubleshooting_checklist.md)
-  * [API 与 SDK 参考](appendix/api_reference.md)
-  * [命令速查手册](appendix/command_cheatsheet.md)
-  * [版本映射与升级指南](appendix/version_mapping.md)
-  * [延伸阅读与参考资料](appendix/reading_list.md)
-  * [OpenClaw 命名演进史](appendix/naming_history.md)
+* [附录 参考资料与速查](appendix/README.md)
+  * [附录A：术语表](appendix/glossary.md)
+  * [附录B：配置模板与样例](appendix/config_templates.md)
+  * [附录C：故障排查检查单](appendix/troubleshooting_checklist.md)
+  * [附录D：API 与 SDK 参考](appendix/api_reference.md)
+  * [附录E：命令速查手册](appendix/command_cheatsheet.md)
+  * [附录F：版本映射与升级指南](appendix/version_mapping.md)
+  * [附录G：延伸阅读与参考资料](appendix/reading_list.md)
+  * [附录：OpenClaw 命名演进史](appendix/naming_history.md)
   * [附录：环境自检工具](appendix/env_check.md)
