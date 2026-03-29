@@ -26,7 +26,6 @@ openclaw logs --limit 200
 lsof -nP -iTCP -sTCP:LISTEN | head
 ```
 
-
 关联阅读：
 
 - [2.4 守护进程与可用性验收](../02_setup/2.4_gateway_service.md)
