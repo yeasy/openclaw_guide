@@ -134,7 +134,7 @@
 | `openclaw message send --target <号码> --message "内容"` | 向指定目标发送消息 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw agent --message “任务内容”` | 直接给 Agent 发任务 | [7.3](../07_multi_agent/7.3_routing_basics.md) |
 | `openclaw agent --message “任务” --thinking high` | 发任务（高思考深度） | [7.3](../07_multi_agent/7.3_routing_basics.md) |
-| `openclaw pairing approve <渠道> <配对码>` | 批准设备配对 | [9.4](../09_gateway_protocol/9.2_control_plane.md) |
+| `openclaw pairing approve <渠道> <配对码>` | 批准设备配对 | [9.5](../09_gateway_protocol/9.5_pairing_trust.md) |
 
 ### E.10 聊天斜杠命令
 

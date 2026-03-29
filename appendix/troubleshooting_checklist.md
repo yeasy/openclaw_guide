@@ -52,7 +52,7 @@ openclaw logs --limit 200
 关联阅读：
 
 - [3.2 常用诊断命令与日志排障](../03_minimal_loop/3.2_diagnostics.md)
-- [9.5 设备配对与本地信任链](../09_gateway_protocol/9.5_pairing_trust.md)
+- [9.5 渠道配对与本地信任建立](../09_gateway_protocol/9.5_pairing_trust.md)
 
 ### C.3 工具异常检查
 
@@ -74,7 +74,7 @@ openclaw logs --limit 200
 
 cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log | select(.trace_id=="t-...") | {ts,event,tool,err_type,cost_ms}'
 
-# 注：实际日志路径由 logging.file 配置决定，默认为 /tmp/openclaw/openclaw-YYYY-MM-DD.log
+> **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
 ```
 
 关联阅读：
@@ -101,7 +101,7 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log |
 
 cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -r 'select(.type=="log") | .log | select(.stage=="model_call_end" and .err_type!="") | .err_type' | sort | uniq -c | sort -nr | head
 
-# 注：实际日志路径由 logging.file 配置决定，默认为 /tmp/openclaw/openclaw-YYYY-MM-DD.log
+> **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
 ```
 
 关联阅读：
@@ -130,7 +130,7 @@ openclaw status --deep
 openclaw logs --follow --json
 cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log | select(.sessionKey!="") | {ts,trace_id,sessionKey,event,err_type}' | tail
 
-# 注：实际日志路径由 logging.file 配置决定，默认为 /tmp/openclaw/openclaw-YYYY-MM-DD.log
+> **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
 ```
 
 ### C.6 复验与完整流程
