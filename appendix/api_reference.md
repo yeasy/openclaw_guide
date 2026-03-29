@@ -19,7 +19,7 @@
 openclaw doctor
 openclaw health --json
 openclaw status --deep
-openclaw channels status --probe
+openclaw channels capabilities
 openclaw models status --check
 openclaw logs --follow --json
 ```

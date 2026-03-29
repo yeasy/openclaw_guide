@@ -8,6 +8,6 @@
 
 - **[14.1 Token 与上下文成本](14.1_token_context_cost.md)**：Token 流向分析、系统提示精简、上下文压缩策略（Compaction 与 Pruning）、模型分层选择。
 - **[14.2 延迟与吞吐优化](14.2_latency_throughput.md)**：形式化延迟模型分解（LLM + 工具 + 沙箱 + 编排），多智能体场景的延迟累积，结构化成本模型。
-- **[14.3 OpenClaw 的用量观测与预算控制](14.3_usage_budget.md)**：内置用量命令（`/status`、`/cost`、`/compact`）、全局与按 Agent 预算配置、异常检测与告警。
+- **[14.3 OpenClaw 的用量观测与预算控制](14.3_usage_budget.md)**：内置用量命令（`/status`、`/usage cost`、`/compact`）、全局与按 Agent 预算配置、异常检测与告警。
 - **[14.4 不同规模部署预算模板](14.4_budget_templates.md)**：个人、中等、企业三种场景的成本要素分解与预算规划模板。
 - **[14.5 本章小结](summary.md)**：关键结论与优化检查清单。

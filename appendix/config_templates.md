@@ -198,7 +198,7 @@ openclaw logs --follow --json
 ## 步骤
 
 1. 运行 doctor。
-2. 运行 channels status --probe。
+2. 运行 channels capabilities。
 3. 根据日志中的 traceId 回放定位。
 
 ## 输出要求

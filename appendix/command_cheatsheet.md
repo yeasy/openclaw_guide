@@ -61,7 +61,7 @@
 |---|---|---|
 | `openclaw channels list` | 列出已配置的渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels status` | 查看所有渠道状态 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
-| `openclaw channels status --probe` | 渠道状态与探针 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
+| `openclaw channels capabilities` | 渠道能力、配置与联调入口 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw channels add` | 添加新渠道（交互式向导） | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels add --channel telegram --token <TOKEN>` | 非交互式添加 Telegram 渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels add --channel feishu` | 添加飞书渠道 | [7.2](../07_multi_agent/7.2_lark_integration.md) |
@@ -190,7 +190,7 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `/cost` | 查看 Token 消耗与费用估算 | [6.2](../06_context_memory/6.2_context_building.md) |
+| `/usage cost` | 查看 Token 消耗与费用估算 | [14.3](../14_performance_cost/14.3_usage_budget.md) |
 | `/version` | 查看版本信息 | — |
 | `/ping` | 测试连接是否正常 | — |
 

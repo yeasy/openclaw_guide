@@ -13,7 +13,7 @@
 
 - 是否能对任意一条消息回答：由谁接管、依据是什么、失败如何回放？
 - 是否为群聊配置了提及门控与允许列表，并验证其生效？
-- 是否能用 `channels status --probe` 与 `agents list --bindings` 解释一次入口治理结果？
+- 是否能用 `channels capabilities` 与 `agents list --bindings` 解释一次入口治理结果？
 
 ### 7.5.3 社区实战启发
 
