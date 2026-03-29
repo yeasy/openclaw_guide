@@ -27,7 +27,7 @@
   - 作者强烈推荐使用 Mermaid 写流程与架构图 ````mermaid````。在书写 Mermaid 标签标签下的 node 内容时，严格使用英文半角的双引号 `”`。
   - 图片与其说明标签之间必须有一个空行，例如：
     ```text
-    ![描述](images/example.png)
+    ![描述](cover.jpg)
 
     图 X-Y：说明文字
     ```

@@ -52,7 +52,7 @@ openclaw logs --limit 200
 关联阅读：
 
 - [3.2 常用诊断命令与日志排障](../03_minimal_loop/3.2_diagnostics.md)
-- [9.4 设备配对与本地信任链](../09_gateway_protocol/9.2_control_plane.md)
+- [9.5 设备配对与本地信任链](../09_gateway_protocol/9.5_pairing_trust.md)
 
 ### C.3 工具异常检查
 
