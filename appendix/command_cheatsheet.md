@@ -20,7 +20,9 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
+| `openclaw setup` | 初始化配置文件、工作区与会话目录 | [2.3](../02_setup/2.3_onboarding.md) |
 | `openclaw onboard` | 启动交互式配置向导 | [2.3](../02_setup/2.3_onboarding.md) |
+| `openclaw setup --wizard` | 从 `setup` 入口进入交互式向导 | [2.3](../02_setup/2.3_onboarding.md) |
 | `openclaw onboard --install-daemon` | 配置向导 + 安装为系统后台服务 | [2.3](../02_setup/2.3_onboarding.md) |
 | `openclaw configure` | 重新进入配置向导（可随时修改设置） | [2.3](../02_setup/2.3_onboarding.md) |
 | `openclaw config file` | 查看当前配置文件路径 | [4.1](../04_config_models/4.1_config_system.md) |
@@ -32,7 +34,7 @@
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `openclaw doctor` | 全面健康检查（配置、端口、依赖） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
-| `openclaw doctor --repair` | 健康检查 + 尝试自动修复 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
+| `openclaw doctor --repair` | 健康检查 + 应用推荐修复（`--fix` 为别名） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw health --json` | 健康探针（适合自动化） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw status` | 查看运行状态（Gateway 是否在线、端口等） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw status --deep` | 详细状态（含网关健康探测） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
@@ -42,7 +44,7 @@
 | `openclaw security audit --deep` | 深度安全审计 | [8.5](../08_automation_ops/8.5_security_baseline.md) |
 | `openclaw security audit --fix` | 安全审计 + 自动修复 | [8.5](../08_automation_ops/8.5_security_baseline.md) |
 
-> 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `gateway restart` → `doctor --repair`。详见[附录C](troubleshooting_checklist.md)。
+> 遇到问题时的推荐排查顺序：`doctor` → `logs` → `status` → `gateway restart` → `doctor --repair`。旧资料里常见的 `doctor --fix` 仍会在部分迁移/兼容文档中出现；实际以本地 `openclaw doctor --help` 为准。详见[附录C](troubleshooting_checklist.md)。
 
 ### E.4 模型管理
 
@@ -82,12 +84,15 @@
 | `openclaw plugins install <插件名>` | 安装插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins enable <插件名>` | 启用插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins disable <插件名>` | 禁用插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
+| `openclaw plugins inspect <插件名>` | 查看单个插件详情与来源 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
+| `openclaw plugins status` | 查看插件运行摘要与启用状态 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins doctor` | 检查插件加载错误 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 
 **技能管理**
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
+| `openclaw skills search <关键词>` | 在技能仓库中搜索技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `openclaw skills list` | 列出已安装的技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `openclaw skills install <技能名>` | 安装技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 
@@ -180,9 +185,9 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `/skills` | 查看已加载的技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
-| `/plugins` | 列出当前已加载的插件及其状态 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
-| `/plugin <名称>` | 查看或切换指定插件的启停状态（仅 Owner 可用） | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
+| `/skill <名称> [输入]` | 按名称运行指定技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `/plugins list|show|get|install|enable|disable` | 插件/扩展发现、安装与启停（需 `commands.plugins: true`） | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
+| `/plugin ...` | `/plugins` 的别名 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `/memory` | 查看记忆内容 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
 | `/forget <内容>` | 删除指定记忆 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
 
@@ -202,15 +207,19 @@
 | `~/.openclaw/workspace/` | 默认工作区（含引导文件） | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/AGENTS.md` | 工作区主页与启动清单 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/SOUL.md` | 智能体人格定义 | [3.3.4](../03_minimal_loop/3.3_agent_persona.md) |
+| `~/.openclaw/workspace/USER.md` | 用户偏好与画像 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/IDENTITY.md` | 智能体元数据（名称、形象） | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/TOOLS.md` | 环境级工具备忘 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/HEARTBEAT.md` | 心跳巡检清单 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
+| `~/.openclaw/workspace/BOOT.md` | Gateway 启动期的可选自检清单 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/BOOTSTRAP.md` | 首次运行入职脚本 | [2.3.4](../02_setup/2.3_onboarding.md) |
-| `~/.openclaw/skills/` | 全局技能目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `~/.openclaw/workspace/MEMORY.md` | 可选长期记忆索引 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
+| `~/.openclaw/workspace/memory/` | 按日期分片的工作区记忆 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
+| `~/.openclaw/workspace/skills/` | 工作区级技能目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `~/.openclaw/workspace/canvas/` | 节点 UI 或可视化资源 | [2.3.4](../02_setup/2.3_onboarding.md) |
+| `~/.openclaw/skills/` | 共享/托管技能目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `~/.openclaw/agents/` | Agent 数据目录 | — |
-| `~/.openclaw/agents/<ID>/USER.md` | 用户偏好文件 | [3.3](../03_minimal_loop/3.3_agent_persona.md) |
-| `~/.openclaw/agents/<ID>/memory/` | 记忆存储 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
-| `~/.openclaw/agents/<ID>/cron/jobs.json` | 定时任务配置 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
+| `~/.openclaw/cron/jobs.json` | 定时任务定义存储 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
 | `~/.openclaw/agents/<ID>/sessions/` | 会话记录 | [6.1](../06_context_memory/6.1_sessions.md) |
 
 > Windows 用户注意：`~` 等于 `%USERPROFILE%`，即 `C:\Users\<你的用户名>`。
