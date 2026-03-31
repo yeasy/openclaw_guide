@@ -25,7 +25,7 @@
 ## 目标读者与前置要求
 
 - **目标读者**：对 AI 智能体感兴趣的个人用户、AI 应用开发者、大模型落地工程师、系统架构师等。
-- **前置基础**：阅读本书需要了解基本的后端开发常识（如 Node.js 或 Python 基础），并对大语言模型 (LLM) 和 AI 智能体有初步概念。可参考 [《零基础学 AI》](https://github.com/yeasy/ai_beginner_guide) 和 [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) 建立基础。
+- **前置基础**：阅读本书需要了解基本的后端开发常识（如 Node.js 或 Python 基础），并对大语言模型 (LLM) 和 AI 智能体有初步概念。可参考 [《零基础学 AI》](https://yeasy.gitbook.io/ai_beginner_guide) 和 [《智能体 AI 权威指南》](https://yeasy.gitbook.io/agentic_ai_guide) 建立基础。
 
 ## 全书结构
 
@@ -64,8 +64,8 @@ mdpress serve
 还没用过 OpenClaw？只需三步即可体验：
 
 1. **安装**（1分钟）：`curl -fsSL https://openclaw.ai/install.sh | bash`
-2. **初始化**（2分钟）：`openclaw onboard --install-daemon` → 按向导完成最小配置
-3. **对话**（2分钟）：运行 `openclaw dashboard`，按 CLI 打开的或打印出的 Dashboard 链接进入控制台，在输入框里发送“你好”，收到 AI 回复即成功 🎉
+2. **初始化**（2分钟）：`openclaw` → 按向导配置模型密钥
+3. **对话**（2分钟）：在 WebChat 输入“你好”，收到 AI 回复即成功 🎉
 
 详见 [第二章：环境搭建](02_setup/README.md) 和 [第三章：首次会话](03_minimal_loop/README.md)。
 
@@ -99,13 +99,13 @@ graph LR
 
 | 书名 | 与本书的关系 |
 |------|------------|
-| [《零基础学 AI》](https://github.com/yeasy/ai_beginner_guide) | AI 零基础入门，适合缺乏 AI 背景的读者 |
-| [《大模型提示词工程指南》](https://github.com/yeasy/prompt_engineering_guide) | 智能体提示词设计的理论基础 |
-| [《大模型上下文工程权威指南》](https://github.com/yeasy/context_engineering_guide) | 智能体的上下文管理与记忆架构设计 |
-| [《Claude 技术指南》](https://github.com/yeasy/claude_guide) | Claude 的 MCP 协议、工具使用与 Agentic Coding |
-| [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) | 智能体的通用架构与多智能体协作模式 |
-| [《大模型安全权威指南》](https://github.com/yeasy/ai_security_guide) | 智能体系统的安全设计与攻防实践 |
-| [《大模型原理与架构》](https://github.com/yeasy/llm_internals) | 深入理解大语言模型底层逻辑与架构 |
+| [《零基础学 AI》](https://yeasy.gitbook.io/ai_beginner_guide) | AI 零基础入门，适合缺乏 AI 背景的读者 |
+| [《大模型提示词工程指南》](https://yeasy.gitbook.io/prompt_engineering_guide) | 智能体提示词设计的理论基础 |
+| [《大模型上下文工程权威指南》](https://yeasy.gitbook.io/context_engineering_guide) | 智能体的上下文管理与记忆架构设计 |
+| [《Claude 技术指南》](https://yeasy.gitbook.io/claude_guide) | Claude 的 MCP 协议、工具使用与 Agentic Coding |
+| [《智能体 AI 权威指南》](https://yeasy.gitbook.io/agentic_ai_guide) | 智能体的通用架构与多智能体协作模式 |
+| [《大模型安全权威指南》](https://yeasy.gitbook.io/ai_security_guide) | 智能体系统的安全设计与攻防实践 |
+| [《大模型原理与架构》](https://yeasy.gitbook.io/llm_internals) | 深入理解大语言模型底层逻辑与架构 |
 
 ## 贡献与反馈
 
