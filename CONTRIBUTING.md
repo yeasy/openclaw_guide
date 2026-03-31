@@ -14,7 +14,7 @@
 
 在提交之前，建议在本地运行以下检查：
 
-- **mdPress 构建验证**：运行 `npm run build` 确保本地编译正常，没有内部死链。
+- **mdPress 构建验证**：运行 `mdpress build --format site --output _site` 确保本地编译正常，没有内部死链。
 
 ### 2. Markdown 格式约定
 
@@ -42,7 +42,7 @@
    - Doc: 添加对 v2026.3.0 版本迁移的说明附录
 3. **PR 描述**：
    - 如果是修复已有 Issue，在 PR 描述带上 `Fixes #XXX`。
-   - 对格式调整的 PR，请说明是否已经在本地通过 `npm run build` 的校验。
+   - 对格式调整的 PR，请说明是否已经在本地通过 `mdpress build --format site --output _site` 的校验。
 
 ## 四、贡献范围与方向
 
