@@ -40,7 +40,7 @@ jobs:
       - name: Build latest preview PDF
         run: |
           mkdir -p dist
-          mdpress build --format pdf --output dist/latest.pdf
+          mdpress build --format pdf --output dist/oc_guide.pdf
 
       - name: Write release notes
         run: |
@@ -71,4 +71,4 @@ jobs:
             --target "$GITHUB_SHA"
 
       - name: Upload preview PDF
-        run: gh release upload preview-pdf dist/latest.pdf --clobber
+        run: gh release upload preview-pdf dist/oc_guide.pdf --clobber
