@@ -100,12 +100,12 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `openclaw gateway start` | 启动网关 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
-| `openclaw gateway --port <端口>` | 指定端口启动 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
-| `openclaw gateway --verbose` | 启动并显示详细日志 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
-| `openclaw gateway status` | 查看网关的当前状态 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
-| `openclaw gateway restart` | 重启网关 | [9.1](../09_gateway_protocol/9.1_architecture_overview.md) |
-| `openclaw gateway --token <token>` | 带 token 启动 | [9.2](../09_gateway_protocol/9.2_control_plane.md) |
+| `openclaw gateway start` | 启动网关 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway --port <端口>` | 指定端口启动 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway --verbose` | 启动并显示详细日志 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway status` | 查看网关的当前状态 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway restart` | 重启网关 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway --token <token>` | 带 token 启动 | [9.3](../09_gateway_protocol/9.3_ws_handshake.md) |
 
 ### E.8 沙箱与浏览器
 
@@ -186,7 +186,7 @@
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `/skill <名称> [输入]` | 按名称运行指定技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
-| `/plugins list|show|get|install|enable|disable` | 插件/扩展发现、安装与启停（需 `commands.plugins: true`） | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
+| `/plugins list\|show\|get\|install\|enable\|disable` | 插件/扩展发现、安装与启停（需 `commands.plugins: true`） | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `/plugin ...` | `/plugins` 的别名 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `/memory` | 查看记忆内容 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
 | `/forget <内容>` | 删除指定记忆 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |

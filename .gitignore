@@ -27,3 +27,9 @@ Thumbs.db
 .agent/
 __pycache__/
 .obsidian/
+do_commit.bat 
+do_final.bat 
+do_push.bat 
+commit_log.txt 
+push_log.txt 
+final_log.txt 

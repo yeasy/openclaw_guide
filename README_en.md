@@ -6,7 +6,9 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub stars](https://img.shields.io/github/stars/yeasy/openclaw_guide?style=social)](https://github.com/yeasy/openclaw_guide)
+[![Release](https://img.shields.io/github/release/yeasy/openclaw_guide.svg)](https://github.com/yeasy/openclaw_guide/releases)
 [![Online Reading](https://img.shields.io/badge/Read_Online-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
+[![PDF](https://img.shields.io/badge/PDF-Download-orange)](https://github.com/yeasy/openclaw_guide/releases/latest)
 
 > **[OpenClaw](https://github.com/openclaw/openclaw) is an open-source, self-driven AI agent**, created by Peter Steinberger. This book provides a comprehensive guide from getting started to production deployment, with deep dives into the underlying mechanisms and implementation principles.
 

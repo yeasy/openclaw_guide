@@ -147,7 +147,7 @@ Telegram 渠道参考：https://docs.openclaw.ai/channels/telegram。
 
 持久化与记忆通常分为两部分：会话状态与长期记忆。https://docs.openclaw.ai 的文档对会话与记忆的文件布局、索引方式与裁剪策略有明确描述，建议先通读再落地配置：[会话](https://docs.openclaw.ai/agents/sessions)、[记忆](https://docs.openclaw.ai/agents/memory)、[上下文裁剪](https://docs.openclaw.ai/concepts/session-pruning)、[压缩](https://docs.openclaw.ai/concepts/compaction)。
 
-下面示例展示了常见的”会话与压缩”配置骨架。重点是把会话行为与压缩策略显式化，便于验收与排障。
+下面示例展示了常见的“会话与压缩”配置骨架。重点是把会话行为与压缩策略显式化，便于验收与排障。
 
 ```jsonc
 {
@@ -218,7 +218,7 @@ openclaw logs --follow --json
 
 ### B.9 历史版本字段迁移映射表
 
-OpenClaw 采取严格的 Schema 校验机制，当您将旧版本配置文件带入新版本系统时，通常会被 Gateway 拒绝启动。遇到此类情况时，您可以通过 `openclaw doctor --fix` 尝试自动修复，或是参考下方给出的常见漂移映射手动修改：
+OpenClaw 采取严格的 Schema 校验机制，当您将旧版本配置文件带入新版本系统时，通常会被 Gateway 拒绝启动。遇到此类情况时，您可以通过 `openclaw doctor --repair` 尝试自动修复，或是参考下方给出的常见漂移映射手动修改：
 
 | 老配置形态 / 遗留字段 | 对应的新配置形态 / 最佳实践 | 备注 |
 | --- | --- | --- |
