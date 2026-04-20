@@ -25,7 +25,7 @@
     defaults: {
       model: {
         primary: "openai-codex/gpt-5.4",
-        fallbacks: ["openai-codex/gpt-5.2", "anthropic/claude-sonnet-4-6"],
+        fallbacks: ["openai-codex/gpt-5.4-nano", "anthropic/claude-sonnet-4-6"],
       },
     },
   },

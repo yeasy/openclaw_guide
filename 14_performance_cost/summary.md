@@ -1,6 +1,6 @@
 ## 14.5 本章小结
 
-> **注**：本章定价数据基于截至 2026 年 4 月官方 API 定价。AI 模型定价变化频繁，请以各供应商官方定价页面为准：
+> **注**：本章定价数据基于各供应商官方 API 定价。AI 模型定价变化频繁，请以各供应商官方定价页面为准：
 > - [Anthropic 官方定价](https://platform.claude.com/docs/en/about-claude/pricing)
 > - [OpenAI 官方定价](https://openai.com/api/pricing/)
 
