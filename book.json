@@ -13,12 +13,6 @@
   "pluginsConfig": {
     "theme-default": {
       "showLevel": true
-    },
-    "mermaid-gb3": {
-      "theme": "default"
     }
-  },
-  "plugins": [
-    "mermaid-gb3"
-  ]
+  }
 }

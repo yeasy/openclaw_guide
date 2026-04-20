@@ -72,7 +72,7 @@
 | `openclaw channels login` | 登录渠道（如 WhatsApp Web） | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels logout` | 登出渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 
-支持的渠道类型：`whatsapp`、`telegram`、`discord`、`slack`、`googlechat`、`signal`、`imessage`、`msteams`、`mattermost`、`feishu`。
+常见渠道类型包括：`whatsapp`、`telegram`、`discord`、`slack`、`googlechat`、`signal`、`bluebubbles`、`irc`、`matrix`、`nextcloud-talk`、`nostr`、`qqbot`、`synology-chat`、`twitch`、`openclaw-weixin`、`zalo`、`zalouser`、`feishu`、`mattermost`、`msteams`。`webchat` 更适合作为内部 UI 渠道理解，而不是常规出站 channel 类型；`imessage` 目前属于 legacy 路径。完整列表以当前版本 CLI 与官方渠道文档为准。
 
 ### E.6 插件与技能
 
@@ -85,7 +85,6 @@
 | `openclaw plugins enable <插件名>` | 启用插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins disable <插件名>` | 禁用插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins inspect <插件名>` | 查看单个插件详情与来源 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
-| `openclaw plugins status` | 查看插件运行摘要与启用状态 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins doctor` | 检查插件加载错误 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 
 **技能管理**
@@ -137,9 +136,9 @@
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `openclaw message send --target <号码> --message "内容"` | 向指定目标发送消息 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
-| `openclaw agent --message “任务内容”` | 直接给 Agent 发任务 | [7.3](../07_multi_agent/7.3_routing_basics.md) |
-| `openclaw agent --message “任务” --thinking high` | 发任务（高思考深度） | [7.3](../07_multi_agent/7.3_routing_basics.md) |
-| `openclaw pairing approve <渠道> <配对码>` | 批准设备配对 | [9.5](../09_gateway_protocol/9.5_pairing_trust.md) |
+| `openclaw agent --message "任务内容"` | 直接给 Agent 发任务 | [7.3](../07_multi_agent/7.3_routing_basics.md) |
+| `openclaw agent --message "任务" --thinking high` | 发任务（高思考深度） | [7.3](../07_multi_agent/7.3_routing_basics.md) |
+| `openclaw pairing approve <渠道> <配对码>` | 批准私聊配对码 | [9.5](../09_gateway_protocol/9.5_pairing_trust.md) |
 
 ### E.10 聊天斜杠命令
 

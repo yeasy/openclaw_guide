@@ -145,7 +145,7 @@ Telegram 渠道参考：https://docs.openclaw.ai/channels/telegram。
 
 ### B.6 持久化与记忆模板
 
-持久化与记忆通常分为两部分：会话状态与长期记忆。https://docs.openclaw.ai 的文档对会话与记忆的文件布局、索引方式与裁剪策略有明确描述，建议先通读再落地配置：[会话](https://docs.openclaw.ai/agents/sessions)、[记忆](https://docs.openclaw.ai/agents/memory)、[上下文裁剪](https://docs.openclaw.ai/concepts/session-pruning)、[压缩](https://docs.openclaw.ai/concepts/compaction)。
+持久化与记忆通常分为两部分：会话状态与长期记忆。官方文档对会话与记忆的文件布局、索引方式与裁剪策略有明确描述，建议先通读再落地配置：[会话](https://docs.openclaw.ai/concepts/session)、[记忆](https://docs.openclaw.ai/concepts/memory)、[上下文裁剪](https://docs.openclaw.ai/concepts/session-pruning)、[压缩](https://docs.openclaw.ai/concepts/compaction)。
 
 下面示例展示了常见的“会话与压缩”配置骨架。重点是把会话行为与压缩策略显式化，便于验收与排障。
 
@@ -157,15 +157,17 @@ Telegram 渠道参考：https://docs.openclaw.ai/channels/telegram。
   agents: {
     defaults: {
       // 记忆与上下文压缩的核心开关与策略
-      memory: {
-        enabled: true
+      memorySearch: {
+        provider: "local"
       },
       contextPruning: {
-        enabled: true
+        mode: "cache-ttl"
       },
       compaction: {
         enabled: true,
-        memoryFlush: true
+        memoryFlush: {
+          enabled: true
+        }
       }
     }
   }

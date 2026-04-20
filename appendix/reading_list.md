@@ -69,19 +69,19 @@
 - Channels 命令：https://docs.openclaw.ai/cli/channels
 - Status 命令：https://docs.openclaw.ai/cli/status
 - Doctor 命令：https://docs.openclaw.ai/cli/doctor
-- 群组说明：https://docs.openclaw.ai/groups
-- 群组消息：https://docs.openclaw.ai/groups/messages
+- 群组说明：https://docs.openclaw.ai/channels/groups
+- 群组消息：https://docs.openclaw.ai/channels/group-messages
 - pairing 命令：https://docs.openclaw.ai/cli/pairing
 - Gateway 配置：https://docs.openclaw.ai/gateway/configuration
 
 ### [第六章](../06_context_memory/README.md)参考资料
 
-- 会话机制：https://docs.openclaw.ai/concepts/sessions
-- 配置参考：https://docs.openclaw.ai/gateway/configuration#session
+- 会话机制：https://docs.openclaw.ai/concepts/session
+- 配置参考：https://docs.openclaw.ai/gateway/configuration-reference#session
 - 工具结果裁剪：https://docs.openclaw.ai/gateway/configuration#agentsdefaultscontextpruning
 - Session 裁剪概念：https://docs.openclaw.ai/concepts/session-pruning
 - 记忆机制：https://docs.openclaw.ai/concepts/memory
-- 压缩与记忆刷新：https://docs.openclaw.ai/gateway/configuration#agentsdefaultscompaction
+- 压缩与记忆刷新：https://docs.openclaw.ai/reference/memory-config
 
 ### [第九章](../09_gateway_protocol/README.md)参考资料
 
