@@ -62,7 +62,7 @@
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `openclaw channels list` | 列出已配置的渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
-| `openclaw channels status` | 查看所有渠道状态 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
+| `openclaw channels status --probe` | 主动探测渠道链路状态 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw channels capabilities` | 渠道能力、配置与联调入口 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw channels add` | 添加新渠道（交互式向导） | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels add --channel telegram --token <TOKEN>` | 非交互式添加 Telegram 渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
@@ -210,13 +210,15 @@
 | `~/.openclaw/workspace/IDENTITY.md` | 智能体元数据（名称、形象） | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/TOOLS.md` | 环境级工具备忘 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/HEARTBEAT.md` | 心跳巡检清单 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
-| `~/.openclaw/workspace/BOOT.md` | Gateway 启动期的可选自检清单 | [2.3.4](../02_setup/2.3_onboarding.md) |
+| `~/.openclaw/workspace/BOOT.md` | 仅在启用对应 startup hook 时使用的启动脚本 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/BOOTSTRAP.md` | 首次运行入职脚本 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/MEMORY.md` | 可选长期记忆索引 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
-| `~/.openclaw/workspace/memory/` | 按日期分片的工作区记忆 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
-| `~/.openclaw/workspace/skills/` | 工作区级技能目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `~/.openclaw/workspace/memory/` | 记忆或 hook 写入目录，不等于每轮自动加载 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
+| `~/.openclaw/workspace/skills/` | 当前工作区技能目录；`openclaw skills install` 默认写到这里 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `~/.openclaw/workspace/.agents/skills/` | 工作区私有 Agent skills 目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `~/.openclaw/workspace/canvas/` | 节点 UI 或可视化资源 | [2.3.4](../02_setup/2.3_onboarding.md) |
-| `~/.openclaw/skills/` | 共享/托管技能目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `~/.openclaw/skills/` | 本地 override / 共享技能目录（非当前 CLI 默认安装目标） | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `~/.agents/skills/` | 用户级共享 Agent skills 目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `~/.openclaw/agents/` | Agent 数据目录 | — |
 | `~/.openclaw/cron/jobs.json` | 定时任务定义存储 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
 | `~/.openclaw/agents/<ID>/sessions/` | 会话记录 | [6.1](../06_context_memory/6.1_sessions.md) |

@@ -45,7 +45,7 @@ lsof -nP -iTCP -sTCP:LISTEN | head
 常用命令示例：
 
 ```bash
-openclaw channels status
+openclaw channels status --probe
 openclaw logs --limit 200
 ```
 
