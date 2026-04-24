@@ -183,7 +183,7 @@ openclaw logs --follow --json
 
 ### B.7 技能文件模板
 
-技能体系用于固化流程方法。当前更贴近实际使用的组织方式是把工作区技能放在 `<workspace>/skills/<skill-name>/SKILL.md`；若通过 `openclaw skills install` 安装，默认也会写入当前工作区的 `skills/` 目录。技能的格式与加载方式见官方说明：[技能概念](https://docs.openclaw.ai/concepts/skills)、[技能文档](https://docs.openclaw.ai/skills)。
+技能体系用于固化流程方法。当前更贴近实际使用的组织方式是把工作区技能放在 `<workspace>/skills/<skill-name>/SKILL.md`；若通过 `openclaw skills install` 安装，默认也会写入当前工作区的 `skills/` 目录。技能的格式与加载方式见官方说明：[技能机制](https://docs.openclaw.ai/tools/skills)、[技能命令](https://docs.openclaw.ai/cli/skills)。
 
 下面给出一个可直接复用的 `SKILL.md` 模板。
 
