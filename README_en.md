@@ -73,10 +73,10 @@ Different readers can choose their path:
 
 | Role | Core Chapters | Est. Time | What You'll Achieve |
 |------|--------------|-----------|-------------------|
-| Individual User | 1→2→3→5 | 2-3 hours | Build a personal WhatsApp/Telegram AI assistant |
-| App Developer | 1-7→12 | 8-10 hours | Develop custom tools, skills and multi-agent systems |
-| Ops Engineer | 2→3→8→11→14→15 | 6-8 hours | Production deployment, security hardening & troubleshooting |
-| Architect | 1→9→10→12→16 | 6-8 hours | Understand internals, design enterprise-grade agent architecture |
+| 🎮 Individual User | 1→2→3→5 | 2-3 hours | Build a personal WhatsApp/Telegram AI assistant |
+| 💻 App Developer | 1-7→12 | 8-10 hours | Develop custom tools, skills and multi-agent systems |
+| 🔧 Ops Engineer | 2→3→8→11→14→15 | 6-8 hours | Production deployment, security hardening & troubleshooting |
+| 🏗️ Architect | 1→9→10→12→16 | 6-8 hours | Understand internals, design enterprise-grade agent architecture |
 
 ## Related Books
 
