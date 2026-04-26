@@ -51,7 +51,7 @@
 This repository uses mdPress for building. For local preview:
 
 ```bash
-brew tap yeasy/tap && brew install mdpress
+brew tap yeasy/tap && brew install --cask mdpress
 mdpress serve
 ```
 
@@ -61,7 +61,7 @@ Other Markdown previewers can be used as auxiliary tools, but they are not the s
 
 New to OpenClaw? Just three steps:
 
-1. **Install** (1 min): `curl -fsSL https://openclaw.ai/install.sh | bash`
+1. **Install** (1 min): macOS / Linux / WSL: `curl -fsSL https://openclaw.ai/install.sh | bash`; Windows PowerShell: `iwr -useb https://openclaw.ai/install.ps1 | iex`
 2. **Initialize** (2 min): `openclaw onboard --install-daemon` → follow the wizard to configure your model API key and install the background service
 3. **Chat** (2 min): Run `openclaw dashboard`, type "hello" in WebChat, receive an AI response — you're done! 🎉
 

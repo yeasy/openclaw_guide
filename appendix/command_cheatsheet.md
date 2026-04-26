@@ -52,7 +52,7 @@
 |---|---|---|
 | `openclaw models list` | 列出所有已配置的模型 | [4.3](../04_config_models/4.3_model_selection.md) |
 | `openclaw models set <供应商/模型名>` | 切换默认模型 | [4.3](../04_config_models/4.3_model_selection.md) |
-| `openclaw models status --check` | 模型接口连通性验证 | [4.2](../04_config_models/4.2_provider_access.md) |
+| `openclaw models status --probe` | 模型认证与接口 live probe | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth add --provider <供应商>` | 交互式添加供应商认证档案 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth setup-token --provider <供应商>` | 为指定供应商生成 Token 录入流程 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth paste-token --provider <供应商>` | 粘贴 API Token 认证 | [4.2](../04_config_models/4.2_provider_access.md) |
@@ -179,7 +179,7 @@
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `/approve <id> <allow-once|allow-always|deny>` | 处理待确认的执行审批；`allow`/`once`/`always`/`reject` 等别名也可用 | [5.2](../05_tools_skills/5.2_tool_policy.md) |
-| `/cancel` | 取消当前正在执行的任务 | — |
+| `/stop` | 中止当前正在执行的 run | — |
 | `/tools [compact|verbose]` | 查看当前 Agent 可用的工具 | [5.1](../05_tools_skills/5.1_tool_inventory.md) |
 | `/elevated [on|off|ask|full]` | 调整 `exec` 的 elevated 执行模式 | [5.2](../05_tools_skills/5.2_tool_policy.md) |
 

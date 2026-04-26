@@ -3,7 +3,7 @@
 本附录不再把某一代旧字段硬写成“当前配置”，而是给出一套更安全的升级方法：先识别当前 schema 家族，再用 `doctor`、`config validate` 和 `config get/set/unset` 做增量迁移。
 
 > [!WARNING]
-> OpenClaw 使用日历版本号（CalVer），字段层级与命名可能随版本演进而变化。本附录仅提供迁移思路与当前 live 审计实例（2026.3.30）的可观察结构，不能替代官方文档与本地 `config schema`。
+> OpenClaw 使用日历版本号（CalVer），字段层级与命名可能随版本演进而变化。本附录仅提供迁移思路与当前公开版本（2026.4.24）附近的可观察结构，不能替代官方文档与本地 `config schema`。
 
 ### F.1 版本号方案
 
@@ -16,7 +16,7 @@ OpenClaw 采用**日历版本号（CalVer）**，格式为 `YYYY.M.D`：
 示例：
 
 ```text
-2025.11.15  →  2026.1.9  →  2026.2.14  →  2026.3.30
+2025.11.15  →  2026.1.9  →  2026.2.14  →  2026.4.24
 ```
 
 CalVer 的最大价值是“版本号天然携带时间语义”。做迁移判断时，先确认你当前运行的具体版本，再去看对应文档与 schema 输出。
@@ -75,7 +75,18 @@ openclaw doctor --deep
 openclaw doctor --repair
 ```
 
-> 当前官方 CLI 文档将 `--fix` 视为 `--repair` 的别名；同时，运行时提示和不少诊断输出仍常直接打印 `openclaw doctor --fix`。两者语义等价，实际以本地 `openclaw doctor --help` 为准。
+> `openclaw doctor --repair` 会在不再逐项提示的情况下应用推荐修复，并可能执行安全范围内的重启或服务修复；`--repair --force` 还可能覆盖自定义 supervisor 配置。对生产环境，先运行只读 `openclaw doctor` / `openclaw doctor --deep`，审查将要修改的配置后再进入 repair 模式。当前官方 CLI 文档将 `--fix` 视为 `--repair` 的别名；同时，运行时提示和不少诊断输出仍常直接打印 `openclaw doctor --fix`。两者语义等价，实际以本地 `openclaw doctor --help` 为准。
+
+#### `openclaw update`
+
+`openclaw update` 是当前官方升级入口之一，适合按 stable/beta/dev channel 拉取更新；更新后仍应重新运行 doctor、重启 Gateway，并执行健康检查。
+
+```bash
+openclaw update
+openclaw doctor
+openclaw gateway restart
+openclaw health
+```
 
 #### `openclaw config`
 

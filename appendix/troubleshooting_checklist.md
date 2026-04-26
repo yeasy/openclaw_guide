@@ -72,7 +72,7 @@ openclaw logs --limit 200
 
 # 按 trace_id 回放工具链路
 
-cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log | select(.trace_id=="t-...") | {ts,event,tool,err_type,cost_ms}'
+jq -c 'select(.trace_id=="t-...") | {ts,event,tool,err_type,cost_ms}' /tmp/openclaw/openclaw-YYYY-MM-DD.log
 ```
 
 > **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
@@ -99,7 +99,7 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log |
 
 # 统计错误分类占比
 
-cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -r 'select(.type=="log") | .log | select(.stage=="model_call_end" and .err_type!="") | .err_type' | sort | uniq -c | sort -nr | head
+jq -r 'select(.stage=="model_call_end" and .err_type!="") | .err_type' /tmp/openclaw/openclaw-YYYY-MM-DD.log | sort | uniq -c | sort -nr | head
 ```
 
 > **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
@@ -128,7 +128,7 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -r 'select(.type=="log") | .log |
 ```bash
 openclaw status --deep
 openclaw logs --follow --json
-cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log | select(.sessionKey!="") | {ts,trace_id,sessionKey,event,err_type}' | tail
+jq -c 'select(.sessionKey!="") | {ts,trace_id,sessionKey,event,err_type}' /tmp/openclaw/openclaw-YYYY-MM-DD.log | tail
 ```
 
 > **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
