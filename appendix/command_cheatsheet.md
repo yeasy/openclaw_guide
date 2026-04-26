@@ -152,7 +152,7 @@
 | `/new <任务描述>` | 开始新会话并附带任务 | [6.1](../06_context_memory/6.1_sessions.md) |
 | `/compact` | 压缩当前上下文（保留要点，减少 Token） | [6.4](../06_context_memory/6.4_compaction_pruning.md) |
 | `/btw <问题>` | 针对当前上下文的旁路提问，不影响后续会话上下文 | — |
-| `/status` | 查看当前会话状态（Token 用量、模型等） | [6.1](../06_context_memory/6.1_sessions.md) |
+| `/status` | 查看当前会话状态（运行时、模型、用量等） | [6.1](../06_context_memory/6.1_sessions.md) |
 | `/help` 或 `/commands` | 查看所有可用斜杠命令 | — |
 
 **模型切换**
@@ -162,23 +162,26 @@
 | `/model` | 查看当前使用的模型 | [4.3](../04_config_models/4.3_model_selection.md) |
 | `/model <模型名>` | 切换到指定模型 | [4.3](../04_config_models/4.3_model_selection.md) |
 
-**会话历史**
+**后台任务与子智能体**
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `/sessions list` | 列出所有会话 | [6.1](../06_context_memory/6.1_sessions.md) |
-| `/sessions history` | 查看会话历史 | [6.1](../06_context_memory/6.1_sessions.md) |
-| `/sessions send <会话ID> <消息>` | 向指定会话发消息 | [6.1](../06_context_memory/6.1_sessions.md) |
-| `/sessions spawn <任务>` | 创建子会话执行任务 | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
+| `/tasks` | 查看当前会话的后台任务 | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
+| `/subagents spawn <agentId> <task> [--model <model>] [--thinking <level>]` | 启动指定 Agent 作为子智能体执行任务 | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
+| `/subagents list` | 查看当前会话的子智能体运行列表 | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
+| `/subagents info <id|#>` | 查看子智能体详情 | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
+| `/subagents send <id|#> <消息>` | 向子智能体发送消息 | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
+| `/steer <id|#> <消息>` | 向正在运行的子智能体发送 steering | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
+| `/kill <id|#|all>` | 终止一个或全部正在运行的子智能体 | [7.4](../07_multi_agent/7.4_collaboration_patterns.md) |
 
 **工具与执行控制**
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `/approve` | 批准待确认的操作 | [5.2](../05_tools_skills/5.2_tool_policy.md) |
-| `/deny` | 拒绝待确认的操作 | [5.2](../05_tools_skills/5.2_tool_policy.md) |
+| `/approve <id> <allow-once|allow-always|deny>` | 处理待确认的执行审批；`allow`/`once`/`always`/`reject` 等别名也可用 | [5.2](../05_tools_skills/5.2_tool_policy.md) |
 | `/cancel` | 取消当前正在执行的任务 | — |
-| `/undo` | 撤销上一步操作 | — |
+| `/tools [compact|verbose]` | 查看当前 Agent 可用的工具 | [5.1](../05_tools_skills/5.1_tool_inventory.md) |
+| `/elevated [on|off|ask|full]` | 调整 `exec` 的 elevated 执行模式 | [5.2](../05_tools_skills/5.2_tool_policy.md) |
 
 **技能、插件与记忆**
 
@@ -187,14 +190,14 @@
 | `/skill <名称> [输入]` | 按名称运行指定技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `/plugins list\|show\|get\|install\|enable\|disable` | 插件/扩展发现、安装与启停（需 `commands.plugins: true`） | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `/plugin ...` | `/plugins` 的别名 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
-| `/memory` | 查看记忆内容 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
-| `/forget <内容>` | 删除指定记忆 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
+| `/pair [qr\|status\|pending\|approve\|cleanup\|notify]` | 管理设备配对与批准流 | [9.5](../09_gateway_protocol/9.5_pairing_trust.md) |
 
 **信息查询**
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `/usage cost` | 查看 Token 消耗与费用估算 | [14.3](../14_performance_cost/14.3_usage_budget.md) |
+| `/usage off\|tokens\|full\|cost` | 控制用量显示或打印本地成本汇总 | [14.3](../14_performance_cost/14.3_usage_budget.md) |
+| `/whoami` 或 `/id` | 查看当前 sender id | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `/version` | 查看版本信息 | — |
 | `/ping` | 测试连接是否正常 | — |
 

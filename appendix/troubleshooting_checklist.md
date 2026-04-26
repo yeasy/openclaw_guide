@@ -106,7 +106,7 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -r 'select(.type=="log") | .log |
 
 关联阅读：
 
-- [11.1 多密钥治理：keys、keyId 与认证档案](../11_reliability_security/11.1_auth_profiles.md)
+- [11.1 多密钥治理：认证档案、环境变量与轮换顺序](../11_reliability_security/11.1_auth_profiles.md)
 - [11.2 冷却与禁用：故障窗口内的止血机制](../11_reliability_security/11.2_rotation_cooldown.md)
 - [11.3 模型回退链路与错误分流](../11_reliability_security/11.3_fallback_rules.md)
 
