@@ -91,7 +91,7 @@
 
 ### [第十一章](../11_reliability_security/README.md)参考资料
 
-- 配置 models: https://docs.openclaw.ai/gateway/configuration\#models
+- 配置 models: https://docs.openclaw.ai/gateway/configuration#models
 - Multi-agent sandbox tools: https://docs.openclaw.ai/tools/multi-agent-sandbox-tools
 - Models 命令: https://docs.openclaw.ai/cli/models
 - Model Failover: https://docs.openclaw.ai/concepts/model-failover
