@@ -53,7 +53,7 @@
 本仓库当前使用 mdPress 构建，本地预览建议直接使用仓库脚本：
 
 ```bash
-brew tap yeasy/tap && brew install --cask mdpress
+brew tap yeasy/tap && brew install mdpress
 mdpress serve
 ```
 
@@ -63,7 +63,7 @@ mdpress serve
 
 还没用过 OpenClaw？只需三步即可体验：
 
-1. **安装**（1分钟）：macOS / Linux / WSL 运行 `curl -fsSL https://openclaw.ai/install.sh | bash`；Windows PowerShell 运行 `iwr -useb https://openclaw.ai/install.ps1 | iex`
+1. **安装**（1分钟）：`curl -fsSL https://openclaw.ai/install.sh | bash`
 2. **初始化**（2分钟）：`openclaw onboard --install-daemon` → 按向导完成首次配置并安装后台服务
 3. **对话**（2分钟）：运行 `openclaw dashboard`，在 WebChat 输入“你好”，收到 AI 回复即成功 🎉
 

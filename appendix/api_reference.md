@@ -20,11 +20,11 @@ openclaw doctor
 openclaw health --json
 openclaw status --deep
 openclaw channels capabilities
-openclaw models status --probe
+openclaw models status --check
 openclaw logs --follow --json
 ```
 
-这些命令覆盖了依赖自检、运行状态、渠道探针、模型 live probe 和链路回放，是最小可复验集。
+这些命令覆盖了依赖自检、运行状态、渠道探针、模型探针和链路回放，是最小可复验集。
 
 ### D.3 WebSocket 与事件流参考
 

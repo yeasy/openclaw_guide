@@ -17,15 +17,7 @@ else
     fi
   fi
 fi
-if npm --version >/dev/null 2>&1; then
-  echo "npm: $(npm --version)"
-elif pnpm --version >/dev/null 2>&1; then
-  echo "pnpm: $(pnpm --version)"
-elif bun --version >/dev/null 2>&1; then
-  echo "bun: $(bun --version)"
-else
-  echo "提示: 未检测到 npm/pnpm/bun。官方安装脚本可自动处理 Node/npm；手动 Node 生态安装至少需要一种包管理器"
-fi
+npm --version || echo "提示: 未安装 npm。如果不使用自动化脚本安装，这是必需项"
 docker --version || echo "提示: 未安装 Docker (如使用容器化部署则是必需项)"
 
 echo "测试网络连通（官方安装脚本）..."

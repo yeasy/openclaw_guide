@@ -38,7 +38,7 @@
 
 ```bash
 openclaw doctor
-openclaw models status --probe
+openclaw models status --check
 openclaw status --deep
 ```
 
