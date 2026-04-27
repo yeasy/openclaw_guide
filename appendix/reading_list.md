@@ -10,8 +10,8 @@
 - [OpenClaw 官方代码仓库](https://github.com/openclaw/openclaw)
 - [OpenClaw 官方文档入口](https://docs.openclaw.ai/)
 - 关键模块文档：
-  - [快速开始 (Getting Started)](https://docs.openclaw.ai/start/getting-started)
-  - [初始化配置 (Onboarding CLI)](https://docs.openclaw.ai/start/wizard)
+  - [快速开始 (Getting Started)](https://docs.openclaw.ai/getting-started)
+  - [初始化配置 (Onboard)](https://docs.openclaw.ai/getting-started/onboard)
   - [CLI 命令: Health](https://docs.openclaw.ai/cli/health)
   - [CLI 命令: Status](https://docs.openclaw.ai/cli/status)
   - [架构设计 (Gateway Architecture)](https://docs.openclaw.ai/concepts/architecture)
@@ -20,7 +20,7 @@
   - [模型故障转移 (Model Failover)](https://docs.openclaw.ai/concepts/model-failover)
   - [网关运维 (Gateway Runbook)](https://docs.openclaw.ai/gateway)
   - [安全配置 (Security)](https://docs.openclaw.ai/gateway/security)
-  - [设备配对 (Pairing)](https://docs.openclaw.ai/cli/pairing)
+  - [设备配对 (Pairing)](https://docs.openclaw.ai/pairing)
 - 历史版本发布与动态（以 Release 页面为准）：
   - [v2026.2.19 Release](https://github.com/openclaw/openclaw/releases/tag/v2026.2.19)
   - [v2026.1.29 Release](https://github.com/openclaw/openclaw/releases/tag/v2026.1.29)

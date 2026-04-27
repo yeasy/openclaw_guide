@@ -10,7 +10,7 @@
 [![Online Reading](https://img.shields.io/badge/Read_Online-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
 [![PDF](https://img.shields.io/badge/PDF-Download-orange)](https://github.com/yeasy/openclaw_guide/releases/latest)
 
-> **[OpenClaw](https://github.com/openclaw/openclaw) is an open-source, local-first personal AI assistant / self-hosted gateway**, built by Peter Steinberger and the community. This book provides a comprehensive guide from getting started to production deployment, with deep dives into the underlying mechanisms and implementation principles.
+> **[OpenClaw](https://github.com/openclaw/openclaw) is an open-source, self-driven AI agent**, created by Peter Steinberger. This book provides a comprehensive guide from getting started to production deployment, with deep dives into the underlying mechanisms and implementation principles.
 
 <img src="cover.jpg" alt="OpenClaw Guide Cover" width="300" />
 

@@ -10,7 +10,7 @@
 [![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
 [![PDF](https://img.shields.io/badge/PDF-下载-orange)](https://github.com/yeasy/openclaw_guide/releases/latest)
 
-> **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源、本地优先的 personal AI assistant / 自托管智能助手网关**，由 Peter Steinberger 与社区共同构建。本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
+> **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源自驱型智能体**，由 Peter Steinberger 创建。本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
 
 <img src="cover.jpg" alt="OpenClaw Guide Cover" width="300" />
 
