@@ -5,8 +5,8 @@
 ### 关键结论
 
 - **模型接入的落点在配置**：Claude 模型通过 `provider/model` 标识符接入，大多数场景下 `openclaw onboard` 完成认证后只需指定 `agents.defaults.model`，无需手动写 `models.providers`。
-- **MCP 是工具扩展的标准路径**：标准传输是 `stdio` 与 Streamable HTTP；OpenClaw 另外兼容 legacy SSE，并把接入后的 MCP 工具与内置工具统一纳入模型调度。
-- **多智能体协作有两种架构路径**：Bindings / Agent 路由隔离适合业务域分工，子 Agent 委托适合任务分解与专家协作；两者可组合使用。
+- **MCP 是工具扩展的标准路径**：通过 stdio、HTTP 或 WebSocket 方式接入外部 MCP 服务器，与 OpenClaw 内置工具并行存在，由模型推理阶段统一调度。
+- **多智能体协作有两种架构路径**：Node 级路由隔离适合业务域分工，Agent 级委托适合任务分解与专家协作；两者可组合使用。
 - **Agent SDK 与 OpenClaw 互补**：Agent SDK 侧重编排逻辑开发，OpenClaw 侧重运行平台管控（渠道接入、安全审批、会话管理），生产系统中可将 Agent SDK 应用作为 OpenClaw 的 Agent 或 MCP 服务器接入。
 - **多生态混合是生产常态**：OpenAI 通过兼容接口接入，Ollama 本地模型适合隐私优先或离线兜底场景；不同生态可按任务复杂度和成本要求灵活组合。
 
