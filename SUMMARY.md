@@ -76,7 +76,7 @@
   * [10.6 流式输出、重试与提前终止](10_agent_loop/10.6_streaming_retry.md)
   * [10.7 本章小结](10_agent_loop/summary.md)
 * [第十一章 可靠性与安全机制实现](11_reliability_security/README.md)
-  * [11.1 多密钥治理：keys、keyId 与认证档案](11_reliability_security/11.1_auth_profiles.md)
+  * [11.1 认证档案治理：auth.profiles 与 auth-profiles.json](11_reliability_security/11.1_auth_profiles.md)
   * [11.2 冷却与禁用：故障窗口内的止血机制](11_reliability_security/11.2_rotation_cooldown.md)
   * [11.3 模型回退链路与错误分流](11_reliability_security/11.3_fallback_rules.md)
   * [11.4 防护栏：工具策略、沙箱、审批与审计联动](11_reliability_security/11.4_guardrails.md)

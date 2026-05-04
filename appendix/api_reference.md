@@ -31,7 +31,7 @@ openclaw logs --follow --json
 如需对接长连接与事件流，请优先阅读：
 
 - Gateway：<https://docs.openclaw.ai/gateway>
-- 多智能体路由：<https://docs.openclaw.ai/concepts/multi-agent-routing>
+- 多智能体路由：<https://docs.openclaw.ai/concepts/multi-agent>
 - 事件幂等与故障切换：<https://docs.openclaw.ai/concepts/model-failover>
 
 接口实现建议遵循三条原则：

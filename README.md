@@ -65,7 +65,7 @@ mdpress serve
 
 1. **安装**（1分钟）：`curl -fsSL https://openclaw.ai/install.sh | bash`
 2. **初始化**（2分钟）：`openclaw onboard --install-daemon` → 按向导完成首次配置并安装后台服务
-3. **对话**（2分钟）：运行 `openclaw dashboard`，在 WebChat 输入“你好”，收到 AI 回复即成功 🎉
+3. **对话**（2分钟）：运行 `openclaw dashboard`，在浏览器打开的 Control UI 聊天页输入“你好”，收到 AI 回复即成功 🎉
 
 详见 [第二章：环境搭建](02_setup/README.md) 和 [第三章：首次会话](03_minimal_loop/README.md)。
 
