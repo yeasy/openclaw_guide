@@ -27,7 +27,7 @@ echo "自检完成"
 
 ```text
 === OpenClaw 环境自检 ===
-v22.12.0
+v22.16.0
 10.2.3
 Docker version 27.3.1, build ce1223035a
 测试网络连通（官方安装脚本）...
