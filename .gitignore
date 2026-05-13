@@ -33,3 +33,11 @@ do_push.bat
 commit_log.txt 
 push_log.txt 
 final_log.txt 
+
+# Temp analysis files
+CONSISTENCY_REPORT.md
+REVIEW_REPORT.txt
+check_consistency.py
+check_structure.py
+format_scanner.py
+.fuse_hidden*
