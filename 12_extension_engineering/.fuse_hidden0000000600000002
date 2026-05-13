@@ -1,0 +1,242 @@
+## 12.2 自定义工具：把副作用关进可控边界
+
+自定义工具的难点不在“写一个函数”，而在“如何把副作用做成可控、可审计、可回滚的工程能力”。在 OpenClaw 中，插件负责引入工具能力，工具策略负责收敛可执行边界，多智能体与沙箱工具负责把高风险动作隔离在受控执行域。本节聚焦工具扩展的落地方法，强调配置层面的确定性约束与可验证的验收路径。
+
+### 12.2.1 自定义工具的最小原则：输入可验证，输出可回放
+
+将工具纳入系统之前，应先明确三项契约：
+
+1. 输入约束：参数必须可验证，避免把“自由文本”直接作为高风险工具参数。
+2. 输出约束：输出必须结构化，避免回注导致上下文膨胀。
+3. 副作用边界：写操作必须具备幂等或对账路径，失败时必须给出人工核查步骤。
+
+这些约束不依赖模型能力，属于工具设计的确定性底线。
+
+#### 工具设计的常见反例
+
+以下三个反例说明为什么上述约束缺一不可：
+
+**反例一：把自由文本直接作为 shell 命令参数**
+
+某个数据导出工具接受用户提供的表名作为参数，不做校验直接嵌入 SQL 查询字符串。攻击者可以注入 `; DROP TABLE users; --` 导致数据丢失。约束“输入可验证”要求参数必须通过白名单或正则模式验证，不允许自由文本直接参与高风险操作。
+
+**反例二：工具输出未结构化，回注导致上下文膨胀**
+
+某个日志查询工具输出整个日志文件的原始内容，模型无法解析，被迫通过多轮补全请求来理解结果。最终模型上下文中充斥大量冗余日志，导致后续推理变慢且易出错。约束“输出结构化”要求工具必须预先过滤与聚合，只返回关键字段，例如：`{ "error_count": 5, "latest_error": "...", "affected_services": [...] }`。
+
+**反例三：写操作缺乏幂等键，重试导致重复创建**
+
+某个工单创建工具没有实现去重逻辑，当网络超时导致重试时，系统会多次创建相同的工单。即使模型检测到重复，也无法自动回滚，最终需要人工清理。约束“副作用可回滚”要求写操作必须支持幂等键（如请求 ID）或显式提供回滚步骤（如“删除工单ID 10001”）。
+
+### 12.2.2 把工具接入工具策略：分层规则与拒绝优先
+
+工具治理应落在工具策略层。官方文档给出了工具的允许、拒绝与按渠道/群组分层限制机制，并强调拒绝规则优先：[https://docs.openclaw.ai/tools](https://docs.openclaw.ai/tools)。
+
+下面示例展示了一个常见写法：默认禁止高风险写工具，仅在受控入口策略中按需放开。
+
+```javascript
+{
+  tools: {
+    profile: 'coding',
+    deny: ['group:runtime', 'write', 'edit', 'apply_patch'],
+  },
+  channels: {
+    webchat: {
+      groups: {
+        '*': {
+          tools: { deny: ['group:runtime'] },
+        },
+      },
+    },
+    ops: {
+      groups: {
+        '*': {
+          tools: { deny: ['group:runtime'] },
+          toolsBySender: {
+            'admin_user': { alsoAllow: ['group:fs'] },
+          },
+        },
+      },
+    },
+  },
+}
+```
+
+当某个请求触发了写工具但被拒绝时，日志应给出明确拒绝原因，便于追溯是策略拒绝还是参数不合法。
+
+#### 工具注册的 TypeScript 签名
+
+OpenClaw 插件使用 TypeScript 进行工具注册。官方 SDK 采用单对象注册模式，参数 schema 使用 `Type.Object()`（基于 TypeBox），执行逻辑通过 `execute(id, params)` 方法实现。以下示例展示了一个符合官方签名的工具注册流程，包含参数约束、错误处理与结构化返回：
+
+```typescript
+import { Type } from "@sinclair/typebox";
+
+api.registerTool({
+  name: "create_ticket",
+  description: "Create a support ticket with validation",
+  parameters: Type.Object({
+    title: Type.String({ minLength: 5, maxLength: 200 }),
+    category: Type.Union([
+      Type.Literal("bug"),
+      Type.Literal("feature"),
+      Type.Literal("ops"),
+    ]),
+    priority: Type.Number({ minimum: 1, maximum: 5 }),
+    assignee_id: Type.String({ pattern: "^[0-9a-f]+$" }),
+  }),
+  async execute(id, params) {
+    // 执行层（带错误处理）
+    try {
+      const ticket = await ticketService.create({
+        title: params.title,
+        category: params.category,
+        priority: params.priority,
+        assignee_id: params.assignee_id,
+        idempotency_key: id, // 用工具调用 ID 作为幂等键
+      });
+
+      // 结构化返回
+      return {
+        success: true,
+        ticket_id: ticket.id,
+        status: ticket.status,
+        created_at: ticket.createdAt,
+      };
+    } catch (err) {
+      return { success: false, error: "internal error", ticket_id: null };
+    }
+  },
+});
+```
+
+关键点：(1) 参数 schema 使用 TypeBox 的 `Type.Object()` 声明，由框架在调用前自动校验，无需在 execute 中重复验证；(2) `execute(id, params)` 的 `id` 是框架分配的调用标识，可直接用作幂等键；(3) 返回值必须结构化，至少包含 success 状态与相关 ID 便于后续追踪。
+
+### 12.2.3 工具版本管理与生命周期
+
+生产环境的工具不能无限迭代。需要建立明确的版本管理与弃用策略，确保已部署的智能体行为不会因工具变更而破裂。
+
+OpenClaw 官方目前未内置工具版本管理机制，但以下工程实践可以帮助团队自行管理工具的演进与弃用。推荐做法如下：
+
+1. 工具定义中声明向后兼容性。当参数、返回值或行为变化时，应明确标记是否兼容。
+2. 弃用期设置在 180 天以上。当某个工具版本进入弃用期时，应显式警告并给出升级窗口。
+3. 记录工具调用链路上的版本号，便于追溯行为差异。
+
+以下是一种团队自行维护的版本追踪方案示例（非官方配置格式，仅作工程参考）：
+
+```javascript
+// 团队内部的工具版本追踪文件（如 tool-versions.json），用于文档化管理
+{
+  tools: [
+    {
+      id: 'query_database',
+      versions: {
+        '1.0': {
+          status: 'deprecated',
+          params: ['query', 'timeout'],
+          deprecatedAt: '2026-01-15',
+          sunsetsAt: '2026-07-15',
+          migrateToVersion: '1.1',
+        },
+        '1.1': {
+          status: 'active',
+          params: ['query', 'timeout', 'schema'],
+        },
+      },
+    },
+  ],
+}
+```
+
+在工具调用日志中记录所选版本，便于定位是因版本差异导致的行为不一致：
+
+```bash
+openclaw logs --follow --json | jq -c 'select(.tool_call) | {trace_id, tool, version, params, result}'
+```
+
+版本策略与工具策略协同效果最佳：可以按版本粒度控制允许与拒绝。例如，允许 `query_database@1.1` 但禁止 `query_database@1.0`，确保只有新版本被执行。
+
+### 12.2.4 工具组合与编排：多工具协作的确定性约束
+
+单个工具的幂等性保证不足以处理复杂任务。当多个工具需要协作时，工具之间的依赖关系、执行顺序与数据流必须显式声明，而不是依赖模型的“推理”。
+
+定义工具编排脚本时，建议采用声明式依赖图：
+
+1. 显式声明工具调用的前置条件与后置验证。
+2. 工具输出必须经过验证才能作为下一工具的输入。
+3. 失败原子性：某工具失败时的回滚路径必须预先计划。
+
+```javascript
+{
+  tools: {
+    orchestration: {
+      workflows: [
+        {
+          id: 'deploy_service',
+          steps: [
+            {
+              tool: 'validate_config',
+              params: { config_path: '/config.yaml' },
+              required: true,
+              onFailure: 'abort',
+            },
+            {
+              tool: 'build_image',
+              params: { source: '/src', tag: 'service:latest' },
+              requires: ['validate_config'],
+              requiredOutputSchema: { passed: 'boolean' },
+            },
+            {
+              tool: 'push_registry',
+              params: { image: 'service:latest', registry: 'internal' },
+              requires: ['build_image'],
+              requiredOutputSchema: { imageId: 'string' },
+            },
+            {
+              tool: 'deploy_canary',
+              params: { image: 'service:latest', replicas: 1 },
+              requires: ['push_registry'],
+              onFailure: 'rollback_to:previous_image',
+            },
+          ],
+        },
+      ],
+    },
+  },
+}
+```
+
+工具编排执行时，每步的输入输出都应被记录在日志中，便于后续重放与定位：
+
+```bash
+openclaw logs --follow --json | jq -c 'select(.orchestration_event) | {workflow_id, step, tool, inputs, outputs, status}'
+```
+
+### 12.2.5 高风险工具的隔离执行：多智能体沙箱工具
+
+对于涉及代码执行、文件写入或系统操作的高风险工具，建议配合多智能体沙箱工具将执行域隔离出来。官方文档给出了沙箱工具的能力边界与认证配置，并指出认证配置文件位于 `~/.openclaw/agents/<agentId>/agent/auth-profiles.json`：[https://docs.openclaw.ai/tools/multi-agent-sandbox-tools](https://docs.openclaw.ai/tools/multi-agent-sandbox-tools)。
+
+工程上建议采用“少数智能体拥有写能力”的模式：
+
+1. 大多数入口智能体只允许读工具与诊断命令。
+2. 少数运维智能体在明确入口与审计前提下允许沙箱写工具。
+
+这与第7章的入口绑定与路由策略配合使用，可以把越权风险收敛到可计算范围。
+
+#### 沙箱工具的认证配置
+
+沙箱工具执行高风险操作时必须基于明确的认证身份。认证配置文件 `~/.openclaw/agents/<agentId>/agent/auth-profiles.json` 定义了沙箱环境中可用的认证凭证与权限边界，确保写工具只能在授权范围内执行。例如，可以为某个运维智能体配置 SSH 密钥或 API Token，使其只能操作指定的基础设施资源，而读工具则不受认证限制。这种认证隔离配合前述的工具策略拒绝规则，形成多层防御。
+
+### 12.2.6 验收与排障：先看策略加载，再看单次调用链
+
+自定义工具上线后的验收建议固定为两步：
+
+1. 配置验收：用 `status --deep` 确认 `tools.deny` 与 `channels.*.groups.*.tools` 限制已加载。
+2. 行为验收：用结构化日志观察工具调用与拒绝事件，确保拒绝规则生效。
+
+```bash
+openclaw status --deep
+openclaw logs --follow --json
+```
+
+如果发现工具被误允许，优先回到工具策略检查 deny 与渠道/群组级策略限制；如果发现工具执行失败，优先区分外部依赖故障与参数不合法，再决定是否允许有界重试。
+
