@@ -24,25 +24,26 @@
   agents: {
     defaults: {
       model: {
-        primary: "openai-codex/gpt-5.4",
-        fallbacks: ["openai-codex/gpt-5.4-nano", "anthropic/claude-sonnet-4-6"],
+        primary: "openai/gpt-5.5",
+        fallbacks: ["openai/gpt-5.4-mini", "anthropic/claude-sonnet-4-6"],
       },
     },
   },
 }
 ```
 
-如果你走的是直接 API Key 路径，上述 `openai-codex/*` 也可以整体替换为 `openai/*`。关键是与当前认证方式和本地模型目录保持一致。
+如果你走的是 ChatGPT/Codex 订阅 OAuth，仍用 `openai-codex` auth profile 表达凭据，但新配置中的模型引用优先保持 `openai/*`，并与当前模型目录和运行时策略保持一致。
 
 2) 验收命令（只看结果，不靠感觉）：
 
 ```bash
 openclaw doctor
 openclaw models status --check
+openclaw models status --probe
 openclaw status --deep
 ```
 
-达到的目标：provider 可用、默认模型可解释、回退链路存在且可演练。
+达到的目标：认证状态可解释、provider live auth 可验证、默认模型可解释、回退链路存在且可演练。
 
 ### 4.5.3 读者自检
 

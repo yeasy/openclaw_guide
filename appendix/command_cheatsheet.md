@@ -11,10 +11,13 @@
 | `openclaw tui` | 打开终端交互对话界面 | [2.3](../02_setup/2.3_onboarding.md) |
 | `openclaw dashboard` | 打开网页控制台（Dashboard） | [3.1](../03_minimal_loop/3.1_control_ui_webchat.md) |
 | `openclaw gateway restart` | 重启网关服务（改完配置后常用） | [4.1](../04_config_models/4.1_config_system.md) |
-| `openclaw gateway stop` | 停止网关服务 | — |
+| `openclaw gateway stop` | 停止网关服务；不要用作“重启”的前半步 | — |
 | `openclaw update` | 更新到最新版本 | [2.2](../02_setup/2.2_installation.md) |
+| `openclaw update status` | 查看当前安装与更新状态 | [2.2](../02_setup/2.2_installation.md) |
+| `openclaw update --dry-run` | 预演更新，不实际安装 | [2.2](../02_setup/2.2_installation.md) |
 | `openclaw update --channel stable` | 切换到稳定版通道并更新 | [2.2](../02_setup/2.2_installation.md) |
 | `openclaw update --channel beta` | 切换到测试版通道并更新 | [2.2](../02_setup/2.2_installation.md) |
+| `openclaw update --channel dev` | 切换到开发通道并更新 | [2.2](../02_setup/2.2_installation.md) |
 
 ### E.2 安装、初始化与配置
 
@@ -37,7 +40,7 @@
 | `openclaw doctor --repair` | 健康检查 + 应用推荐修复（`--fix` 为别名） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw health --json` | 健康探针（适合自动化） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw status` | 查看运行状态（Gateway 是否在线、端口等） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
-| `openclaw status --deep` | 详细状态（含网关健康探测） | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
+| `openclaw status --deep` | 详细状态与渠道 live probe | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw logs` | 查看最近日志 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw logs --follow --json` | 实时跟踪结构化日志 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw security audit` | 安全基线审计（谁能对话、在哪执行、能触及什么） | [8.5](../08_automation_ops/8.5_security_baseline.md) |
@@ -52,8 +55,9 @@
 |---|---|---|
 | `openclaw models list` | 列出所有已配置的模型 | [4.3](../04_config_models/4.3_model_selection.md) |
 | `openclaw models set <供应商/模型名>` | 切换默认模型 | [4.3](../04_config_models/4.3_model_selection.md) |
-| `openclaw models status --check` | 模型接口连通性验证 | [4.2](../04_config_models/4.2_provider_access.md) |
-| `openclaw models auth add --provider <供应商>` | 交互式添加供应商认证档案 | [4.2](../04_config_models/4.2_provider_access.md) |
+| `openclaw models status --check` | 检查认证缺失、过期或即将过期 | [4.2](../04_config_models/4.2_provider_access.md) |
+| `openclaw models status --probe` | live provider 认证探针 | [4.2](../04_config_models/4.2_provider_access.md) |
+| `openclaw models auth add` | 交互式添加供应商认证档案 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth setup-token --provider <供应商>` | 为指定供应商生成 Token 录入流程 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth paste-token --provider <供应商>` | 粘贴 API Token 认证 | [4.2](../04_config_models/4.2_provider_access.md) |
 
@@ -66,13 +70,13 @@
 | `openclaw channels capabilities` | 渠道能力、配置与联调入口 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw channels add` | 添加新渠道（交互式向导） | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels add --channel telegram --token <TOKEN>` | 非交互式添加 Telegram 渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
-| `openclaw channels add --channel feishu` | 添加飞书渠道 | [7.2](../07_multi_agent/7.2_lark_integration.md) |
+| `openclaw channels add` | 添加/绑定飞书渠道（向导中选择 Feishu） | [7.2](../07_multi_agent/7.2_lark_integration.md) |
 | `openclaw channels remove --channel <名称>` | 移除渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels logs` | 查看渠道日志 | [3.2](../03_minimal_loop/3.2_diagnostics.md) |
 | `openclaw channels login` | 登录渠道（如 WhatsApp Web） | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 | `openclaw channels logout` | 登出渠道 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
 
-常见渠道类型包括：`whatsapp`、`telegram`、`discord`、`slack`、`googlechat`、`signal`、`bluebubbles`、`irc`、`matrix`、`nextcloud-talk`、`nostr`、`qqbot`、`synology-chat`、`twitch`、`openclaw-weixin`、`zalo`、`zalouser`、`feishu`、`mattermost`、`msteams`。`webchat` 更适合作为内部 UI 渠道理解，而不是常规出站 channel 类型；`imessage` 目前属于 legacy 路径。完整列表以当前版本 CLI 与官方渠道文档为准。
+常见渠道类型包括：`whatsapp`、`telegram`、`discord`、`slack`、`googlechat`、`signal`、`imessage`、`irc`、`matrix`、`nextcloud-talk`、`nostr`、`qqbot`、`synology-chat`、`twitch`、`openclaw-weixin`、`zalo`、`zalouser`、`feishu`、`mattermost`、`msteams`。`webchat` 更适合作为内部 UI 渠道理解，而不是常规出站 channel 类型；BlueBubbles 已迁移为 iMessage 路径。完整列表以当前版本 CLI 与官方渠道文档为准。
 
 ### E.6 插件与技能
 
@@ -81,7 +85,7 @@
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `openclaw plugins list` | 列出所有插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
-| `openclaw plugins install <插件名>` | 安装插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
+| `openclaw plugins install <path-or-spec>` | 按 npm、ClawHub、git、本地路径或 marketplace spec 安装插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins enable <插件名>` | 启用插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins disable <插件名>` | 禁用插件 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
 | `openclaw plugins inspect <插件名>` | 查看单个插件详情与来源 | [12.1](../12_extension_engineering/12.1_plugin_architecture.md) |
@@ -94,17 +98,25 @@
 | `openclaw skills search <关键词>` | 在技能仓库中搜索技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `openclaw skills list` | 列出已安装的技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `openclaw skills install <技能名>` | 安装技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `openclaw skills update <技能名>` / `openclaw skills update --all` | 更新单个技能或当前工作区内所有可追踪 ClawHub 技能 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 
 ### E.7 网关管理
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `openclaw gateway start` | 启动网关 | [2.4](../02_setup/2.4_gateway_service.md) |
-| `openclaw gateway --port <端口>` | 指定端口启动 | [2.4](../02_setup/2.4_gateway_service.md) |
-| `openclaw gateway --verbose` | 启动并显示详细日志 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway run --port <端口>` | 指定端口前台启动 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway run --verbose` | 前台启动并显示详细日志 | [2.4](../02_setup/2.4_gateway_service.md) |
 | `openclaw gateway status` | 查看网关的当前状态 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway install` | 安装托管 Gateway 服务 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway uninstall` | 卸载托管 Gateway 服务 | [2.4](../02_setup/2.4_gateway_service.md) |
 | `openclaw gateway restart` | 重启网关 | [2.4](../02_setup/2.4_gateway_service.md) |
-| `openclaw gateway --token <token>` | 带 token 启动 | [9.3](../09_gateway_protocol/9.3_ws_handshake.md) |
+| `openclaw gateway stop --disable` | macOS 上停止并持久禁用 LaunchAgent 自动启动 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw gateway run --token <token>` | 带 token 前台启动 | [9.3](../09_gateway_protocol/9.3_ws_handshake.md) |
+| `openclaw daemon status` | 服务状态别名入口 | [2.4](../02_setup/2.4_gateway_service.md) |
+| `openclaw daemon install/start/stop/restart/uninstall` | 服务生命周期别名入口 | [2.4](../02_setup/2.4_gateway_service.md) |
+
+> macOS 上需要重启托管 Gateway 时，优先使用 `openclaw gateway restart`。不要把 `gateway stop` + `gateway start` 当作等价重启流程。
 
 ### E.8 沙箱与浏览器
 
@@ -126,8 +138,8 @@
 | `openclaw browser open <URL>` | 打开网页 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
 | `openclaw browser snapshot` | 截取当前页面快照 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
 | `openclaw browser screenshot` | 截图 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
-| `openclaw browser click <元素>` | 点击页面元素 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
-| `openclaw browser type <元素> <文字>` | 在输入框中输入文字 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
+| `openclaw browser click <ref>` | 点击快照中的页面元素 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
+| `openclaw browser type <ref> "文字"` | 在快照引用对应的输入框中输入文字 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
 | `openclaw browser stop` | 停止浏览器服务 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
 | `openclaw browser close <tab>` | 关闭指定标签页 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
 | `openclaw browser console` | 查看浏览器控制台日志 | [5.4](../05_tools_skills/5.4_browser_nodes.md) |
@@ -137,20 +149,20 @@
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `openclaw message send --target <号码> --message "内容"` | 向指定目标发送消息 | [7.1](../07_multi_agent/7.1_telegram_whatsapp.md) |
-| `openclaw agent --message "任务内容"` | 直接给 Agent 发任务 | [7.3](../07_multi_agent/7.3_routing_basics.md) |
-| `openclaw agent --message "任务" --thinking high` | 发任务（高思考深度） | [7.3](../07_multi_agent/7.3_routing_basics.md) |
+| `openclaw agent --agent <agentId> --message "任务内容"` | 直接给指定 Agent 发任务 | [7.3](../07_multi_agent/7.3_routing_basics.md) |
+| `openclaw agent --agent <agentId> --message "任务" --thinking high` | 给指定 Agent 发任务（高思考深度） | [7.3](../07_multi_agent/7.3_routing_basics.md) |
 | `openclaw pairing approve <渠道> <配对码>` | 批准私聊配对码 | [9.5](../09_gateway_protocol/9.5_pairing_trust.md) |
 
 ### E.10 聊天斜杠命令
 
-以下命令在 OpenClaw 的聊天窗口中使用（WebChat、飞书、Telegram 等通用）。
+以下命令在 OpenClaw 的聊天窗口中使用（Control UI chat、飞书、Telegram 等通用）。
 
 **会话管理**
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
 | `/new` | 开始新会话（清除上下文） | [6.1](../06_context_memory/6.1_sessions.md) |
-| `/new <任务描述>` | 开始新会话并附带任务 | [6.1](../06_context_memory/6.1_sessions.md) |
+| `/new [model/任务描述]` | 开始新会话；参数优先按模型解析，无法匹配时作为首条消息 | [6.1](../06_context_memory/6.1_sessions.md) |
 | `/compact` | 压缩当前上下文（保留要点，减少 Token） | [6.4](../06_context_memory/6.4_compaction_pruning.md) |
 | `/btw <问题>` | 针对当前上下文的旁路提问，不影响后续会话上下文 | — |
 | `/status` | 查看当前会话状态（Token 用量、模型等） | [6.1](../06_context_memory/6.1_sessions.md) |
@@ -207,12 +219,12 @@
 | `~/.openclaw/workspace/IDENTITY.md` | 智能体元数据（名称、形象） | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/TOOLS.md` | 环境级工具备忘 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/HEARTBEAT.md` | 心跳巡检清单 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
-| `~/.openclaw/workspace/BOOT.md` | 仅在启用对应 startup hook 时使用的启动脚本 | [2.3.4](../02_setup/2.3_onboarding.md) |
+| `~/.openclaw/workspace/BOOT.md` | 非默认创建；仅在文件存在且启用 bundled `boot-md` hook 时执行 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/BOOTSTRAP.md` | 首次运行入职脚本 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/MEMORY.md` | 可选长期记忆索引 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
 | `~/.openclaw/workspace/memory/` | 记忆或 hook 写入目录，不等于每轮自动加载 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |
-| `~/.openclaw/workspace/skills/` | 当前工作区技能目录；`openclaw skills install` 默认写到这里 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
-| `~/.openclaw/workspace/.agents/skills/` | 工作区私有 Agent skills 目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `<workspace>/skills/` | 当前工作区技能目录；`openclaw skills install` 默认写到这里 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
+| `<workspace>/.agents/skills/` | 工作区私有 Agent skills 目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `~/.openclaw/workspace/canvas/` | 节点 UI 或可视化资源 | [2.3.4](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/skills/` | 本地 override / 共享技能目录（非当前 CLI 默认安装目标） | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `~/.agents/skills/` | 用户级共享 Agent skills 目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |

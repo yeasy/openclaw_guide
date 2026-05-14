@@ -63,7 +63,7 @@ New to OpenClaw? Just three steps:
 
 1. **Install** (1 min): `curl -fsSL https://openclaw.ai/install.sh | bash`
 2. **Initialize** (2 min): `openclaw onboard --install-daemon` → follow the wizard to configure your model API key and install the background service
-3. **Chat** (2 min): Run `openclaw dashboard`, type "hello" in WebChat, receive an AI response — you're done! 🎉
+3. **Chat** (2 min): Run `openclaw dashboard`, type "hello" in the Control UI chat, receive an AI response — you're done! 🎉
 
 See [Chapter 2: Setup](02_setup/README.md) and [Chapter 3: First Conversation](03_minimal_loop/README.md).
 

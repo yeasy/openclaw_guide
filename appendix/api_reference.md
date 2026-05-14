@@ -21,18 +21,19 @@ openclaw health --json
 openclaw status --deep
 openclaw channels capabilities
 openclaw models status --check
+openclaw models status --probe
 openclaw logs --follow --json
 ```
 
-这些命令覆盖了依赖自检、运行状态、渠道探针、模型探针和链路回放，是最小可复验集。
+这些命令覆盖了依赖自检、运行状态、渠道探针、模型认证状态、live provider 探针和链路回放，是最小可复验集。
 
 ### D.3 WebSocket 与事件流参考
 
 如需对接长连接与事件流，请优先阅读：
 
-- Gateway：<https://docs.openclaw.ai/gateway>
-- 多智能体路由：<https://docs.openclaw.ai/concepts/multi-agent>
-- 事件幂等与故障切换：<https://docs.openclaw.ai/concepts/model-failover>
+- Gateway 协议：<https://docs.openclaw.ai/gateway/protocol>
+- Gap recovery 与运维 Runbook：<https://docs.openclaw.ai/gateway/index#gap-recovery>
+- 设备配对与信任管理：<https://docs.openclaw.ai/cli/devices>
 
 接口实现建议遵循三条原则：
 

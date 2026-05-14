@@ -10,8 +10,8 @@
 - [OpenClaw 官方代码仓库](https://github.com/openclaw/openclaw)
 - [OpenClaw 官方文档入口](https://docs.openclaw.ai/)
 - 关键模块文档：
-  - [快速开始 (Getting Started)](https://docs.openclaw.ai/getting-started)
-  - [初始化配置 (Onboard)](https://docs.openclaw.ai/getting-started/onboard)
+  - [快速开始 (Getting Started)](https://docs.openclaw.ai/start/getting-started)
+  - [初始化配置 (Onboard)](https://docs.openclaw.ai/start/wizard)
   - [CLI 命令: Health](https://docs.openclaw.ai/cli/health)
   - [CLI 命令: Status](https://docs.openclaw.ai/cli/status)
   - [架构设计 (Gateway Architecture)](https://docs.openclaw.ai/concepts/architecture)
@@ -20,8 +20,9 @@
   - [模型故障转移 (Model Failover)](https://docs.openclaw.ai/concepts/model-failover)
   - [网关运维 (Gateway Runbook)](https://docs.openclaw.ai/gateway)
   - [安全配置 (Security)](https://docs.openclaw.ai/gateway/security)
-  - [设备配对 (Pairing)](https://docs.openclaw.ai/pairing)
+  - [设备配对 (Pairing)](https://docs.openclaw.ai/channels/pairing)
 - 历史版本发布与动态（以 Release 页面为准）：
+  - [OpenClaw Releases](https://github.com/openclaw/openclaw/releases)
   - [v2026.2.19 Release](https://github.com/openclaw/openclaw/releases/tag/v2026.2.19)
   - [v2026.1.29 Release](https://github.com/openclaw/openclaw/releases/tag/v2026.1.29)
 
@@ -57,7 +58,7 @@
 ### [第五章](../05_tools_skills/README.md)参考资料
 
 - 内置工具：https://docs.openclaw.ai/tools
-- 工具配置：https://docs.openclaw.ai/gateway/configuration#tools
+- 工具配置：https://docs.openclaw.ai/gateway/config-tools
 
 ### [第三章](../03_minimal_loop/README.md)参考资料
 
@@ -77,8 +78,8 @@
 ### [第六章](../06_context_memory/README.md)参考资料
 
 - 会话机制：https://docs.openclaw.ai/concepts/session
-- 配置参考：https://docs.openclaw.ai/gateway/configuration-reference#session
-- 工具结果裁剪：https://docs.openclaw.ai/gateway/configuration#agentsdefaultscontextpruning
+- 配置参考：https://docs.openclaw.ai/gateway/config-agents
+- 工具结果裁剪：https://docs.openclaw.ai/gateway/config-agents
 - Session 裁剪概念：https://docs.openclaw.ai/concepts/session-pruning
 - 记忆机制：https://docs.openclaw.ai/concepts/memory
 - 压缩与记忆刷新：https://docs.openclaw.ai/reference/memory-config
@@ -91,7 +92,7 @@
 
 ### [第十一章](../11_reliability_security/README.md)参考资料
 
-- 配置 models: https://docs.openclaw.ai/gateway/configuration#models
+- 配置 models: https://docs.openclaw.ai/gateway/configuration-reference#models
 - Multi-agent sandbox tools: https://docs.openclaw.ai/tools/multi-agent-sandbox-tools
 - Models 命令: https://docs.openclaw.ai/cli/models
 - Model Failover: https://docs.openclaw.ai/concepts/model-failover

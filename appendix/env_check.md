@@ -10,7 +10,7 @@ npm --version || echo "提示: 未安装 npm。如果不使用自动化脚本安
 docker --version || echo "提示: 未安装 Docker (如使用容器化部署则是必需项)"
 
 echo "测试网络连通（官方安装脚本）..."
-curl -s -m 5 -o /dev/null -w "install script: %{http_code}\n" https://openclaw.ai/install.sh
+curl -fsSL -m 5 -o /dev/null -w "install script: %{http_code}\n" https://openclaw.ai/install.sh
 
 echo "测试运行期网络（模型供应商 API，以 OpenAI 为例，可替换为你的供应商）..."
 if [ -n "${OPENAI_API_KEY:-}" ]; then
@@ -20,6 +20,7 @@ else
   curl -sS -m 10 -o /dev/null -w "llm provider: %{http_code}\n" https://api.openai.com/v1/models
 fi
 echo "提示: 200 表示鉴权通过；401/403 多为无 Key/无权限但网络可达。"
+echo "如果启用了 OpenClaw 托管代理，shell curl 不会验证运行时代理路径；请检查 proxy.enabled / proxy.proxyUrl 或 OPENCLAW_PROXY_URL，并运行 openclaw proxy validate。"
 echo "自检完成"
 ```
 
@@ -28,13 +29,14 @@ echo "自检完成"
 ```text
 === OpenClaw 环境自检 ===
 v22.16.0
-10.2.3
+10.9.2
 Docker version 27.3.1, build ce1223035a
 测试网络连通（官方安装脚本）...
 install script: 200
 测试运行期网络（模型供应商 API，以 OpenAI 为例，可替换为你的供应商）...
 llm provider: 200
 提示: 200 表示鉴权通过；401/403 多为无 Key/无权限但网络可达。
+如果启用了 OpenClaw 托管代理，shell curl 不会验证运行时代理路径；请检查 proxy.enabled / proxy.proxyUrl 或 OPENCLAW_PROXY_URL，并运行 openclaw proxy validate。
 自检完成
 ```
 

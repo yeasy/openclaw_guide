@@ -14,13 +14,13 @@
 以下用一条消息的完整生命周期串联本章四节的核心概念：
 
 1. **会话归属（6.1）**：用户 Alice 在 Telegram 发送“帮我查一下 prod-cluster-us 的 Pod 重启次数”。系统根据当前渠道、对端身份、智能体归属与会话作用域规则推导出对应的 `sessionKey`，并命中已有会话。
-2. **上下文组装（6.2）**：Gateway 按优先级组装输入——先注入 SOUL.md（身份层），再注入 MEMORY.md 中“生产集群为 prod-cluster-us”的记录（知识层），再拼接最近 3 轮对话历史（历史层），最后为本轮工具调用预留空间。
-3. **记忆命中（6.3）**：组装阶段自动触发 `memory_search`，用混合检索（BM25 + 向量）从记忆文件中召回“prod-cluster-us 使用指定服务账号运维”这条事实，注入上下文。
+2. **上下文组装（6.2）**：Gateway 按优先级组装输入——先按 gate 注入 AGENTS.md / SOUL.md / TOOLS.md / IDENTITY.md / USER.md / HEARTBEAT.md / BOOTSTRAP.md 等项目上下文，再拼接当前会话在压缩/裁剪后保留的历史消息，并为本轮工具调用预留空间。
+3. **记忆命中（6.3）**：memory-core 会注入记忆工具使用指导；模型可按需调用 `memory_search` / `memory_recall`，active-memory 也可能在满足条件时加入 preprompt，从而把“prod-cluster-us 使用指定服务账号运维”这类事实带入上下文。
 4. **工具调用与回注**：模型决定调用 `kubectl get pods` 工具。工具返回 50K 字符的原始输出，系统将关键摘要（Pod 名 + 重启次数）回注进会话，全量结果落盘为证据文件。
 5. **裁剪触发（6.4）**：经过多轮交互，上下文达到 `softTrimRatio` 阈值。`contextPruning` 将 3 轮前的 kubectl 原始输出截为头尾各 1500 字符；更早的工具结果被 `hardClear` 替换为占位符，从而控制送入模型的输入规模。
-6. **压缩触发（6.4）**：会话接近 `softThresholdTokens` 时，预压缩记忆刷新机制先让智能体把关键进展写入 `memory/2026-03-22.md`，随后 Compaction 将更早的会话折叠为摘要并持久化到追踪历史中，同时保留回放线索。
+6. **压缩触发（6.4）**：会话接近 `contextWindowTokens - reserveTokensFloor - softThresholdTokens` 这个实际阈值时，预压缩记忆刷新机制先让智能体把关键进展写入 `memory/2026-03-22.md`，随后 Compaction 将更早的会话折叠为摘要并持久化到追踪历史中，同时保留回放线索。`softThresholdTokens` 是提前量，不是独立的触发总量。
 
-排障时，可通过 `sessionKey` 在日志中追踪这条消息的完整链路：从会话归属 → 上下文组装 → 记忆检索 → 工具调用 → 裁剪/压缩，每个环节都有对应的 `trace_id` 可供回放。
+排障时，可通过 `sessionKey` 在日志中追踪这条消息的完整链路：从会话归属 → 上下文组装 → 记忆检索 → 工具调用 → 裁剪/压缩，每个环节都有对应的 `traceId` 可供回放。
 
 ### 6.5.3 读者自检
 

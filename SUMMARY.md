@@ -18,7 +18,7 @@
   * [2.4 守护进程与可用性验收](02_setup/2.4_gateway_service.md)
   * [2.5 本章小结](02_setup/summary.md)
 * [第三章 快速上手与首轮对话实战](03_minimal_loop/README.md)
-  * [3.1 控制台与 WebChat 快速上手](03_minimal_loop/3.1_control_ui_webchat.md)
+  * [3.1 控制台与 Chat 快速上手](03_minimal_loop/3.1_control_ui_webchat.md)
   * [3.2 常用诊断命令与日志排障](03_minimal_loop/3.2_diagnostics.md)
   * [3.3 初始指令与智能体角色配置](03_minimal_loop/3.3_agent_persona.md)
   * [3.4 本地访问边界与设备批准](03_minimal_loop/3.4_pairing_groups.md)

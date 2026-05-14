@@ -59,23 +59,23 @@ openclaw logs --limit 200
 检查项：
 
 1. 是否触发工具治理策略拒绝，或权限不足被拦截。
-   - **典型报错**: `ToolError: execute_bash denied by default policy`
+   - **典型报错**: `ToolError: exec denied by default policy`
 2. 参数格式是否符合预期，是否缺字段或类型不匹配。
    - **典型报错**: `SchemaValidationError: missing required property 'amount'`
 3. 执行环境是否具备权限与网络访问条件（沙箱策略是否收紧）。
 4. 工具回执是否成功结构化回注，是否因上下文裁剪而丢失关键信息。
-   - **典型表现**: 日志提示 `Max context window exceeded, discarding output of tool 'search_web'`
+   - **典型表现**: 日志提示 `Max context window exceeded, discarding output of tool 'web_search'`
 
 常用命令示例：
 
 ```bash
 
-# 按 trace_id 回放工具链路
+# 按 traceId 回放工具链路
 
-cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log | select(.trace_id=="t-...") | {ts,event,tool,err_type,cost_ms}'
+openclaw logs --limit 500 --json | jq -c 'select(.type=="log") | (.raw | fromjson? // {}) | select(.traceId=="t-...") | {ts:(.time // .ts), traceId, message, agent_id, session_id, channel}'
 ```
 
-> **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
+> **注**：`openclaw logs --json` 会输出 `type=="log"` 的包装事件，原始结构化 JSON 通常在 `.raw` 中；直接读取 `logging.file` 指向的 JSONL 文件时，每行通常就是日志对象，不要再套 `.type=="log"` 或解析 `.raw`。
 
 关联阅读：
 
@@ -89,7 +89,7 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log |
 1. 主模型是否限流、超时或认证失败。
    - **典型报错**: `ProviderError: 429 Too Many Requests (OpenAI)` 或 `401 Invalid API Key`
 2. 是否触发回退链路，回退是否有证据链。
-   - **典型表现**: `[WARN] Model gpt-5.4 timed out. Falling back to claude-sonnet-4-6`
+   - **典型表现**: `[WARN] Model openai/gpt-5.4 timed out. Falling back to anthropic/claude-sonnet-4-6`
 3. 冷却或禁用状态是否生效，是否出现重试放大。
 4. 认证档案与密钥是否过期或被吊销。
 
@@ -99,14 +99,14 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log |
 
 # 统计错误分类占比
 
-cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -r 'select(.type=="log") | .log | select(.stage=="model_call_end" and .err_type!="") | .err_type' | sort | uniq -c | sort -nr | head
+openclaw logs --limit 500 --json | jq -r 'select(.type=="log") | (.raw | fromjson? // {}) | select((.message // "") | test("model|provider|fallback|rate"; "i")) | (.error // .message)' | sort | uniq -c | sort -nr | head
 ```
 
-> **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
+> **注**：直接读取 `logging.file` 指向的 JSONL 文件时，把 jq 前半段改成 `select((.message // "") | test(...))`，不要使用 CLI JSON 包装字段。
 
 关联阅读：
 
-- [11.1 多密钥治理：keys、keyId 与认证档案](../11_reliability_security/11.1_auth_profiles.md)
+- [11.1 多密钥治理：认证档案、环境轮换与 auth order](../11_reliability_security/11.1_auth_profiles.md)
 - [11.2 冷却与禁用：故障窗口内的止血机制](../11_reliability_security/11.2_rotation_cooldown.md)
 - [11.3 模型回退链路与错误分流](../11_reliability_security/11.3_fallback_rules.md)
 
@@ -116,8 +116,8 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -r 'select(.type=="log") | .log |
 
 检查项：
 
-1. 会话归属是否漂移（同一用户被分配到不同 sessionKey）。
-   - **诊断手段**：用结构化日志按 `sessionKey` 和 `traceId` 回放链路。
+1. 会话归属是否漂移（同一用户被分配到不同 session）。
+   - **诊断手段**：用结构化日志按 `session_id` 和 `traceId` 回放链路。
 2. 上下文预算是否打满，导致近期信息被裁剪。
    - **诊断手段**：观察日志中的裁剪/压缩事件与占位符频率。
 3. 会话存储文件是否可读写，是否发生写入失败。
@@ -127,11 +127,19 @@ cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -r 'select(.type=="log") | .log |
 
 ```bash
 openclaw status --deep
-openclaw logs --follow --json
-cat /tmp/openclaw/openclaw-YYYY-MM-DD.log | jq -c 'select(.type=="log") | .log | select(.sessionKey!="") | {ts,trace_id,sessionKey,event,err_type}' | tail
+openclaw logs --limit 500 --json
+openclaw logs --limit 500 --json | jq -c 'select(.type=="log") | (.raw | fromjson? // {}) | select((.session_id // "")!="") | {ts:(.time // .ts), traceId, session_id, message, error}' | tail
 ```
 
-> **注**：实际日志路径由 `logging.file` 配置决定，默认为 `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
+> **注**：`--follow` 适合最后持续观察；排查清单中的快照证据优先用 `--limit`，避免阻塞后续命令。
+
+若要提交 Issue 或升级给维护者，优先导出受控诊断包，而不是散贴完整日志：
+
+```bash
+openclaw gateway diagnostics export --json
+# 或在聊天窗口中使用：
+/diagnostics [补充说明]
+```
 
 ### C.6 复验与完整流程
 

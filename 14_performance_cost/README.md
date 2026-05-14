@@ -1,6 +1,6 @@
 # 第十四章 性能与成本优化实战
 
-本章从 Token 消耗、推理延迟、用量观测与预算控制四个维度，提供基于 OpenClaw 内置命令和配置项的系统化优化方案，帮助在保持服务质量的前提下有效降低运行成本。
+本章从 Token 消耗、推理延迟、用量观测与预算治理四个维度，提供基于 OpenClaw 内置观测能力、provider 限额和外部治理机制的系统化优化方案，帮助在保持服务质量的前提下有效降低运行成本。
 
 ## 本章内容导读
 
@@ -8,6 +8,6 @@
 
 - **[14.1 Token 与上下文成本](14.1_token_context_cost.md)**：Token 流向分析、系统提示精简、上下文压缩策略（Compaction 与 Pruning）、模型分层选择。
 - **[14.2 延迟与吞吐优化](14.2_latency_throughput.md)**：形式化延迟模型分解（LLM + 工具 + 沙箱 + 编排），多智能体场景的延迟累积，结构化成本模型。
-- **[14.3 OpenClaw 的用量观测与预算控制](14.3_usage_budget.md)**：内置用量命令（`/status`、`/usage cost`、`/compact`）、全局与按 Agent 预算配置、异常检测与告警。
+- **[14.3 OpenClaw 的用量观测与预算控制](14.3_usage_budget.md)**：内置用量命令（`/status`、`/usage cost`、`/compact`）、Dashboard Usage 视图，以及 provider 限额、外部监控或插件治理。
 - **[14.4 不同规模部署预算模板](14.4_budget_templates.md)**：个人、中等、企业三种场景的成本要素分解与预算规划模板。
 - **[14.5 本章小结](summary.md)**：关键结论与优化检查清单。
