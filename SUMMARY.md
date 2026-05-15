@@ -122,5 +122,5 @@
   * [附录E：命令速查手册](appendix/command_cheatsheet.md)
   * [附录F：版本映射与升级指南](appendix/version_mapping.md)
   * [附录G：延伸阅读与参考资料](appendix/reading_list.md)
-  * [附录：OpenClaw 命名演进史](appendix/naming_history.md)
-  * [附录：环境自检工具](appendix/env_check.md)
+  * [附录H：OpenClaw 命名演进史](appendix/naming_history.md)
+  * [附录I：环境自检工具](appendix/env_check.md)

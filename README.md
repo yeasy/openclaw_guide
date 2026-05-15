@@ -44,7 +44,7 @@
 - [GitBook 在线版本](https://yeasy.gitbook.io/openclaw_guide/)
 - [从第一章开始阅读](01_overview/README.md)
 
-## 下载离线版本
+### 下载离线版本
 
 本书提供 PDF 版本供离线阅读，可前往 [GitHub Releases](https://github.com/yeasy/openclaw_guide/releases/latest) 页面下载最新版本。
 
