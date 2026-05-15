@@ -15,7 +15,7 @@
   一张表对比 OpenClaw vs ChatGPT / Cursor / Zapier / Dify 的核心差异，以及 Token 成本的清醒认识。
 
 - **[1.3 核心概念速览](1.3_concepts.md)**
-  一张图 + 一张表介绍 Gateway、Node、Agent、Tool、Session 五个核心概念，以及一条消息从进来到出去的极简旅程。
+  一张图 + 一张表介绍 Gateway、Agent、Tool、Session、Node 五个核心概念，以及一条消息从进来到出去的极简旅程。
 
 - **[1.4 典型应用场景](1.4_use_cases.md)**
   先总览适合与不适合的场景，再用四个真实故事感受个人 ChatOps、家庭自动化、知识系统、安全实验的具体玩法。

@@ -11,7 +11,7 @@
 - **Token 与上下文成本**（14.1）：通过系统提示精简、按 Agent 分配工具定义、`compaction` 与 `contextPruning` 配置实现上下文压缩，配合 `agents.defaults.model.primary` / `agents.defaults.model.fallbacks`，或 `agents.list[].model.primary` / `fallbacks` 进行模型分级。
 - **延迟与吞吐优化**（14.2）：延迟由网络、队列、模型推理、工具调用四段构成；通过模型回退链、工具并行化和 `openclaw health --json` 渠道监控来定位瓶颈。
 - **用量观测与预算控制**（14.3）：使用 `/status`、`/usage cost`、`/compact` 等交互命令与 Dashboard Usage 页面监控 Token 用量；硬预算和告警应结合 provider 控制台、外部监控或插件治理。
-- **部署预算模板**（14.4）：个人场景月均 $20–50、团队场景 $400–700、企业场景 $6000–30000，核心变量是模型选择和日均会话量。
+- **部署预算模板**（14.4）：个人场景月均 $60–90、团队场景 $600–900、企业场景 $10K–50K，核心变量是模型选择和日均会话量。
 
 ### 优化检查清单
 

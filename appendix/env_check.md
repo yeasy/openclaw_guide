@@ -5,7 +5,7 @@
 ```bash
 #!/bin/bash
 echo "=== OpenClaw 环境自检 ==="
-node --version || echo "警告: 未安装 Node.js（推荐 Node 24，最低 Node 22.16+）"
+node --version || echo "警告: 未安装 Node.js（推荐 Node 24，最低 Node 22.14+）"
 npm --version || echo "提示: 未安装 npm。如果不使用自动化脚本安装，这是必需项"
 docker --version || echo "提示: 未安装 Docker (如使用容器化部署则是必需项)"
 
@@ -28,7 +28,7 @@ echo "自检完成"
 
 ```text
 === OpenClaw 环境自检 ===
-v22.16.0
+v24.0.0
 10.9.2
 Docker version 27.3.1, build ce1223035a
 测试网络连通（官方安装脚本）...
