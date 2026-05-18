@@ -1,7 +1,7 @@
 # 目录
 
-* [前言](README.md)
-* [English Overview](README_en.md)
+* [《OpenClaw 入门到精通》](README.md)
+* [OpenClaw: Beginner to Expert](README_en.md)
 
 ## 第一部分：基础入门
 
