@@ -124,3 +124,4 @@
   * [附录G：延伸阅读与参考资料](appendix/reading_list.md)
   * [附录H：环境自检工具](appendix/env_check.md)
   * [附录I：OpenClaw 命名演进史](appendix/naming_history.md)
+  * [附录J：快变事实核验表](appendix/volatile_facts.md)
