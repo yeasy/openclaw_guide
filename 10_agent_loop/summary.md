@@ -4,11 +4,11 @@
 
 ### 10.7.1 关键结论
 
-- **嵌入式集成 pi 运行时**：OpenClaw 通过 `runEmbeddedPiAgent()` 将 pi SDK 直接嵌入进程，获得事件驱动的 Tick 推理循环能力，同时通过 `customTools` 注入、动态 System Prompt 和自定义 `ModelRegistry` 实现企业级控制。
+- **嵌入式集成 pi 运行时**：OpenClaw 通过 `runEmbeddedPiAgent()` 将 pi SDK 直接嵌入进程，围绕 `activeSession.prompt()` 与事件订阅获得可控推理循环能力，同时通过工具组合与过滤、动态 System Prompt 和自定义 `ModelRegistry` 实现企业级控制。
 - **纯 TypeScript 分道排队**：Command Queue 不依赖 Redis 等外部中间件，通过会话道串行化、全局道并发控制和后台道隔离，在单节点即可实现完整的并发治理。
-- **提示词是结构化工程产物**：提示词的构建是分层装配过程——系统约束、工具描述、上下文历史与用户输入各自隔离，在 Token 预算内按优先级裁剪，并支持审计落盘与版本比对。
+- **提示词是结构化工程产物**：提示词的构建是分层装配过程——系统约束、工具描述、上下文历史与用户输入各自隔离，在 Token 预算内按优先级裁剪，并可通过 hooks、cache trace 或 trajectory 记录做采样审计。
 - **工具调用是策略驱动的受控执行**：工具调用经过策略过滤（`tools.allow`/`tools.deny`）和 `before_tool_call` 钩子双重拦截，结果回注时经过裁剪防止上下文淹没。
-- **流式输出与有界重试保障长任务可靠性**：EmbeddedBlockChunker 实现围栏感知的智能切分，重试策略按单次请求而非多步流程执行，模型故障切换通过认证档案轮转与回退链路两阶段实现。
+- **流式输出与有界重试保障长任务可靠性**：EmbeddedBlockChunker 实现围栏感知的智能切分；渠道/SDK 层按单次请求重试，embedded run 层可在受控预算内从 transcript 状态恢复当前 attempt；模型故障切换通过认证档案轮转与回退链路两阶段实现。
 
 ### 10.7.2 读者自检
 

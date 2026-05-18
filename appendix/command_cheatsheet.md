@@ -55,7 +55,7 @@
 |---|---|---|
 | `openclaw models list` | 列出所有已配置的模型 | [4.3](../04_config_models/4.3_model_selection.md) |
 | `openclaw models set <供应商/模型名>` | 切换默认模型 | [4.3](../04_config_models/4.3_model_selection.md) |
-| `openclaw models status --check` | 检查认证缺失、过期或即将过期 | [4.2](../04_config_models/4.2_provider_access.md) |
+| `openclaw models status` | 检查模型配置与认证状态 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models status --probe` | live provider 认证探针 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth add` | 交互式添加供应商认证档案 | [4.2](../04_config_models/4.2_provider_access.md) |
 | `openclaw models auth setup-token --provider <供应商>` | 为指定供应商生成 Token 录入流程 | [4.2](../04_config_models/4.2_provider_access.md) |

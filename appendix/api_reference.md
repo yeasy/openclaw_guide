@@ -20,7 +20,7 @@ openclaw doctor
 openclaw health --json
 openclaw status --deep
 openclaw channels capabilities
-openclaw models status --check
+openclaw models status
 openclaw models status --probe
 openclaw logs --follow --json
 ```
@@ -38,7 +38,7 @@ openclaw logs --follow --json
 接口实现建议遵循三条原则：
 
 1. 连接层可恢复（心跳、重连、恢复点）。
-2. 事件层可对账（traceId、幂等键、错误分类）。
+2. 事件层可对账（event id、`seq`、`stateVersion`、幂等键、错误分类；`traceId` 只在日志或 payload 明确提供时保留）。
 3. 执行层可限权（工具策略与沙箱约束）。
 
 ### D.4 SDK 与集成建议
@@ -46,7 +46,9 @@ openclaw logs --follow --json
 如需在应用中嵌入 OpenClaw 能力，建议采用“先 CLI 验证、再 SDK/HTTP 集成”的顺序：
 
 1. 先用 CLI 跑通完整链路并固化验收命令。
-2. 再在应用层封装调用，并保留 traceId 与错误分类。
+2. 再在应用层封装调用，并保留 request id / idempotency key、event id / seq / stateVersion 与错误分类；若日志或 payload 暴露 `traceId`，再把它作为链路回放辅助字段保存。
 3. 最后把回退、重试、超时和审计接入统一运行手册。
+
+配置与沙箱相关声明不要只靠文档记忆：用 `openclaw config schema` / `openclaw config validate` 证明 schema，用 `openclaw sandbox explain --json` 证明当前 agent / session 的有效沙箱与工具边界。
 
 这样可以避免把“配置问题”误判为“SDK 或业务代码问题”。

@@ -35,7 +35,9 @@ OpenClaw Gateway 的主配置文件默认路径为 `~/.openclaw/openclaw.json`�
 
   diagnostics: {
     enabled: true,
-    dumpOnCrash: true,
+    cacheTrace: {
+      enabled: true,
+    },
   },
 
   agents: {

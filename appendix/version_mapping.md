@@ -3,7 +3,7 @@
 本附录不再把某一代旧字段硬写成“当前配置”，而是给出一套更安全的升级方法：先识别当前 schema 家族，再用 `doctor`、`config validate` 和 `config get/set/unset` 做增量迁移。
 
 > [!WARNING]
-> OpenClaw 使用日历版本号（CalVer），字段层级与命名可能随版本演进而变化。本附录仅提供迁移思路与当前本地源码审计实例（2026.5.10-beta.1）的可观察结构，不能替代官方文档与本地 `config schema`。
+> OpenClaw 使用日历版本号（CalVer），字段层级与命名可能随版本演进而变化。本附录仅提供迁移思路与本轮本地源码审计实例的可观察结构，不能替代官方文档、本机 `openclaw --version` 与本地 `config schema`。
 
 ### F.1 版本号方案
 
