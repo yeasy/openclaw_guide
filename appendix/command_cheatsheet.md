@@ -209,6 +209,8 @@
 
 ### E.11 关键文件路径速查
 
+下表使用默认工作区路径 `~/.openclaw/workspace/`。如果配置了 `OPENCLAW_PROFILE` 或自定义 `agents.defaults.workspace` / `agent.workspace`，请把这些路径替换为当前实际 agent workspace。
+
 | 路径 | 说明 | 关联章节 |
 |---|---|---|
 | `~/.openclaw/openclaw.json` | 主配置文件 | [4.1](../04_config_models/4.1_config_system.md) |
