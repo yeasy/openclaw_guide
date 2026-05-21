@@ -10,7 +10,7 @@
 [![Online Reading](https://img.shields.io/badge/Read_Online-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
 [![PDF](https://img.shields.io/badge/PDF-Download-orange)](https://github.com/yeasy/openclaw_guide/releases/latest)
 
-> **[OpenClaw](https://github.com/openclaw/openclaw) is an open-source, self-driven AI agent**, created by Peter Steinberger. This book provides a comprehensive guide from getting started to production deployment, with deep dives into the underlying mechanisms and implementation principles.
+> **[OpenClaw](https://github.com/openclaw/openclaw) is an open-source, local-first personal AI assistant**, created by Peter Steinberger. This book provides a comprehensive guide from getting started to production deployment, with deep dives into the underlying mechanisms and implementation principles.
 
 <img src="cover.jpg" alt="OpenClaw Guide Cover" width="300" />
 
@@ -27,7 +27,7 @@
 ## Target Audience & Prerequisites
 
 - **Target Audience**: Individual users interested in AI agents, AI application developers, LLM engineers, system architects, etc.
-- **Prerequisites**: Basic command-line experience is sufficient; programming knowledge is helpful but not required. For those unfamiliar with LLMs and AI agents, see [AI Beginner Guide](https://github.com/yeasy/ai_beginner_guide) and [Agentic AI Guide](https://github.com/yeasy/agentic_ai_guide).
+- **Prerequisites**: Basic backend development familiarity is expected, such as Node.js or Python fundamentals. If you are new to LLMs and AI agents, see [AI Beginner Guide](https://github.com/yeasy/ai_beginner_guide) and [Agentic AI Guide](https://github.com/yeasy/agentic_ai_guide).
 
 ## Book Structure
 
@@ -61,7 +61,7 @@ Other Markdown previewers can be used as auxiliary tools, but they are not the s
 
 New to OpenClaw? Just three steps:
 
-1. **Install** (1 min): `curl -fsSL https://openclaw.ai/install.sh | bash`
+1. **Install** (1 min): `curl -fsSL https://openclaw.ai/install.sh | bash` (locked-down environments should download and inspect the script first, or use the official manual/npm path)
 2. **Initialize** (2 min): `openclaw onboard --install-daemon` → follow the wizard to configure your model API key and install the background service
 3. **Chat** (2 min): Run `openclaw dashboard`, type "hello" in the Control UI chat, receive an AI response — you're done! 🎉
 
