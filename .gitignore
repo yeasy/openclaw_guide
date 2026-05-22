@@ -11,6 +11,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Local secrets and environment
+.env
+.env.*
+!.env.example
+
 # OS files
 .DS_Store
 Thumbs.db

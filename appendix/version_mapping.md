@@ -131,10 +131,12 @@ openclaw doctor --deep
 #### 回滚步骤
 
 ```bash
-rm -rf ~/.openclaw
+mv ~/.openclaw ~/.openclaw.rollback.$(date +%Y%m%d_%H%M%S)
 mv ~/.openclaw.backup.YYYYMMDD_HHMMSS ~/.openclaw
 openclaw gateway restart
 ```
+
+确认恢复成功并完成审计后，再删除临时保留的 `~/.openclaw.rollback.*` 目录；不要在未验证备份可用前直接删除现有运行目录。
 
 ### F.7 升级时最值得优先复验的项
 

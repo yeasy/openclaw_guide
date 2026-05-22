@@ -14,6 +14,7 @@
 
 在提交之前，建议在本地运行以下检查：
 
+- **项目规则验证**：运行 `python3 check_project_rules.py` 检查本书的标题、链接、图片、摘要和格式约定。
 - **mdPress 构建验证**：运行 `mdpress build --format site --output _site` 确保本地编译正常，没有内部死链。
 
 ### 2. Markdown 格式约定
