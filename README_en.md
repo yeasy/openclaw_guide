@@ -61,7 +61,7 @@ Other Markdown previewers can be used as auxiliary tools, but they are not the s
 
 New to OpenClaw? Just three steps:
 
-1. **Install** (1 min): `curl -fsSL https://openclaw.ai/install.sh | bash` (locked-down environments should download and inspect the script first, or use the official manual/npm path)
+1. **Install** (1 min): `curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard` (locked-down environments should download and inspect the script first, or use the official manual/npm path)
 2. **Initialize** (2 min): `openclaw onboard --install-daemon` → follow the wizard to configure your model API key and install the background service
 3. **Chat** (2 min): Run `openclaw dashboard`, type "hello" in the Control UI chat, receive an AI response — you're done! 🎉
 
