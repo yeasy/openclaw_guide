@@ -1,4 +1,4 @@
-# 附录J：快变事实核验表
+## 附录J：快变事实核验表
 
 > Last verified: 2026-05-21. 本表用于维护 OpenClaw、模型、API、价格、协议和 workflow 相关高波动事实。
 
