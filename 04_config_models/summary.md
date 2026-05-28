@@ -32,7 +32,7 @@
 }
 ```
 
-如果你走的是 ChatGPT/Codex 订阅 OAuth，使用 `openai-codex` auth profile 和 `openai-codex/*` 模型引用；直接 OpenAI API Key 路径才使用 `openai/*`。两者都要以当前模型目录和运行时策略为准。
+如果你走的是 ChatGPT/Codex 订阅 OAuth，模型引用仍使用 `openai/*`，订阅认证由 Codex/OpenAI auth profile 与运行时表达；历史 `openai-codex/*` 模型引用应通过 `openclaw doctor --fix` 迁移。直接 OpenAI API Key 路径也使用 `openai/*`，但选择不同的认证 profile。两者都要以当前模型目录和运行时策略为准。
 
 2) 验收命令（只看结果，不靠感觉）：
 
