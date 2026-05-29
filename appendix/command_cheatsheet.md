@@ -31,6 +31,9 @@
 | `openclaw config file` | 查看当前配置文件路径 | [4.1](../04_config_models/4.1_config_system.md) |
 | `openclaw config get <路径>` | 读取指定配置项的当前值 | [4.1](../04_config_models/4.1_config_system.md) |
 | `openclaw config set <路径> <值>` | 非交互式更新指定配置项 | [4.1](../04_config_models/4.1_config_system.md) |
+| `openclaw config unset <路径>` | 删除指定配置项（迁移旧字段时常用） | [4.1](../04_config_models/4.1_config_system.md) |
+| `openclaw config validate` | 校验配置文件结构与字段合法性 | [4.1](../04_config_models/4.1_config_system.md) |
+| `openclaw config schema` | 查看当前版本支持的配置 schema | [4.1](../04_config_models/4.1_config_system.md) |
 
 ### E.3 诊断与排障
 

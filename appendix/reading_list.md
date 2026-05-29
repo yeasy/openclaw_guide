@@ -65,7 +65,7 @@
 - Dashboard 命令：https://docs.openclaw.ai/cli/dashboard
 - Health 命令：https://docs.openclaw.ai/cli/health
 - Control UI (Dashboard)：https://docs.openclaw.ai/web/dashboard
-- 控制 UI 说明：https://docs.openclaw.ai/web/control-ui
+- Control UI 说明：https://docs.openclaw.ai/web/control-ui
 - Models 命令：https://docs.openclaw.ai/cli/models
 - Channels 命令：https://docs.openclaw.ai/cli/channels
 - Status 命令：https://docs.openclaw.ai/cli/status
