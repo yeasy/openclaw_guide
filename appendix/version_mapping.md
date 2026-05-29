@@ -148,7 +148,7 @@ openclaw gateway restart
 4. `dmPolicy` / `groupPolicy` 是否符合当前入口治理策略。
 5. Hook、插件、工具策略是否仍按预期生效。
 
-### F.8 本章小结
+### F.8 本附录小结
 
 版本迁移的关键不是背一张“旧字段 → 新字段”的表，而是先抓住当前 schema 家族：
 
