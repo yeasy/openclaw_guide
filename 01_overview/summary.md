@@ -12,7 +12,7 @@
 
 阅读完本章后，尝试回答以下问题：
 
-- 能否用一句话分别描述 Gateway、Node、Agent、Tool、Session 各自负责什么？
+- 能否用一句话分别描述 Gateway、Agent、Tool、Session、Node 各自负责什么？
 - 如果让你向同事推荐 OpenClaw，你会说它适合解决什么问题，不适合什么场景？
 - 比起直接用 ChatGPT，OpenClaw 多出来的价值是什么？
 

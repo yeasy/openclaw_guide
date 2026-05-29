@@ -28,7 +28,7 @@
 完成本章的阅读后，你将能够：
 1. **说清楚 OpenClaw 是什么**：能向别人解释它解决了什么问题，适合什么场景。
 2. **做出选型判断**：知道在什么情况下该用 OpenClaw，什么时候用 ChatGPT 或 Zapier 更合适。
-3. **认识五个核心概念**：理解 Gateway、Node、Agent、Tool、Session 的含义，为后续章节扫清沟通障碍。
+3. **认识五个核心概念**：理解 Gateway、Agent、Tool、Session、Node 的含义，为后续章节扫清沟通障碍。
 
 ---
 
