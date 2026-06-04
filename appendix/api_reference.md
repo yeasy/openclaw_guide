@@ -32,7 +32,7 @@ openclaw logs --follow --json
 如需对接长连接与事件流，请优先阅读：
 
 - Gateway 协议：<https://docs.openclaw.ai/gateway/protocol>
-- Gap recovery 与运维 Runbook：<https://docs.openclaw.ai/gateway/index#gap-recovery>
+- Gap recovery 与运维 Runbook：<https://docs.openclaw.ai/gateway#gap-recovery>
 - 设备配对与信任管理：<https://docs.openclaw.ai/cli/devices>
 
 接口实现建议遵循三条原则：
