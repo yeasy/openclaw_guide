@@ -132,7 +132,7 @@
 | `openclaw sandbox list` | 列出所有沙箱容器 | [11.4](../11_reliability_security/11.4_guardrails.md) |
 | `openclaw sandbox list --browser` | 只列出浏览器容器 | [11.4](../11_reliability_security/11.4_guardrails.md) |
 | `openclaw sandbox recreate --all` | 重建所有容器 | [11.4](../11_reliability_security/11.4_guardrails.md) |
-| `openclaw sandbox recreate --all --force` | 强制重建（跳过确认） | [11.4](../11_reliability_security/11.4_guardrails.md) |
+| `openclaw sandbox recreate --all --force` | 强制重建（跳过确认；会删除沙箱运行时，远程后端可能删除该 scope 的远程工作区） | [11.4](../11_reliability_security/11.4_guardrails.md) |
 
 **浏览器控制**
 
