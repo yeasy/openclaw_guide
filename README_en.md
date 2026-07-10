@@ -37,7 +37,7 @@
 | Part 2: Advanced Usage | Ch 5–8 | Tools & skills, context memory, multi-agent collaboration, automation & ops |
 | Part 3: Internals & Engineering | Ch 9–12 | Gateway protocol, Agent Loop internals, reliability, plugin extensions |
 | Part 4: Practice & Optimization | Ch 13–16 | Case studies, performance & cost optimization, troubleshooting, AI ecosystem integration |
-| Appendix | — | Glossary, config templates, troubleshooting checklist, API reference, command cheatsheet, version mapping, further reading |
+| Appendix | — | Glossary, config templates, troubleshooting checklist, API reference, command cheatsheet, version mapping, further reading, environment self-check tool, naming history, volatile facts table |
 
 ## How to Read
 
