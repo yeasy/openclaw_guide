@@ -1,0 +1,11 @@
+{
+  "name": "openclaw-guide-build",
+  "private": true,
+  "scripts": {
+    "test": "python3 -m unittest discover -s tests -v"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "11.16.0",
+    "puppeteer": "24.43.1"
+  }
+}

@@ -7,7 +7,7 @@ retried because a single large mmdc pass can crash headless Chrome. Diagrams tha
 still fail are simply left out — build_mobile_book.py shows their source as fallback.
 Writes d-1.svg .. d-N.svg into --svg-out. Exits 0 even if some/all fail (non-fatal).
 """
-import os, re, sys, glob, time, shutil, subprocess, argparse
+import os, re, sys, glob, shutil, subprocess, argparse
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--book-dir", default=".")
@@ -49,8 +49,6 @@ MMDC = shutil.which("mmdc") or "mmdc"
 def render(indices):
     cm = os.path.join(SVG, "_chunk.md")
     open(cm, "w", encoding="utf-8").write("\n".join("```mermaid\n"+srcs[i]+"\n```\n" for i in indices))
-    subprocess.run(["pkill", "-f", "enable-automation"], capture_output=True)  # only puppeteer Chrome
-    time.sleep(1)
     subprocess.run([MMDC, "-i", cm, "-o", os.path.join(SVG, "_c.svg"), "-p", pptr, "-c", rc, "-b", "transparent"],
                    capture_output=True, text=True)
     for j, i in enumerate(indices, 1):

@@ -6,40 +6,76 @@ on:
       - 'v*'
   workflow_dispatch:
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
-  release:
+  build:
+    name: Build and verify release editions
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
 
-      - name: Install Chromium and CJK fonts
+      - name: Install locked Node dependencies
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+        run: npm ci
+
+      - name: Run project tests
+        run: |
+          python3 -m unittest discover -s tests -v
+          python3 check_project_rules.py
+
+      - name: Install Chromium
         id: setupchrome
-        uses: browser-actions/setup-chrome@v2
+        uses: browser-actions/setup-chrome@2e1d749697dd1612b833dba4a722266286fbefcd # v2.1.2
         with:
           chrome-version: stable
-      - name: Install CJK fonts
+
+      - name: Install CJK fonts and PDF inspection tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra
+          sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra poppler-utils
 
-      - name: Install mdpress 0.7.10
+      - name: Install mdPress 0.7.10 with checksum verification
         env:
           MDPRESS_VERSION: "0.7.10"
           MDPRESS_SHA256: "17e53e455996940bbbce64c69c43b3fb543f1501e03b74cf0434074efebd2db4"
         run: |
-          echo "Installing mdpress ${MDPRESS_VERSION}"
-          curl -fsSL "https://github.com/yeasy/mdPress/releases/download/v${MDPRESS_VERSION}/mdpress_${MDPRESS_VERSION}_linux_amd64.tar.gz" -o /tmp/mdpress.tar.gz
-          echo "${MDPRESS_SHA256}  /tmp/mdpress.tar.gz" | sha256sum -c -
-          tar xzf /tmp/mdpress.tar.gz -C /tmp mdpress
-          sudo mv /tmp/mdpress /usr/local/bin/
-          mdpress --version
+          archive="$RUNNER_TEMP/mdpress_${MDPRESS_VERSION}_linux_amd64.tar.gz"
+          extract_dir="$(mktemp -d)"
+          curl -fsSL --retry 3 \
+            "https://github.com/yeasy/mdPress/releases/download/v${MDPRESS_VERSION}/mdpress_${MDPRESS_VERSION}_linux_amd64.tar.gz" \
+            -o "$archive"
+          echo "${MDPRESS_SHA256}  $archive" | sha256sum -c -
+          tar --extract --gzip --file "$archive" --directory "$extract_dir" mdpress
+          mkdir -p "$RUNNER_TEMP/bin"
+          install -m 0755 "$extract_dir/mdpress" "$RUNNER_TEMP/bin/mdpress"
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
 
-      - name: Extract tag name
-        id: tag
+      - name: Install Pandoc 3.5 with checksum verification
+        env:
+          PANDOC_VERSION: "3.5"
+          PANDOC_SHA256: "4f41d817d262ef3d17953a3e6e0fefddb971aa4f2f121544a9a86db449d945e1"
         run: |
+          package="$RUNNER_TEMP/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+          curl -fsSL --retry 3 \
+            "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb" \
+            -o "$package"
+          echo "${PANDOC_SHA256}  $package" | sha256sum -c -
+          sudo dpkg -i "$package"
+          pandoc --version | head -1
+
+      - name: Extract safe artifact tag
+        id: tag
+        shell: bash
+        run: |
+          set -euo pipefail
           if [[ "$GITHUB_REF" == refs/tags/* ]]; then
             tag_name="${GITHUB_REF#refs/tags/}"
           else
@@ -47,52 +83,95 @@ jobs:
           fi
           safe_tag_name=$(printf '%s' "$tag_name" | sed 's/[^A-Za-z0-9._-]/-/g')
           safe_tag_name="${safe_tag_name:-latest}"
-          echo "TAG_NAME=${tag_name}" >> "$GITHUB_OUTPUT"
-          echo "SAFE_TAG_NAME=${safe_tag_name}" >> "$GITHUB_OUTPUT"
+          printf 'SAFE_TAG_NAME=%s\n' "$safe_tag_name" >> "$GITHUB_OUTPUT"
 
-      - name: Build PDF
-        run: mdpress build --format pdf --output oc_guide-${{ steps.tag.outputs.SAFE_TAG_NAME || 'latest' }}.pdf
-
-      - name: Create Release with PDF
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v3
-        with:
-          generate_release_notes: true
-          files: oc_guide-${{ steps.tag.outputs.SAFE_TAG_NAME }}.pdf
-
-      - name: Upload PDF as artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: oc_guide-pdf
-          path: "oc_guide-*.pdf"
-
-      - name: Build HTML reader
-        id: htmlreader
-        continue-on-error: true
+      - name: Build required PDF and HTML editions
         env:
           CHROME_BIN: ${{ steps.setupchrome.outputs.chrome-path }}
+          SAFE_TAG_NAME: ${{ steps.tag.outputs.SAFE_TAG_NAME }}
         run: |
-          # recent pandoc (apt's is too old for --embed-resources); + mermaid-cli using system Chrome
-          curl -fsSL https://github.com/jgm/pandoc/releases/download/3.5/pandoc-3.5-1-amd64.deb -o /tmp/pandoc.deb
-          sudo dpkg -i /tmp/pandoc.deb && pandoc --version | head -1
-          PUPPETEER_SKIP_DOWNLOAD=true npm install -g @mermaid-js/mermaid-cli@10
-          TITLE=$(python3 -c "import json,os;print((json.load(open('book.json')).get('title') if os.path.exists('book.json') else '') or '${{ github.event.repository.name }}')")
-          TAG="${{ steps.tag.outputs.SAFE_TAG_NAME || 'latest' }}"
-          python3 tools/render_mermaid.py --book-dir . --svg-out /tmp/mmsvg
-          python3 tools/build_html_reader.py --book-dir . --title "$TITLE" --svg-dir /tmp/mmsvg \
-            --out "${{ github.event.repository.name }}-${TAG}.html"
-          ls -lh ${{ github.event.repository.name }}-${TAG}.html
+          mkdir -p dist "$RUNNER_TEMP/mmsvg"
+          python3 tools/build_pdf.py \
+            --output "dist/oc_guide-${SAFE_TAG_NAME}.pdf" \
+            --log-dir dist/build-logs \
+            --attempts 2 \
+            --timeout 600
+          if ! timeout --signal=TERM 8m env PATH="$GITHUB_WORKSPACE/node_modules/.bin:$PATH" \
+            python3 tools/render_mermaid.py --book-dir . --svg-out "$RUNNER_TEMP/mmsvg"; then
+            echo "Mermaid rendering unavailable; using source fallback"
+          fi
+          title=$(python3 -c 'import json; print(json.load(open("book.json", encoding="utf-8"))["title"])')
+          python3 tools/build_html_reader.py \
+            --book-dir . \
+            --title "$title" \
+            --svg-dir "$RUNNER_TEMP/mmsvg" \
+            --out "dist/oc_guide-${SAFE_TAG_NAME}.html"
 
-      - name: Attach HTML to release
-        if: steps.htmlreader.outcome == 'success' && startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
+      - name: Upload PDF build logs on failure
+        if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          tag_name: ${{ steps.tag.outputs.TAG_NAME }}
-          files: "${{ github.event.repository.name }}-${{ steps.tag.outputs.SAFE_TAG_NAME }}.html"
+          name: oc-guide-release-build-logs
+          path: dist/build-logs/
+          if-no-files-found: warn
 
-      - name: Upload HTML as artifact
-        if: steps.htmlreader.outcome == 'success'
-        uses: actions/upload-artifact@v7
+      - name: Verify release artifact identity and checksums
+        env:
+          SAFE_TAG_NAME: ${{ steps.tag.outputs.SAFE_TAG_NAME }}
+        run: |
+          title=$(python3 -c 'import json; print(json.load(open("book.json", encoding="utf-8"))["title"])')
+          python3 tools/verify_artifacts.py \
+            --title "$title" \
+            --pdf "dist/oc_guide-${SAFE_TAG_NAME}.pdf" \
+            --html "dist/oc_guide-${SAFE_TAG_NAME}.html" \
+            --checksums dist/SHA256SUMS
+          (cd dist && sha256sum -c SHA256SUMS)
+
+      - name: Transfer verified release editions
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: html-edition
-          path: "${{ github.event.repository.name }}-*.html"
+          name: oc-guide-release-editions
+          path: |
+            dist/oc_guide-*.pdf
+            dist/oc_guide-*.html
+            dist/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 1
+
+  release:
+    name: Publish verified release editions
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download verified release editions
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: oc-guide-release-editions
+          path: dist
+
+      - name: Recheck transferred artifact checksums
+        run: (cd dist && sha256sum -c SHA256SUMS)
+
+      - name: Attest tagged release artifacts
+        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        with:
+          subject-path: |
+            dist/oc_guide-*.pdf
+            dist/oc_guide-*.html
+            dist/SHA256SUMS
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b # v3.0.1
+        with:
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            dist/oc_guide-*.pdf
+            dist/oc_guide-*.html
+            dist/SHA256SUMS
