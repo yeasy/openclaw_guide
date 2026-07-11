@@ -73,8 +73,6 @@ jobs:
           pandoc --version | head -1
 
       - name: Build PDF and HTML editions
-        env:
-          CHROME_BIN: ${{ steps.setupchrome.outputs.chrome-path }}
         run: |
           mkdir -p dist "$RUNNER_TEMP/mmsvg"
           python3 tools/build_pdf.py \
