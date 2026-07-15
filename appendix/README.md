@@ -11,6 +11,6 @@
 - **[命令速查手册](command_cheatsheet.md)**：常用 CLI 命令的快速参考。
 - **[版本映射与升级指南](version_mapping.md)**：版本兼容性与升级路径。
 - **[延伸阅读与参考资料](reading_list.md)**：深入学习的推荐资源。
-- **[OpenClaw 命名演进史](naming_history.md)**：当前仅记录可验证命名事实；完整命名时间线待官方发布后补充。
 - **[环境自检工具](env_check.md)**：快速检查本机运行依赖与基础网络连通性。
+- **[OpenClaw 命名演进史](naming_history.md)**：当前仅记录可验证命名事实；完整命名时间线待官方发布后补充。
 - **[快变事实核验表](volatile_facts.md)**：记录模型、Node 版本、CLI 行为、价格和 release workflow 等高波动事实的核验入口。
