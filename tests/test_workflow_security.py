@@ -218,7 +218,13 @@ class WorkflowSecurityTests(unittest.TestCase):
     def test_inventory_actions_and_checkout_credentials_are_exact(self):
         self.assertEqual(
             {path.name for path in WORKFLOWS},
-            {"auto-release.yml", "ci.yaml", "dependabot-automerge.yml", "preview-pdf.yml"},
+            {
+                "auto-release.yml",
+                "ci.yaml",
+                "dependabot-automerge.yml",
+                "identity-guard.yaml",
+                "preview-pdf.yml",
+            },
         )
         for workflow in WORKFLOWS:
             with self.subTest(workflow=workflow.name):
