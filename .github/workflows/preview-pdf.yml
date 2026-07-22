@@ -85,7 +85,8 @@ jobs:
             --timeout 600
           if ! timeout --signal=TERM 8m env PATH="$GITHUB_WORKSPACE/node_modules/.bin:$PATH" \
             python3 tools/render_mermaid.py --book-dir . --svg-out "$RUNNER_TEMP/mmsvg"; then
-            echo "Mermaid rendering unavailable; using source fallback"
+            echo "::error::Mermaid rendering failed — refusing to publish an edition with raw diagram source."
+            exit 1
           fi
           title=$(python3 -c 'import json; print(json.load(open("book.json", encoding="utf-8"))["title"])')
           python3 tools/build_html_reader.py \
