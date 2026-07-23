@@ -81,7 +81,7 @@ jobs:
             --attempts 2 \
             --timeout 600
           if ! timeout --signal=TERM 8m env PATH="$GITHUB_WORKSPACE/node_modules/.bin:$PATH" \
-            python3 tools/render_mermaid.py --book-dir . --svg-out "$RUNNER_TEMP/mmsvg"; then
+            python3 tools/render_mermaid.py --book-dir . --svg-out "$RUNNER_TEMP/mmsvg" --strict; then
             echo "::error::Mermaid rendering failed — refusing to publish an edition with raw diagram source."
             exit 1
           fi
