@@ -309,7 +309,7 @@ class WorkflowSecurityTests(unittest.TestCase):
                 text = workflow.read_text(encoding="utf-8")
                 self.assertIn("npm ci", text)
                 self.assertNotRegex(text, r"npm install\s+--global\s+@mermaid-js/mermaid-cli")
-                self.assertIn("MDPRESS_SHA256", text)
+                self.assertIn("checksums.txt", text)
                 self.assertIn("PANDOC_SHA256", text)
                 self.assertIn("curl -fsSL --retry 3", text)
                 self.assertIn("sha256sum -c -", text)
