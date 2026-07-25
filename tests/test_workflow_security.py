@@ -14,33 +14,18 @@ WORKFLOWS = tuple(sorted(WORKFLOW_DIR.glob("*.y*ml")))
 BUILD_WORKFLOWS = tuple(
     WORKFLOW_DIR / name for name in ("auto-release.yml", "ci.yaml", "preview-pdf.yml")
 )
-ACTION_PINS = {
-    "actions/attest-build-provenance": (
-        "0f67c3f4856b2e3261c31976d6725780e5e4c373",
-        "v4.1.1",
-    ),
-    "actions/checkout": ("9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0", "v7.0.0"),
-    "actions/download-artifact": (
-        "3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c",
-        "v8.0.1",
-    ),
-    "actions/upload-artifact": (
-        "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
-        "v7.0.1",
-    ),
-    "browser-actions/setup-chrome": (
-        "2e1d749697dd1612b833dba4a722266286fbefcd",
-        "v2.1.2",
-    ),
-    "dependabot/fetch-metadata": (
-        "25dd0e34f4fe68f24cc83900b1fe3fe149efef98",
-        "v3.1.0",
-    ),
-    "softprops/action-gh-release": (
-        "718ea10b132b3b2eba29c1007bb80653f286566b",
-        "v3.0.1",
-    ),
-}
+# 允许出现在 workflow 里的第三方 action。版本不写死——见下方跨文件一致性断言。
+ALLOWED_ACTIONS = frozenset(
+    {
+        "actions/attest-build-provenance",
+        "actions/checkout",
+        "actions/download-artifact",
+        "actions/upload-artifact",
+        "browser-actions/setup-chrome",
+        "dependabot/fetch-metadata",
+        "softprops/action-gh-release",
+    }
+)
 
 TEST_REPOSITORY = "owner/repo"
 TEST_SHA = "a" * 40
@@ -226,6 +211,7 @@ class WorkflowSecurityTests(unittest.TestCase):
                 "preview-pdf.yml",
             },
         )
+        observed = {}
         for workflow in WORKFLOWS:
             with self.subTest(workflow=workflow.name):
                 text = workflow.read_text(encoding="utf-8")
@@ -240,14 +226,25 @@ class WorkflowSecurityTests(unittest.TestCase):
                     )
                     self.assertIsNotNone(match, line)
                     action = match.group("action")
-                    self.assertIn(action, ACTION_PINS)
-                    self.assertEqual(
-                        (match.group("sha"), match.group("version")),
-                        ACTION_PINS[action],
+                    self.assertIn(action, ALLOWED_ACTIONS)
+                    observed.setdefault(action, set()).add(
+                        (match.group("sha"), match.group("version"))
                     )
                 if "actions/checkout@" in text:
                     index = text.index("actions/checkout@")
                     self.assertIn("persist-credentials: false", text[index : index + 240])
+
+        # 每个 action 在所有 workflow 里必须钉同一个 (sha, version)。这条替代了原来
+        # 硬编码的 SHA 表：硬编码值只有 Dependabot 能触发变更、而它改不了测试，于是
+        # 每次升级都必然红（ai_beginner_guide 的同构测试已因此卡死 PR #18）。跨文件
+        # 一致性保留了真正的价值——抓「只升了一部分 workflow」的半吊子升级——同时不再自锁。
+        for action, pins in sorted(observed.items()):
+            with self.subTest(action=action):
+                self.assertEqual(
+                    len(pins),
+                    1,
+                    f"{action} is pinned inconsistently across workflows: {sorted(pins)}",
+                )
 
     def test_jobs_use_minimum_permissions_and_verified_artifact_handoffs(self):
         ci = (WORKFLOW_DIR / "ci.yaml").read_text(encoding="utf-8")
