@@ -24,7 +24,7 @@ LINK_RE = re.compile(r"(!?)\[[^\]]*\]\(([^)\s]+(?:\s+\"[^\"]*\")?)\)")
 FENCE_RE = re.compile(r"^\s*(`{3,}|~{3,})")
 
 
-VOLATILE_FACTS = Path("appendix/volatile_facts.md")
+VOLATILE_FACTS = ROOT / "appendix/volatile_facts.md"
 
 
 def check_volatile_facts(filepath=VOLATILE_FACTS, today=None):
