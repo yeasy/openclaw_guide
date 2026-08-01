@@ -27,7 +27,8 @@ class InstallationContractTests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, self.text)
 
-        self.assertIn("Node 22.19+、23.11+ 或 24+", self.text)
+        self.assertIn("Node 22.22.3+、24.15+ 或 25.9+（含 Node 26）", self.text)
+        self.assertIn("Node 23 不受支持", self.text)
         self.assertIn("`<npm-prefix>/bin`", self.text)
 
     def test_powershell_diagnostics_use_the_windows_global_prefix(self):
