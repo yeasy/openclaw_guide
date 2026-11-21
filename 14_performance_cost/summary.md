@@ -11,7 +11,7 @@
 - **Token 与上下文成本**（14.1）：通过系统提示精简、按 Agent 分配工具定义、`compaction` 与 `contextPruning` 配置实现上下文压缩，配合 `agents.defaults.model.primary` / `agents.defaults.model.fallbacks`，或 `agents.entries.*.model.primary` / `fallbacks` 进行模型分级。
 - **延迟与吞吐优化**（14.2）：延迟由 LLM 推理、工具 I/O、沙箱执行、编排器开销四段构成；通过模型回退链、工具并行化、`/trace on` 与 `openclaw logs --follow --json` 回放来定位瓶颈。
 - **用量观测与预算控制**（14.3）：使用 `/status`、`/usage cost`、`openclaw gateway usage-cost`、`/compact` 等交互/CLI 命令与 Dashboard Usage 页面监控 Token 与成本；硬预算和告警应结合 provider 控制台、外部监控或插件治理。
-- **部署预算模板**（14.4）：个人场景月均 $60–90、团队场景 $600–900、企业场景 $10K–50K，核心变量是模型选择和日均会话量。
+- **部署预算模板**（14.4）：个人/小团队、中等规模、企业规模三档的月预算示意分别约 $75、$1,500、$35,000（输入侧成本小计约 $39、$1,118、$27,234，输出与缓存另计），核心变量是模型选择和日均请求量。
 
 ### 优化检查清单
 
