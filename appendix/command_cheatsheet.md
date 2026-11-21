@@ -203,7 +203,7 @@
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `openclaw cron add --name <名称> --cron "<表达式>" --session main --system-event "<内容>" --wake now` | 创建主会话定时作业并立即唤醒心跳处理 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
+| `openclaw cron add --name <名称> --cron "<表达式>" --session main --system-event "<内容>"` | 创建主会话定时作业，到期时在主会话中处理系统事件 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
 | `openclaw cron add --name <名称> --at "<时间>" --session isolated --message "<内容>" --announce` | 创建一次性隔离作业并主动投递结果 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
 | `openclaw cron list` | 查看所有已注册作业及下次触发时间 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
 | `openclaw cron status` | 查看 cron 调度器健康度 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
@@ -214,12 +214,15 @@
 | `openclaw cron runs --id <jobId>` | 查看执行历史；`cron run` 返回只代表已入队，是否真的运行要用它对账 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
 | `openclaw cron remove <jobId>` | 移除指定作业（`rm`/`delete` 等别名以当前 CLI 为准） | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
 
-**心跳与系统事件**
+**周期巡检与系统事件**
 
 | 命令 | 说明 | 关联章节 |
 |---|---|---|
-| `openclaw system event --text "<内容>" --mode now` | 注入系统事件并立即唤醒心跳 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
-| `openclaw system event --text "<内容>" --mode next-heartbeat` | 注入系统事件，等下一个心跳周期再处理 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
+| `openclaw doctor --fix` | 把旧的 Heartbeat 配置与 `HEARTBEAT.md` 迁移为普通巡检作业 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
+| `openclaw automations add --name <名称> --every 30m --message "<内容>"` | 创建周期巡检作业；无事时由提示词约定回复 `NO_REPLY` | [8.3](../08_automation_ops/8.3_heartbeat.md) |
+| `openclaw automations scratch <jobId> --set "<清单>"` | 设置巡检作业的检查清单（scratch） | [8.3](../08_automation_ops/8.3_heartbeat.md) |
+| `openclaw system event --text "<内容>" --mode now` | 注入系统事件并要求立即处理 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
+| `openclaw system event --text "<内容>" --mode next-heartbeat` | 兼容用法：挂到该会话中符合条件的已调度作业上，找不到时报告问题 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
 
 **Hook 管理**
 
@@ -319,12 +322,10 @@
 |---|---|---|
 | `~/.openclaw/openclaw.json` | 主配置文件 | [4.1](../04_config_models/4.1_config_system.md) |
 | `~/.openclaw/workspace/` | 默认工作区（含引导文件） | [2.3.3](../02_setup/2.3_onboarding.md) |
-| `~/.openclaw/workspace/AGENTS.md` | 工作区主页与启动清单 | [2.3.3](../02_setup/2.3_onboarding.md) |
+| `~/.openclaw/workspace/AGENTS.md` | 工作区主页与启动清单；`## Tools` 小节记录本地工具约定 | [2.3.3](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/SOUL.md` | 智能体人格定义 | [3.3.2](../03_minimal_loop/3.3_agent_persona.md) |
 | `~/.openclaw/workspace/USER.md` | 用户偏好与画像 | [2.3.3](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/IDENTITY.md` | 智能体元数据（名称、形象） | [2.3.3](../02_setup/2.3_onboarding.md) |
-| `~/.openclaw/workspace/TOOLS.md` | 环境级工具备忘 | [2.3.3](../02_setup/2.3_onboarding.md) |
-| `~/.openclaw/workspace/HEARTBEAT.md` | 心跳巡检清单 | [8.3](../08_automation_ops/8.3_heartbeat.md) |
 | `~/.openclaw/workspace/BOOT.md` | 非默认创建；仅在文件存在且启用 bundled `boot-md` hook 时执行 | [2.3.3](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/BOOTSTRAP.md` | 首次运行入职脚本 | [2.3.3](../02_setup/2.3_onboarding.md) |
 | `~/.openclaw/workspace/MEMORY.md` | 可选长期记忆索引 | [6.3](../06_context_memory/6.3_memory_mechanism.md) |

@@ -7,11 +7,13 @@
 
 ### F.1 版本号方案
 
-OpenClaw 采用**日历版本号（CalVer）**。稳定版通常为 `YYYY.M.D`，预发布版可带 `-alpha.N` / `-beta.N` 等后缀：
+OpenClaw 采用**日历版本号（CalVer）**。稳定版标签为 `vYYYY.M.PATCH`，测试版为 `vYYYY.M.PATCH-beta.N`：
 
 - `YYYY`：发布年份
 - `M`：发布月份
-- `D`：发布日期
+- `PATCH`：当月的补丁序号，不是发布日期。常规稳定版取 1–32，33 及以上留给 extended-stable 维护线
+
+例如 `v2026.11.6` 于 2026 年 11 月 19 日发布，末位的 6 是序号。
 
 示例：
 
@@ -19,7 +21,7 @@ OpenClaw 采用**日历版本号（CalVer）**。稳定版通常为 `YYYY.M.D`�
 2025.11.15  →  2026.1.9  →  2026.2.14  →  2026.3.30  →  2026.5.12
 ```
 
-CalVer 的最大价值在于版本号本身携带时间语义。做迁移判断时，先确认你当前运行的具体版本，再去看对应文档与 schema 输出。
+CalVer 的价值在于版本号本身带有发布年月。做迁移判断时，先确认你当前运行的具体版本，再去看对应文档与 schema 输出。
 
 ### F.2 当前 schema 家族速览
 
@@ -44,7 +46,9 @@ CalVer 的最大价值在于版本号本身携带时间语义。做迁移判断�
 | 历史写法 | 当前更应迁移到 | 迁移原则 |
 |---------|---------------|---------|
 | 单体 agent 配置 | `agents.defaults` + `agents.entries.*` | 先抽公共默认，再做特定 agent 覆盖 |
-| 数组式名册 `agents.list[]`（条目里写 `id`） | 映射式 `agents.entries.<id>`（agent id 就是键） | 官方已把 `agents.list` 归为 legacy 名册，由 `openclaw doctor --fix` 迁移；迁移后 `default`、`workspace`、`model`、`tools`、`heartbeat`、`sandbox` 等字段位置不变，只是外层由数组变成对象 |
+| 数组式名册 `agents.list[]`（条目里写 `id`） | 映射式 `agents.entries.<id>`（agent id 就是键） | 官方已把 `agents.list` 归为 legacy 名册，由 `openclaw doctor --fix` 迁移；迁移后 `default`、`workspace`、`model`、`tools`、`sandbox` 等字段位置不变，只是外层由数组变成对象；条目里的 `heartbeat` 不再保留，由 doctor 转成普通巡检作业（见 [8.3 节](../08_automation_ops/8.3_heartbeat.md)） |
+| `agents.defaults.heartbeat`、`agents.entries.*.heartbeat`、渠道 `heartbeatVisibility` | 普通自动化作业（`openclaw automations`） | 由 `openclaw doctor --fix` 转成巡检作业后移除旧配置，`HEARTBEAT.md` 内容导入作业的 scratch；之后直接编辑作业，见 [8.3 节](../08_automation_ops/8.3_heartbeat.md) |
+| `tools.exec.security` + `tools.exec.ask` | `tools.exec.mode`（`deny`/`allowlist`/`ask`/`auto`/`full`） | 有精确对应值的组合由 doctor 迁移；`ask: 'always'` 等没有对应值的组合只能保留两个旧字段，且不能与 `mode` 同时出现 |
 | `agents.*.model` 单字符串 | `agents.defaults.model.primary` + `agents.defaults.model.fallbacks` | 把模型选择与回退链显式化；如仅需单模型，也可继续使用字符串形态 |
 | 渠道单层门控开关 | `dmPolicy` / `groupPolicy` / `groups.*` | 先分清私聊与群聊，再处理提及门控和白名单 |
 | 顶层零散安全字段 | `gateway.auth`、`gateway.controlUi.allowedOrigins`、`tools` 策略 | 把控制面鉴权、来源校验、执行策略分层 |

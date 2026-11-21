@@ -14,7 +14,7 @@
 以下用一条消息的完整生命周期串联本章四节的核心概念：
 
 1. **会话归属（6.1）**：用户 Alice 在 Telegram 发送“帮我查一下 prod-cluster-us 的 Pod 重启次数”。系统根据当前渠道、对端身份、智能体归属与会话作用域规则推导出对应的 `sessionKey`，并命中已有会话。
-2. **上下文组装（6.2）**：Gateway 按优先级组装输入：先按 gate 注入 AGENTS.md / SOUL.md / TOOLS.md / IDENTITY.md / USER.md / HEARTBEAT.md / BOOTSTRAP.md 等项目上下文，再拼接当前会话在压缩/裁剪后保留的历史消息，并为本轮工具调用预留空间。
+2. **上下文组装（6.2）**：Gateway 按优先级组装输入：先按 gate 注入 AGENTS.md / SOUL.md / IDENTITY.md / USER.md / BOOTSTRAP.md 等项目上下文，再拼接当前会话在压缩/裁剪后保留的历史消息，并为本轮工具调用预留空间。
 3. **记忆命中（6.3）**：memory-core 会注入记忆工具使用指导；模型可按需调用 `memory_search` / `memory_get`，active-memory 也可能在满足条件时加入 preprompt，从而把“prod-cluster-us 使用指定服务账号运维”这类事实带入上下文。`memory_recall` 只在选择 LanceDB 等替代记忆插件时出现。
 4. **工具调用与回注**：模型决定调用 `kubectl get pods` 工具。工具返回 50K 字符的原始输出，系统将关键摘要（Pod 名 + 重启次数）回注进会话，全量结果落盘为证据文件。
 5. **裁剪触发（6.4）**：经过多轮交互，上下文达到内置的软裁剪阈值。`contextPruning` 将 3 轮前的 kubectl 原始输出截为头尾各 1500 字符；更早的工具结果被 `hardClear` 替换为占位符，从而控制送入模型的输入规模。
