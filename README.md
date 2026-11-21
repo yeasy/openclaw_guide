@@ -10,7 +10,7 @@
 [![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
 [![PDF](https://img.shields.io/badge/PDF-下载-orange)](https://github.com/yeasy/openclaw_guide/releases/latest)
 
-> **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源本地优先的个人 AI 助手系统**，由 Peter Steinberger 创建。本书结合最佳实践，提供从入门到应用的全流程指南，并深度解构其底层的运行机制和实现原理。
+> **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源本地优先的个人 AI 助手系统**，由 Peter Steinberger 创建。本书结合最佳实践，提供从入门到应用的全流程指南，并深入剖析其运行机制和实现原理。
 
 <img src="cover.jpg" alt="OpenClaw Guide Cover" width="300" />
 
@@ -57,7 +57,7 @@ brew tap yeasy/tap && brew install mdpress
 mdpress serve
 ```
 
-如果你偏好其他 Markdown 预览器，也可以作为辅助工具使用，但它们并不是本仓库的标准构建链。
+其他 Markdown 预览器可作辅助，但不属于本仓库的标准构建链。
 
 ## 五分钟快速上手
 
@@ -105,7 +105,7 @@ graph LR
 | [《Claude 技术指南》](https://yeasy.gitbook.io/claude_guide) | Claude 的 MCP 协议、工具使用与 Agentic Coding |
 | [《智能体 AI 权威指南》](https://yeasy.gitbook.io/agentic_ai_guide) | 智能体的通用架构与多智能体协作模式 |
 | [《大模型安全权威指南》](https://yeasy.gitbook.io/ai_security_guide) | 智能体系统的安全设计与攻防实践 |
-| [《大模型原理与架构》](https://yeasy.gitbook.io/llm_internals) | 深入理解大语言模型底层逻辑与架构 |
+| [《大模型原理与架构》](https://yeasy.gitbook.io/llm_internals) | 大语言模型的原理与架构 |
 
 ## 贡献与反馈
 

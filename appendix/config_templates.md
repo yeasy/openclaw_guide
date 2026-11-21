@@ -4,7 +4,7 @@
 
 ### B.1 配置文件位置与格式
 
-OpenClaw Gateway 的主配置文件默认路径为 `~/.openclaw/openclaw.json`。当前更准确的表述是：配置文件按 JSON5 解析；本书中的示例使用带注释的 JSON5 风格展示结构，便于阅读与维护。
+OpenClaw Gateway 的主配置文件默认路径为 `~/.openclaw/openclaw.json`。配置文件按 JSON5 解析；本书中的示例使用带注释的 JSON5 风格展示结构，便于阅读与维护。
 
 建议把配置治理拆成两层。
 
@@ -186,7 +186,7 @@ openclaw logs --limit 500 --json
 
 ### B.7 技能文件模板
 
-技能体系用于固化流程方法。当前更贴近实际使用的组织方式是把工作区技能放在 `<workspace>/skills/<skill-name>/SKILL.md`；若通过 `openclaw skills install` 安装，默认也会写入当前工作区的 `skills/` 目录。技能的格式与加载方式见官方说明：[技能机制](https://docs.openclaw.ai/tools/skills)、[技能命令](https://docs.openclaw.ai/cli/skills)。
+技能体系用于固化流程方法。当前实际使用中常见的组织方式是把工作区技能放在 `<workspace>/skills/<skill-name>/SKILL.md`；若通过 `openclaw skills install` 安装，默认也会写入当前工作区的 `skills/` 目录。技能的格式与加载方式见官方说明：[技能机制](https://docs.openclaw.ai/tools/skills)、[技能命令](https://docs.openclaw.ai/cli/skills)。
 
 下面给出一个可直接复用的 `SKILL.md` 模板。
 
@@ -225,7 +225,7 @@ description: 渠道不回消息、配对失败、群聊不触发时的排障流�
 
 ### B.9 历史版本字段迁移映射表
 
-OpenClaw 采取严格的 Schema 校验机制，当您将旧版本配置文件带入新版本系统时，通常会被 Gateway 拒绝启动。遇到此类情况时，您可以通过 `openclaw doctor --repair` 尝试自动修复，或是参考下方给出的常见漂移映射手动修改：
+OpenClaw 采用严格的 Schema 校验机制，旧版本配置文件带入新版本系统后，通常会导致 Gateway 拒绝启动。此时可通过 `openclaw doctor --repair` 尝试自动修复，或参考下表中的常见漂移映射手动修改：
 
 | 老配置形态 / 遗留字段 | 对应的新配置形态 / 最佳实践 | 备注 |
 | --- | --- | --- |

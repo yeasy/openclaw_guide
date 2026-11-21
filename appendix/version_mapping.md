@@ -1,9 +1,9 @@
 ## 附录 F：版本映射与升级指南
 
-本附录不再把某一代旧字段硬写成“当前配置”，而是给出一套更安全的升级方法：先识别当前 schema 家族，再用 `doctor`、`config validate` 和 `config get/set/unset` 做增量迁移。
+本附录给出一套更安全的升级方法，不把某一代旧字段硬写成“当前配置”：先识别当前 schema 家族，再用 `doctor`、`config validate` 和 `config get/set/unset` 做增量迁移。
 
 > [!WARNING]
-> OpenClaw 使用日历版本号（CalVer），字段层级与命名可能随版本演进而变化。本附录仅提供迁移思路与本轮本地源码审计实例的可观察结构，不能替代官方文档、本机 `openclaw --version` 与本地 `config schema`。
+> OpenClaw 使用日历版本号（CalVer），字段层级与命名可能随版本演进而变化。本附录仅提供迁移思路和本书所用版本中观察到的配置结构，不能替代官方文档、本机 `openclaw --version` 与本地 `config schema`。
 
 ### F.1 版本号方案
 
@@ -19,11 +19,11 @@ OpenClaw 采用**日历版本号（CalVer）**。稳定版通常为 `YYYY.M.D`�
 2025.11.15  →  2026.1.9  →  2026.2.14  →  2026.3.30  →  2026.5.12
 ```
 
-CalVer 的最大价值是“版本号天然携带时间语义”。做迁移判断时，先确认你当前运行的具体版本，再去看对应文档与 schema 输出。
+CalVer 的最大价值在于版本号本身携带时间语义。做迁移判断时，先确认你当前运行的具体版本，再去看对应文档与 schema 输出。
 
 ### F.2 当前 schema 家族速览
 
-在本次 live 审计实例中，最稳定、最值得优先识别的是下面这些 schema 家族。
+在本书所用版本的实例中，以下 schema 家族最稳定，最值得优先识别。
 
 | 家族 | 当前常见结构 | 说明 |
 |------|-------------|------|
@@ -32,14 +32,14 @@ CalVer 的最大价值是“版本号天然携带时间语义”。做迁移判�
 | 模型 | `agents.defaults.model`（字符串或 `{ primary, fallbacks }`） | 当前 schema 以 `agents.defaults.model` 为主入口；对象形态可显式表达主模型与回退链 |
 | 渠道 | `channels.<channel>.dmPolicy` / `groupPolicy` | 私聊与群聊分开治理是当前入口控制的核心 |
 | Gateway | `gateway.port` / `gateway.auth.mode` / `gateway.controlUi.allowedOrigins` | 控制面鉴权与来源校验已经是显式结构 |
-| Hook | `hooks.internal.entries.*` | 当前 live 实例首先暴露的是内建 hooks，而不是默认目录式 Hook |
+| Hook | `hooks.internal.entries.*` | 本书所用版本的实例首先暴露的是内建 hooks，而不是默认目录式 Hook |
 | 插件 | `plugins.entries.*` | 用户配置面仍以 `plugins.entries` 为核心；兼容 bundle 只是分发/发现层，不应混同为另一套配置语法 |
 
-把这些家族先识别出来，迁移就不会被某个旧字段名牵着走。
+先识别出这些家族，迁移时就不会被某个旧字段名误导。
 
 ### F.3 从旧结构到当前结构的迁移思路
 
-下面不是“一一精确映射表”，而是当前更安全的迁移方向。
+下表给出的是当前更安全的迁移方向，并非一一精确映射。
 
 | 历史写法 | 当前更应迁移到 | 迁移原则 |
 |---------|---------------|---------|
@@ -53,7 +53,7 @@ CalVer 的最大价值是“版本号天然携带时间语义”。做迁移判�
 
 ### F.4 常见“已过时思路”提示
 
-升级时，最容易踩坑的不是字段拼错，而是**沿用了一整套过时的配置思路**。下面这些情况要特别警惕：
+升级时最容易出错之处不在字段拼写，而在于**沿用了一整套过时的配置思路**。以下情况需要特别警惕：
 
 - 把 `agents.default`、旧式 per-agent `agents.*.models`、`gateway.listeners` 之类写成“当前默认写法”。注意 `agents.defaults.models` 仍是当前模型选择器/会话覆盖允许列表的一部分，不属于这类旧字段。
 - 把 `channels.<channel>.requireMention`（渠道顶层）、`channels.<channel>.routing[].conditions.requireMention` 这类旧门控路径写成唯一正确答案。注意群组级的 `channels.<channel>.groups."*".requireMention` 仍是当前写法，不属于这类旧字段（见 config_templates.md 的迁移说明）。
@@ -92,7 +92,7 @@ openclaw config unset legacy.oldField
 
 #### `openclaw secrets`
 
-如果迁移涉及凭据存储，而不是普通字段层级调整，更稳妥的入口是当前官方提供的 `secrets audit / configure / apply / reload` 流程，而不是假定存在某个单独的 `migrate` 子命令：
+如果迁移涉及凭据存储（而非普通字段层级调整），更稳妥的入口是当前官方提供的 `secrets audit / configure / apply / reload` 流程，不要假定存在某个单独的 `migrate` 子命令：
 
 ```bash
 openclaw secrets audit --check
@@ -104,7 +104,7 @@ openclaw secrets reload
 
 ### F.6 推荐升级流程
 
-配置升级更适合遵循 **备份 → doctor → validate → 手动补差 → 深度诊断 → 回归测试** 的流程。
+配置升级宜遵循 **备份 → doctor → validate → 手动补差 → 深度诊断 → 回归测试** 的流程。
 
 #### 快速步骤
 
@@ -151,7 +151,7 @@ openclaw gateway restart
 
 ### F.8 本附录小结
 
-版本迁移的关键不是背一张“旧字段 → 新字段”的表，而是先抓住当前 schema 家族：
+版本迁移的关键在于先抓住当前 schema 家族：
 
 - 认证看 `auth.profiles`
 - Agent 看 `agents.defaults` 与 `agents.entries.*`
@@ -161,4 +161,4 @@ openclaw gateway restart
 - Hook 看 `hooks.internal`
 - 插件看 `plugins.entries`
 
-先跑 `doctor`，再用 `config validate` 和 `config get/set/unset` 做精确补差，是当前更可靠的升级路径。
+先运行 `doctor`，再用 `config validate` 和 `config get/set/unset` 做精确补差，是当前更可靠的升级路径。
