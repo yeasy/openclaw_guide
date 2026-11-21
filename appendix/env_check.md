@@ -10,6 +10,7 @@ if command -v node >/dev/null 2>&1; then
   node_major="${node_version%%.*}"
   node_rest="${node_version#*.}"
   node_minor="${node_rest%%.*}"
+  node_patch="${node_rest#*.}"; node_patch="${node_patch%%[!0-9]*}"
   echo "Node.js: v${node_version}"
   # 官方支持线：24.16+ / 26.1+；Node 22、23、25 与 26.0 不受支持
   node_supported=0
@@ -22,6 +23,11 @@ if command -v node >/dev/null 2>&1; then
     echo "警告: 当前 Node 不在官方支持线内（需 24.16+ 或 26.1+，Node 22、23、25 不受支持）；建议升级到 Node 26。"
   elif [ "$node_major" -lt 26 ]; then
     echo "提示: 当前版本受支持；新安装推荐 Node 26（官方 CI 与 Linux 安装脚本使用 Node 24）。"
+  fi
+  # 安全补丁建议线：24.22.1+ / 26.12.1+（低于此线仍可运行，security audit 会报 runtime.node_security_patch）
+  node_level=$(( node_minor * 1000 + ${node_patch:-0} ))
+  if [ "$node_supported" -eq 1 ] && { { [ "$node_major" -eq 24 ] && [ "$node_level" -lt 22001 ]; } || { [ "$node_major" -eq 26 ] && [ "$node_level" -lt 12001 ]; }; }; then
+    echo "提示: 建议升级到安全补丁版本 Node 24.22.1+ 或 26.12.1+。"
   fi
 else
   echo "警告: 未安装 Node.js（推荐 Node 26；官方支持线为 24.16+ / 26.1+）"
@@ -66,6 +72,7 @@ llm provider: 200
 |------|------|---------|
 | `警告: 未安装 Node.js` | Node.js 未安装或不在 PATH | 执行 `nvm install 26`（推荐）或 `nvm install 24` |
 | `警告: 当前 Node 不在官方支持线内` | 当前 Node 版本过低，或落在不受支持的 Node 22、23、25 上 | 升级到 Node 26（26.1+），或至少升级到 24.16+ |
+| `提示: 建议升级到安全补丁版本` | Node 受支持，但低于官方建议的安全补丁线 | 升级到 Node 24.22.1+ 或 26.12.1+；Gateway 服务若用另一个 Node，需单独升级并重启 |
 | `install script: 000` | 无法连接 openclaw.ai | 检查网络/代理/DNS 设置 |
 | `llm provider: 401` | API Key 无效或未设置 | 检查 `$OPENAI_API_KEY` 环境变量 |
 | `llm provider: 403` | API Key 无权限 | 确认 API Key 对应账户有可用额度 |
