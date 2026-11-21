@@ -89,7 +89,7 @@ openclaw logs --limit 500 --json | jq -c 'select(.type=="log") | (.raw | fromjso
 1. 主模型是否限流、超时或认证失败。
    - **典型报错**: `ProviderError: 429 Too Many Requests (OpenAI)` 或 `401 Invalid API Key`
 2. 是否触发回退链路，回退是否有证据链。
-   - **典型表现**: `[WARN] Model openai/gpt-5.4 timed out. Falling back to anthropic/claude-sonnet-5-5`
+   - **典型表现**: `[WARN] Model openai/gpt-6.1-sol timed out. Falling back to anthropic/claude-sonnet-5-5`
 3. 冷却或禁用状态是否生效，是否出现重试放大。
 4. 认证档案与密钥是否过期或被吊销。
 

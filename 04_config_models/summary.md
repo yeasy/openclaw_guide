@@ -24,7 +24,7 @@
   agents: {
     defaults: {
       model: {
-        primary: "openai/gpt-5.4",
+        primary: "openai/gpt-6.1-sol",
         fallbacks: ["anthropic/claude-sonnet-5-5"],
       },
     },
