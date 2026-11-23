@@ -37,9 +37,7 @@
 
 </details>
 
-<details>
-
-<summary>按角色选读</summary>
+## 学习路线图
 
 ```mermaid
 graph LR
@@ -53,6 +51,10 @@ graph LR
     P3 --> ADV
     P4 --> ADV
 ```
+
+<details>
+
+<summary>按角色选读</summary>
 
 | 角色 | 核心章节 | 预计用时 | 学完能做什么 |
 |------|---------|---------|------------|
