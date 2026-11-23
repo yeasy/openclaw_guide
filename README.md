@@ -1,22 +1,16 @@
-[English overview](README_en.md)
-
-<div align="center">
-
 # 《OpenClaw 入门到精通》
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![GitHub stars](https://img.shields.io/github/stars/yeasy/openclaw_guide?style=social)](https://github.com/yeasy/openclaw_guide)
-[![Release](https://img.shields.io/github/release/yeasy/openclaw_guide.svg)](https://github.com/yeasy/openclaw_guide/releases)
-[![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
-[![PDF](https://img.shields.io/badge/PDF-下载-orange)](https://github.com/yeasy/openclaw_guide/releases/latest)
+从安装 OpenClaw 和完成首次对话开始，理解运行机制，掌握运维方法。
 
-> **[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源本地优先的个人 AI 助手系统**，由 Peter Steinberger 创建。本书结合最佳实践，提供从入门到应用的全流程指南，并深入剖析其运行机制和实现原理。
+**[在 GitBook 阅读第一章 · 认识 OpenClaw](https://yeasy.gitbook.io/openclaw_guide/di-yi-bu-fen-ji-chu-ru-men/01_overview)**
 
-<img src="cover.jpg" alt="OpenClaw Guide Cover" width="300" />
+[全书目录（GitHub）](https://github.com/yeasy/openclaw_guide/blob/main/SUMMARY.md) · [正式 PDF（发布页）](https://github.com/yeasy/openclaw_guide/releases/latest) · [English overview](README_en.md)
 
-</div>
+<img src="cover.jpg" width="210" alt="《OpenClaw 入门到精通》封面">
 
-## 本书特色
+## 关于本书
+
+**[OpenClaw](https://github.com/openclaw/openclaw) 是一款开源本地优先的个人 AI 助手系统**，由 Peter Steinberger 创建。本书结合最佳实践，提供从入门到应用的全流程指南，并深入剖析其运行机制和实现原理。
 
 - **实战导向**：从零到一搭建最小闭环，提供可直接复用的配置模板
 - **机制剖析**：深入解析 Gateway、Agent Loop、工具系统、会话与记忆等核心机制
@@ -27,51 +21,25 @@
 - **目标读者**：对 AI 智能体感兴趣的个人用户、AI 应用开发者、大模型落地工程师、系统架构师等。
 - **前置基础**：阅读本书需要了解基本的后端开发常识（如 Node.js 或 Python 基础），并对大语言模型 (LLM) 和 AI 智能体有初步概念。可参考 [《零基础学 AI》](https://yeasy.gitbook.io/ai_beginner_guide) 和 [《智能体 AI 权威指南》](https://yeasy.gitbook.io/agentic_ai_guide) 建立基础。
 
-## 全书结构
+## 从哪里开始
 
-| 部分 | 章节 | 内容概要 |
-|------|------|----------|
-| 第一部分：基础入门 | 第 1–4 章 | 全景概览、环境搭建、首次会话、配置与模型接入 |
-| 第二部分：进阶使用 | 第 5–8 章 | 工具与技能、上下文记忆、多智能体协作、自动化运维 |
-| 第三部分：实现原理与工程落地 | 第 9–12 章 | Gateway 协议、Agent Loop 内核、可靠性机制、插件扩展 |
-| 第四部分：实战与优化深度指南 | 第 13–16 章 | 实战案例、性能与成本优化、故障排查决策树、主流 AI 生态集成 |
-| 附录 | — | 术语表、配置模板与样例、故障排查检查单、API 与 SDK 参考、命令速查手册、版本映射与升级指南、延伸阅读与参考资料、环境自检工具、命名演进史、快变事实核验表 |
+- **安装并完成首次对话** · 按[第 2 章](https://yeasy.gitbook.io/openclaw_guide/di-yi-bu-fen-ji-chu-ru-men/02_setup)安装和初始化，再按[第 3 章](https://yeasy.gitbook.io/openclaw_guide/di-yi-bu-fen-ji-chu-ru-men/03_minimal_loop)在控制台完成首次对话。
+- **理解运行机制** · 读[第 9 章 Gateway 控制平面与协议机制](https://yeasy.gitbook.io/openclaw_guide/di-san-bu-fen-shi-xian-yuan-li-yu-gong-cheng-luo-di/09_gateway_protocol)和[第 10 章 Agent Loop 运行内核剖析](https://yeasy.gitbook.io/openclaw_guide/di-san-bu-fen-shi-xian-yuan-li-yu-gong-cheng-luo-di/10_agent_loop)，理解 Gateway 如何处理请求、Agent 如何调用工具。
+- **部署并运维** · 从[第 8 章 自动化与运维安全实践](https://yeasy.gitbook.io/openclaw_guide/di-er-bu-fen-jin-jie-shi-yong/08_automation_ops)和[第 11 章 可靠性与安全机制实现](https://yeasy.gitbook.io/openclaw_guide/di-san-bu-fen-shi-xian-yuan-li-yu-gong-cheng-luo-di/11_reliability_security)入手，再用[第 15 章的故障排查决策树](https://yeasy.gitbook.io/openclaw_guide/di-si-bu-fen-shi-zhan-yu-you-hua-shen-du-zhi-nan/15_troubleshooting_trees)逐层定位问题。
 
-## 阅读方式
+<details>
 
-### 在线阅读
+<summary>快速上手命令</summary>
 
-- [GitBook 在线版本](https://yeasy.gitbook.io/openclaw_guide/)
-- [从第一章开始阅读](01_overview/README.md)
+1. **安装** · 在 macOS、Linux 或 WSL2 中运行 `curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard`。受管控环境可先下载并审阅脚本，或选用[官方手动安装方法](https://docs.openclaw.ai/install)。
+2. **初始化** · 运行 `openclaw onboard --install-daemon`，按向导完成首次配置并安装后台服务。
+3. **对话** · 运行 `openclaw dashboard`，在浏览器打开的控制台发送消息并确认收到回复。
 
-### 下载离线版本
+</details>
 
-本书提供 PDF 版本供离线阅读，可前往 [GitHub Releases](https://github.com/yeasy/openclaw_guide/releases/latest) 页面下载最新版本。
+<details>
 
-### 本地预览
-
-本仓库当前使用 mdPress 构建，本地预览建议直接使用仓库脚本：
-
-```bash
-brew tap yeasy/tap && brew install mdpress
-mdpress serve
-```
-
-其他 Markdown 预览器可作辅助，但不属于本仓库的标准构建链。
-
-## 五分钟快速上手
-
-还没用过 OpenClaw？只需三步即可体验：
-
-1. **安装**（1 分钟）：`curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard`（受管控环境建议先下载并审阅脚本，或采用官方手动/npm 安装路径）
-2. **初始化**（2 分钟）：`openclaw onboard --install-daemon` → 按向导完成首次配置并安装后台服务
-3. **对话**（2 分钟）：运行 `openclaw dashboard`，在浏览器打开的 Control UI 聊天页输入“你好”，收到 AI 回复即成功 🎉
-
-详见 [第二章：环境搭建](02_setup/README.md) 和 [第三章：首次会话](03_minimal_loop/README.md)。
-
-## 学习路线图
-
-不同角色的读者可以按需选择阅读路径：
+<summary>按角色选读</summary>
 
 ```mermaid
 graph LR
@@ -93,6 +61,18 @@ graph LR
 | 企业运维 | 2→3→8→11→14→15 | 6-8 小时 | 生产环境部署、安全加固与故障排查 |
 | 架构师 | 1→9→10→12→16 | 6-8 小时 | 理解底层原理，设计企业级智能体架构 |
 
+</details>
+
+## 全书结构
+
+| 部分 | 章节 | 内容概要 |
+|------|------|----------|
+| 第一部分：基础入门 | 第 1–4 章 | 全景概览、环境搭建、首次会话、配置与模型接入 |
+| 第二部分：进阶使用 | 第 5–8 章 | 工具与技能、上下文记忆、多智能体协作、自动化运维 |
+| 第三部分：实现原理与工程落地 | 第 9–12 章 | Gateway 协议、Agent Loop 内核、可靠性机制、插件扩展 |
+| 第四部分：实战与优化深度指南 | 第 13–16 章 | 实战案例、性能与成本优化、故障排查决策树、主流 AI 生态集成 |
+| 附录 | — | 术语表、配置模板与样例、故障排查检查单、API 与 SDK 参考、命令速查手册、版本映射与升级指南、延伸阅读与参考资料、环境自检工具、命名演进史、快变事实核验表 |
+
 ## 推荐阅读
 
 本书是 AI 技术丛书的一部分。以下书籍与本书形成互补：
@@ -110,6 +90,19 @@ graph LR
 ## 贡献与反馈
 
 欢迎提交 [Issue](https://github.com/yeasy/openclaw_guide/issues) 或 [PR](https://github.com/yeasy/openclaw_guide/pulls)，尤其欢迎：错别字修正、失效链接修复、实践案例补充与可复用模板。
+
+<details>
+
+<summary>本地预览</summary>
+
+安装 mdPress 后，在仓库根目录启动预览。
+
+```bash
+brew tap yeasy/tap && brew install mdpress
+mdpress serve
+```
+
+</details>
 
 ## 许可证
 

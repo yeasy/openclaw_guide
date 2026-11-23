@@ -1,24 +1,16 @@
-[中文文档](README.md)
-
-<div align="center">
-
 # OpenClaw: Beginner to Expert
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![GitHub stars](https://img.shields.io/github/stars/yeasy/openclaw_guide?style=social)](https://github.com/yeasy/openclaw_guide)
-[![Release](https://img.shields.io/github/release/yeasy/openclaw_guide.svg)](https://github.com/yeasy/openclaw_guide/releases)
-[![Online Reading](https://img.shields.io/badge/Read_Online-GitBook-brightgreen)](https://yeasy.gitbook.io/openclaw_guide)
-[![PDF](https://img.shields.io/badge/PDF-Download-orange)](https://github.com/yeasy/openclaw_guide/releases/latest)
+This page is an English overview. The full book is in Chinese.
 
-> **[OpenClaw](https://github.com/openclaw/openclaw) is an open-source, local-first personal AI assistant**, created by Peter Steinberger. This book provides a comprehensive guide from getting started to production deployment, with deep dives into the underlying mechanisms and implementation principles.
+**[Read Chapter 1 in Chinese on GitBook](https://yeasy.gitbook.io/openclaw_guide/di-yi-bu-fen-ji-chu-ru-men/01_overview)**
 
-<img src="cover.jpg" alt="OpenClaw Guide Cover" width="300" />
+[中文首页](README.md) · [Contents in Chinese (GitHub)](https://github.com/yeasy/openclaw_guide/blob/main/SUMMARY.md) · [Chinese PDF (releases)](https://github.com/yeasy/openclaw_guide/releases/latest)
 
-</div>
+<img src="cover.jpg" width="210" alt="OpenClaw guide cover">
 
 ## Highlights
 
-> Note: this English page is currently an overview. The full chapter-by-chapter content is maintained in Chinese; for complete reading, use the Chinese README and table of contents.
+**[OpenClaw](https://github.com/openclaw/openclaw) is an open-source, local-first personal AI assistant**, created by Peter Steinberger. This book provides a comprehensive guide from getting started to production deployment, with deep dives into the underlying mechanisms and implementation principles.
 
 - **Hands-on**: Build a minimal working loop from scratch, with ready-to-use configuration templates
 - **Deep Dives**: Detailed analysis of Gateway, Agent Loop, tool system, sessions and memory
@@ -39,14 +31,7 @@
 | Part 4: Practice & Optimization | Ch 13–16 | Case studies, performance & cost optimization, troubleshooting, AI ecosystem integration |
 | Appendix | — | Glossary, config templates, troubleshooting checklist, API reference, command cheatsheet, version mapping, further reading, environment self-check tool, naming history, volatile facts table |
 
-## How to Read
-
-### Online
-
-- [GitBook Online](https://yeasy.gitbook.io/openclaw_guide/)
-- [Chinese Full Edition](README.md)
-
-### Local Preview
+## Local Preview
 
 This repository uses mdPress for building. For local preview:
 
