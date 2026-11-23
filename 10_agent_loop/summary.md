@@ -4,7 +4,7 @@
 
 ### 10.7.1 关键结论
 
-- **嵌入式集成 pi 运行时**：OpenClaw 通过 `runEmbeddedPiAgent()` 将 pi SDK 直接嵌入进程，围绕 `activeSession.prompt()` 与事件订阅获得可控推理循环能力，同时通过工具组合与过滤、动态 System Prompt 和自定义 `ModelRegistry` 实现企业级控制。
+- **嵌入式集成 pi 运行时**：OpenClaw 通过 `runEmbeddedAgent()` 在进程内运行沿用 pi 设计、现由 `@openclaw/agent-core` 自有实现的运行时，围绕 `activeSession.prompt()` 与事件订阅获得可控推理循环能力，同时通过工具组合与过滤、动态 System Prompt 和自定义 `ModelRegistry` 实现企业级控制。
 - **纯 TypeScript 分道排队**：Command Queue 不依赖 Redis 等外部中间件，通过会话道串行化、全局道并发控制和后台道隔离，在单节点即可实现完整的并发治理。
 - **提示词是结构化工程产物**：提示词的构建是分层装配过程，系统约束、工具描述、上下文历史与用户输入各自隔离，在 Token 预算内按优先级裁剪，并可通过 hooks、cache trace 或 trajectory 记录做采样审计。
 - **工具调用是策略驱动的受控执行**：工具调用经过策略过滤（`tools.allow`/`tools.deny`）和 `before_tool_call` 钩子双重拦截，结果回注时经过裁剪防止上下文淹没。

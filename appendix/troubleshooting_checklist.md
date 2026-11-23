@@ -121,7 +121,7 @@ openclaw logs --limit 500 --json | jq -r 'select(.type=="log") | (.raw | fromjso
 2. 上下文预算是否打满，导致近期信息被裁剪。
    - **诊断手段**：观察日志中的裁剪/压缩事件与占位符频率。
 3. 会话存储文件是否可读写，是否发生写入失败。
-   - **诊断手段**：检查 `~/.openclaw/agents/<agentId>/sessions/sessions.json` 的更新时间与权限。
+   - **诊断手段**：检查 `~/.openclaw/agents/<agentId>/agent/openclaw-agent.sqlite` 的更新时间与权限；若启动时提示旧版会话存储，先按提示运行 `openclaw doctor --fix` 导入。
 
 常用命令示例：
 

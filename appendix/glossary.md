@@ -6,7 +6,7 @@
 
 - **Agent Loop（智能体循环）**：指从任务输入到最终执行结果的完整决策闭环，包括意图理解、工具规划、执行、验证与反馈阶段。
 - **Agent Runtime（运行时内核）**：执行的核心引擎，负责接收归一化任务、组装提示词、发起模型调用以及截获并调度工具。
-- **auth-profile（认证配置）**：模型供应商认证档案，通常由 `auth.profiles` 元数据与 `auth-profiles.json` 中的凭据共同组成，用于 API Key/OAuth、轮换、冷却与故障转移。
+- **auth-profile（认证配置）**：模型供应商认证档案，通常由 `auth.profiles` 元数据与每个智能体 `openclaw-agent.sqlite` 中的凭据共同组成（旧版 `auth-profiles.json` 由 `openclaw doctor --fix` 导入），用于 API Key/OAuth、轮换、冷却与故障转移。
 - **CalVer（日历版本）**：日历版本控制方案，OpenClaw 采用 CalVer 格式发布版本，格式为 `vYYYY.M.PATCH`，例如 `v2026.11.6` 是 2026 年 11 月补丁号为 6 的版本（末位是序号而非日期）。
 - **Compaction（上下文压缩）**：将会话中早期的对话记录总结为高密度摘要，以释放窗口空间。
 - **Context Window（上下文窗口）**：大模型在单次推理中能处理的最大输入输出 token 数量，决定了历史记录与检索上下文的容量上限。
@@ -14,7 +14,7 @@
 - **Gateway（网关/控制平面）**：负责外部连接（如 WebSocket/HTTP）、鉴权、设备配对、消息路由与系统级别的状态治理。
 - **HEARTBEAT.md（心跳清单文件）**：旧版 Heartbeat 机制使用的工作区检查清单文件。当前周期巡检由普通自动化作业承担，检查清单保存在作业的 scratch 中，运行时不再读取该文件；`openclaw doctor --fix` 会把它导入 scratch 并归档。
 - **Node（执行节点）**：与 Gateway WebSocket 配对的设备或 headless companion 进程，用于暴露本地屏幕、摄像头、系统工具等能力。
-- **Pi（Agent 运行时）**：OpenClaw 底层使用的 AI 编码智能体运行时引擎，通过 Pi SDK 内嵌 `AgentSession`，负责模型推理、工具调用和任务执行；RPC/外部进程模式不是当前主路径。
+- **Pi（Agent 运行时）**：OpenClaw 底层使用的 AI 编码智能体运行时引擎，内置运行时 id 现为 `openclaw`（配置中写 `pi` 仍作为别名），由 OpenClaw 自有的 `@openclaw/agent-core` 实现，负责模型推理、工具调用和任务执行。
 - **Prompt Assembly（提示词装配）**：将用户任务、系统指令、历史对话、检索上下文等多个信号动态整合为一个完整的模型输入提示的过程。
 - **Pruning（上下文裁剪）**：按优先级算法（如基于时间衰减或重要度评分），强制丢弃低价值的中间执行回执。
 - **Session（会话/记忆容器）**：承载多轮任务连续性的抽象，内部维护了状态与短/长记忆快照。
@@ -28,7 +28,7 @@
 - **Webhook**：外部系统通过 HTTP 回调主动触发 OpenClaw 任务的机制，用于异步事件驱动工作流。
 - **Pairing（设备配对）**：通过设备身份、challenge-response、人工批准与令牌签发让新设备或 DM 发送者进入受信任集合；二维码或配对码只是常见引导方式之一。
 - **Hook（生命周期切面）**：允许开发者在 Agent 调用的各个阶段（如提示词构建前、工具执行后）注入自定义逻辑的扩展点。
-- **Cron（定时作业）**：OpenClaw Gateway 管理的定时任务系统，用于唤醒智能体执行自检、巡检、总结或清理任务，并在 `~/.openclaw/cron/` 下持久化任务状态。
+- **Cron（定时作业）**：OpenClaw Gateway 管理的定时任务系统，用于唤醒智能体执行自检、巡检、总结或清理任务，任务定义、运行状态与历史持久化在共享 SQLite 状态库中。
 - **Rate Limit（限流）**：对外部 API、模型调用或资源访问施加的流量上限，防止过载与配额超支。
 - **Cooldown（冷却期）**：在重试或重新触发某个操作前，系统强制等待的最小时间间隔。
 - **Circuit Breaker（熔断器）**：当某个依赖服务连续失败次数或错误率超过阈值时，系统主动断开连接、快速失败的保护机制。

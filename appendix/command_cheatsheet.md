@@ -336,7 +336,7 @@
 | `~/.openclaw/skills/` | 本地 override / 共享技能目录（非当前 CLI 默认安装目标） | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `~/.agents/skills/` | 用户级共享 Agent skills 目录 | [5.3](../05_tools_skills/5.3_skills_plugins.md) |
 | `~/.openclaw/agents/` | Agent 数据目录 | — |
-| `~/.openclaw/cron/jobs.json` | 定时任务定义存储 | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
-| `~/.openclaw/agents/<ID>/sessions/` | 会话记录 | [6.1](../06_context_memory/6.1_sessions.md) |
+| `~/.openclaw/state/openclaw.sqlite` | 共享状态库（定时任务、执行审批等；旧版 `cron/jobs.json` 已退役） | [8.2](../08_automation_ops/8.2_cron_jobs.md) |
+| `~/.openclaw/agents/<ID>/agent/openclaw-agent.sqlite` | 会话记录与认证存储（`sessions/` 目录只存归档 transcript） | [6.1](../06_context_memory/6.1_sessions.md) |
 
 > Windows 用户注意：`~` 等于 `%USERPROFILE%`，即 `C:\Users\<你的用户名>`。

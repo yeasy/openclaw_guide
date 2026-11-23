@@ -30,7 +30,7 @@ OpenClaw Gateway 的主配置文件默认路径为 `~/.openclaw/openclaw.json`�
     consoleLevel: "info",
     consoleStyle: "pretty",
     // 注意：脱敏现已固定开启（redactSensitive 已在 v2026.8.1 退役，写了会被 config validate 拒绝），
-    // 可配置的只剩下面的 redactPatterns；且它会尽力作用于控制台、文件日志、OTLP 与 transcript，但不承诺完整脱敏
+    // 可配置的只剩下面的 redactPatterns（会替换默认字符串规则列表）；它尽力作用于控制台、日志输出、诊断导出与 OTLP，工具参数、结果与会话 transcript 不脱敏
   },
 
   diagnostics: {
