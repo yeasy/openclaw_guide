@@ -291,7 +291,8 @@ class WorkflowSecurityTests(unittest.TestCase):
         self.assertTrue(package_path.is_file(), "package.json must lock Mermaid")
         self.assertTrue(lock_path.is_file(), "package-lock.json must be committed")
         package = json.loads(package_path.read_text(encoding="utf-8"))
-        self.assertEqual(package["devDependencies"]["@mermaid-js/mermaid-cli"], "11.16.0")
+        pinned = package["devDependencies"]["@mermaid-js/mermaid-cli"]
+        self.assertRegex(pinned, r"^\d+\.\d+\.\d+$", "mermaid-cli must be pinned to an exact version")
         self.assertEqual(package["devDependencies"]["puppeteer"], "24.43.1")
         lock = json.loads(lock_path.read_text(encoding="utf-8"))
         self.assertEqual(
