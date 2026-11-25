@@ -291,15 +291,24 @@ class WorkflowSecurityTests(unittest.TestCase):
         self.assertTrue(package_path.is_file(), "package.json must lock Mermaid")
         self.assertTrue(lock_path.is_file(), "package-lock.json must be committed")
         package = json.loads(package_path.read_text(encoding="utf-8"))
-        pinned = package["devDependencies"]["@mermaid-js/mermaid-cli"]
-        self.assertRegex(pinned, r"^\d+\.\d+\.\d+$", "mermaid-cli must be pinned to an exact version")
-        self.assertEqual(package["devDependencies"]["puppeteer"], "24.43.1")
         lock = json.loads(lock_path.read_text(encoding="utf-8"))
-        self.assertEqual(
-            lock["packages"]["node_modules/@mermaid-js/mermaid-cli"]["version"],
-            "11.16.0",
-        )
-        self.assertEqual(lock["packages"]["node_modules/puppeteer"]["version"], "24.43.1")
+        self.assertGreaterEqual(lock["lockfileVersion"], 3)
+        for dependency in ("@mermaid-js/mermaid-cli", "puppeteer"):
+            pinned = package["devDependencies"][dependency]
+            self.assertIsNotNone(
+                re.fullmatch(r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)", pinned),
+                f"{dependency} must be pinned to an exact version",
+            )
+            self.assertEqual(
+                lock["packages"][""]["devDependencies"][dependency],
+                pinned,
+                f"lockfile root dependency for {dependency} must match package.json",
+            )
+            self.assertEqual(
+                lock["packages"][f"node_modules/{dependency}"]["version"],
+                pinned,
+                f"resolved {dependency} version must match package.json",
+            )
         self.assertNotIn("package-lock.json", (ROOT / ".gitignore").read_text(encoding="utf-8"))
 
         for workflow in BUILD_WORKFLOWS:
