@@ -54,8 +54,8 @@ echo "自检完成"
 
 ```text
 === OpenClaw 环境自检 ===
-Node.js: v26.2.0
-11.13.0
+Node.js: v26.12.1
+11.20.0
 Docker version 27.3.1, build ce1223035a
 测试网络连通（官方安装脚本）...
 install script: 200
